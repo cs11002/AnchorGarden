@@ -1,0 +1,34 @@
+; default Snail setup file (*.ssf)
+; 
+; [What is *.ssf file?]
+; *.ssf file is used to re-define parameters of SnailServer/Viewer/etc.
+; 
+; [Selection Algorithm of *.ssf file]
+; SnailServer finds files named *.ssf in the working directory.
+; If there are more than two .ssf files,
+;    SnailServer list up the files to make a teacher choose one.
+; If there are only one .ssf file,
+;    SnailServer chooses the .ssf file.
+; If there are no .ssf file,
+;    SnailServer never re-define parameters & preferences.
+;
+; [Notation of *.ssf file]
+; After the ; character becomes a comment.
+; [FIELD] = [VALUE]
+
+;viewsizex = 800
+;viewsizey = 600
+;viewlocx = 100
+;viewlocy = 100
+
+inkscale = 0.181818f
+inkwidth = 1.0f
+
+wheelrotationdirection = -1
+
+
+
+
+
+
+

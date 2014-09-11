@@ -15,19 +15,23 @@ public class CoVisProperty {
 	/**
 	 * ATNWindow表示の幅
 	 */
-	public int viewsizex = 570;
+	public int viewsizex = 750;
+	//public int viewsizex = 570;初期値
 	/**
 	 * ATNWindow表示の高さ
 	 */
-	public int viewsizey = 560;
+	public int viewsizey = 750;
+	//public int viewsizey = 560;初期値
 	/**
 	 * ATNWindow表示の位置（x座標）
 	 */
 	public int viewlocx = 420;
+	//public int viewlocx = 420;初期値
 	/**
 	 * ATNWindow表示の位置（y座標）
 	 */
 	public int viewlocy = 5;
+	//public int viewlocy = 5;初期値
 
 	/**
 	 * ホイール回転ズーム方向の設定(-1 または 1)

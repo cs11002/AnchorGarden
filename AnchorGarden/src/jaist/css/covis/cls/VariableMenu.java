@@ -85,7 +85,7 @@ public class VariableMenu extends JPopupMenu implements FramePopup {
 			add(menuItem);
 			menuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					//					System.out.println(e.getSource().getClass().getName());
+					//System.out.println(e.getSource().getClass().getName());
 					((Covis_primitive)v.cv_class).edit(frame,v);
 				}
 			});
@@ -105,22 +105,22 @@ public class VariableMenu extends JPopupMenu implements FramePopup {
 				//メソッド探索開始
 				methodMenu = new JMenu("Method");
 				add(methodMenu);
-				//			Method[] methods = v.anchor.destObject.getClass().getDeclaredMethods();
+				//Method[] methods = v.anchor.destObject.getClass().getDeclaredMethods();
 				Method[] methods = v.anchor.destObject.getClass().getMethods();
 				for(Method m: methods){
 					if (m.getName().startsWith("covis_")){
 						String mname = m.toString().replaceAll("java\\.lang\\.", "");
-						//										System.out.println("mname "+mname);
+						//System.out.println("mname "+mname);
 						String mname2 = mname.replaceAll("jaist\\.css\\.covis\\.cls\\.Covis\\_", "");
-						//										System.out.println("mname2 " +mname2);
+						//System.out.println("mname2 " +mname2);
 						String mname3 = mname2.replaceAll("covis\\_", "");
-						//										System.out.println("mname3 "+mname3);
+						//System.out.println("mname3 "+mname3);
 
 						//２つめのスペースから，.までを削除
 						int lastspcPos = mname3.lastIndexOf(" ");
 						int lastdotPos = mname3.lastIndexOf(".");
 						String mname4 = mname3.substring(0,lastspcPos)+" "+mname3.substring(lastdotPos+1);
-						//										System.out.println("mname4 "+mname4);
+						//System.out.println("mname4 "+mname4);
 						JMenuItem mi = new JMenuItem(new WrapMethod(m, v.anchor.destObject, mname4, v));
 						methodMenu.add(mi);
 					}

@@ -226,9 +226,13 @@ public class CoVisBuffer extends RootBuffer {
 	public void initialize() {
 		layer.setTransparency(0.0f); //初期化時のごたごたを隠すため(ATNWindow.initialize()の最後で除除に表示)
 
-		int width = 1100;
+		int width = 1400;
+		int height = 1400;
+		
+/*		
+  		int width = 1100;
 		int height = 900;
-
+*/
 		PNode bg = new PNode();
 		for(int i=0;i<=width;i+=100){
 			PPath line = PPath.createLine(i, 0, i, height);
@@ -245,18 +249,17 @@ public class CoVisBuffer extends RootBuffer {
 		layer.addChild(bg);
 
 		objField = new ObjectField("Object", objfcolor, this);
-		objField.setOffset(500,0);
-		objField.setPathToRectangle(0, 0, 600, height);
+		objField.setOffset(500,0);//位置指定
+		objField.setPathToRectangle(0, 0, 600, height);//大きさ指定
 		objField.addAttribute("tooltip", objField);
 		layer.addChild(objField);
 
 		varField = new VarField("Variable", varfcolor, this);
 		varField.addAttribute("tooltip", varField);
-		varField.setOffset(180,0);
+		varField.setOffset(180,0);//位置指定
 		layer.addChild(varField);
 
 		clsField = new ClassField("Type", typefcolor, this);
-		//		clsField.setOffset(840,0);
 		clsField.setOffset(0,0);
 		layer.addChild(clsField);
 
@@ -349,7 +352,7 @@ public class CoVisBuffer extends RootBuffer {
 		//　advancedClass.add(newP);
 
 		clsField.layout(1);
-		//		clsField.layoutByToString(0);
+		//clsField.layoutByToString(0);
 
 		clsField.addAttribute("popupMenu", new ClassFieldMenu(clsField,this));
 

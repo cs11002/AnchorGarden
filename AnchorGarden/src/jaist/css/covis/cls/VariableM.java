@@ -21,6 +21,7 @@ public class VariableM extends Variable{
 
 	public VariableM(Covis_Type co, JFrame frame, CoVisBuffer buf, String _varname, Covis_Type obj){
 		super(co,frame,buf,true);
+		setPaint(obj.getClassColor());
 		setPathToRectangle(0,0,20,20);
 		removeChild(handle);
 		handle = null;
@@ -38,7 +39,7 @@ public class VariableM extends Variable{
 //		layout(0);
 
 //		addAttribute("info", "ClassStamp "+this.toString());
-////		addAttribute("selectable", this);
+//		addAttribute("selectable", this);
 //		addAttribute("moveTargetY", this);
 //		addAttribute("dragLayout", this);
 

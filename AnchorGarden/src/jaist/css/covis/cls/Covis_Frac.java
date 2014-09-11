@@ -100,7 +100,7 @@ public class Covis_Frac extends Covis_Object {
 		ptidx2.addAttribute("tooltip", this);
 	}
 	public Covis_Object Covis_clone(boolean isAuto){
-		return new Covis_Frac(buffer, isAuto);
+		return new Covis_Random(buffer, isAuto);
 	}
 	public Color getClassColor(){
 		return defaultColor;

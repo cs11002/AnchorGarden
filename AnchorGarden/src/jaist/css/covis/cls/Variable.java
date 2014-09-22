@@ -44,6 +44,8 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 	public Covis_Type object = null;//‚±‚ê‚ª‚ ‚é‚ÆMember
 
 	PPath handle;
+	PPath sup;
+	PPath sub;
 	PText caption;
 
 	public Anchor anchor;
@@ -124,6 +126,16 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 			elementType = type;
 		}
 		setPathToRectangle(0,0,250,40);
+		if(cv_class instanceof Covis_Sub) {
+			sup = new PPath();
+			sub = new PPath();
+			sup.setPathToRectangle(0,0,250,20);
+			sub.setPathToRectangle(0,20,250,20);
+			sup.setPaint(Covis_Super.defaultColor);
+			sub.setPaint(Covis_Sub.defaultColor);
+			addChild(sup);
+			addChild(sub);
+		}
 		setPaint(cv_class.getClassColor());
 		setStrokePaint(Color.gray);
 		setStroke(new BasicStroke(1));

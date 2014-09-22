@@ -12,6 +12,8 @@ import jaist.css.covis.cls.Covis_Oval;
 import jaist.css.covis.cls.Covis_Random;
 import jaist.css.covis.cls.Covis_Rect;
 import jaist.css.covis.cls.Covis_String;
+import jaist.css.covis.cls.Covis_Sub;
+import jaist.css.covis.cls.Covis_Super;
 import jaist.css.covis.cls.Covis_int;
 import jaist.css.covis.cls.Covis_char;
 import jaist.css.covis.cls.Covis_primitive;
@@ -39,6 +41,8 @@ import javax.swing.JCheckBox;
 import javax.swing.Timer;
 
 //import jp.ac.kyutech.mns.ist.exammon.InfoGetter;
+
+
 
 
 import org.apache.log4j.Category;
@@ -317,10 +321,26 @@ public class CoVisBuffer extends RootBuffer {
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
 		//Random追加(配列も)
+		/*
 		newP = new ClassStamp(new Covis_Random(this,true), this);
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Random"), this);
+		advancedClass[1].add(newP);
+		clsField.addChild(newP);
+		*/
+		//Super追加（配列も）
+		newP = new ClassStamp(new Covis_Super(this,true), this);
+		advancedClass[1].add(newP);
+		clsField.addChild(newP);
+		newP = new ClassStamp(new Covis_Array(this,true,"Super"), this);
+		advancedClass[1].add(newP);
+		clsField.addChild(newP);
+		//Sub追加（配列も）
+		newP = new ClassStamp(new Covis_Sub(this,true), this);
+		advancedClass[1].add(newP);
+		clsField.addChild(newP);
+		newP = new ClassStamp(new Covis_Array(this,true,"Sub"), this);
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
 

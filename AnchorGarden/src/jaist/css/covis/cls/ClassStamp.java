@@ -16,16 +16,19 @@ import edu.umd.cs.piccolo.nodes.PText;
 import edu.umd.cs.piccolo.util.PDimension;
 
 public class ClassStamp extends PPath implements Layoutable, Selectable, Move {
-	public static BasicStroke roundrectStroke = new BasicStroke(4f,BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 90.0f);
+	public static BasicStroke roundrectStroke = new BasicStroke(4f,
+			BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 90.0f);
 
 	private static final long serialVersionUID = -2274392520995258292L;
-	public static Object[] possibilities = {"Object", "Oval", "Rect", "String", "int", "char"};
+	public static Object[] possibilities = { "Object", "Oval", "Rect",
+			"String", "int", "char" };
 	public Covis_Type cv_type;
+	public Covis_Type cv_type_dammy;/* 表示用ダミー */
 	PNode cv_class_for_tooltip;
 	PText tooltip_classname;
 	public static ClassStamp selectedType;
 	public static ArrayList<ClassStamp> stamps;
-	static{
+	static {
 		stamps = new ArrayList<ClassStamp>();
 	}
 	private boolean isSelected;
@@ -34,24 +37,32 @@ public class ClassStamp extends PPath implements Layoutable, Selectable, Move {
 	PText caption;
 	public static float top = 27;
 	public CoVisBuffer buffer;
-	public ClassStamp(Covis_Type co, CoVisBuffer buf){
+
+	public ClassStamp(Covis_Type co, CoVisBuffer buf) {
 		cv_type = co;
 		buffer = buf;
 
-		setPathToRectangle(0,top,200,100);
-		setPaint(new Color(230,230,200));
+		setPathToRectangle(0, top, 200, 100);
+		setPaint(new Color(230, 230, 200));
 		setStrokePaint(Color.gray);
 		setStroke(new BasicStroke(1));
 
-		addChild(cv_type);
+		if(cv_type instanceof Covis_Sub){
+			cv_type_dammy = new Covis_Sub_Dammy(buffer, true);
+			addChild(cv_type_dammy);
+		} else if (cv_type instanceof Covis_Super) {
+			cv_type_dammy = new Covis_Super_Dammy(buffer, true);
+			addChild(cv_type_dammy);
+		}else{
+			addChild(cv_type);
+		}
 		layout(0);
 
-		//		addAttribute("moveTargetY", this);
-		addAttribute("info", "ClassStamp "+this.toString());
+		// addAttribute("moveTargetY", this);
+		addAttribute("info", "ClassStamp " + this.toString());
 		addAttribute("selectable", this);
 		addAttribute("moveTargetY", this);
 		addAttribute("dragLayout", this);
-
 
 		handle = new PPath(this.getPathReference());
 		handle.addAttribute("moveTargetY", this);
@@ -69,7 +80,7 @@ public class ClassStamp extends PPath implements Layoutable, Selectable, Move {
 
 		caption = new PText(cv_type.getClsName());
 		caption.scale(2);
-		caption.setOffset(10,-2);
+		caption.setOffset(10, -2);
 		caption.addAttribute("moveTargetY", this);
 		caption.addAttribute("dragLayout", this);
 		addChild(caption);
@@ -81,31 +92,37 @@ public class ClassStamp extends PPath implements Layoutable, Selectable, Move {
 		handle.addAttribute("popupMenu", new ClassStampMenu(this, buffer));
 		caption.addAttribute("popupMenu", new ClassStampMenu(this, buffer));
 	}
-	public String toString(){
+
+	public String toString() {
 		return cv_type.getClsName();
 	}
 
-	public void layout(int dur){
+	public void layout(int dur) {
 		layoutExceptOne(null, dur);
 	}
 
 	public void layoutExceptOne(PNode operationNode, int dur) {
 		List<PNode> col = getChildrenReference();
-		TreeMap<Double,PNode> map = new TreeMap<Double, PNode>();
-		for(PNode p: col) map.put(p.getYOffset(), p);
+		TreeMap<Double, PNode> map = new TreeMap<Double, PNode>();
+		for (PNode p : col)
+			map.put(p.getYOffset(), p);
 
 		double offsetx = 10;
 		double endx = 10;
 		double offsety = 10;
 		double endy = 10;
-		double maxx = 0, maxy = 0; 
-		for(PNode p : map.values()){
-			//			p.setOffset(offsetx, offsety);
+		double maxx = 0, maxy = 0;
+		for (PNode p : map.values()) {
+			// p.setOffset(offsetx, offsety);
 			double px = p.getFullBounds().width;
 			double py = p.getFullBounds().height;
-			if (maxx < offsetx + endx + px) maxx = offsetx + endx + px;
-			if (maxy < offsety + endy + py) maxy = offsety + endy + py;
-			if (operationNode != p) p.animateToPositionScaleRotation(offsetx, offsety+top, 1, 0, dur);
+			if (maxx < offsetx + endx + px)
+				maxx = offsetx + endx + px;
+			if (maxy < offsety + endy + py)
+				maxy = offsety + endy + py;
+			if (operationNode != p)
+				p.animateToPositionScaleRotation(offsetx, offsety + top, 1, 0,
+						dur);
 			offsety += py;
 			offsety += 10;
 		}
@@ -123,17 +140,20 @@ public class ClassStamp extends PPath implements Layoutable, Selectable, Move {
 	public void setSelected(boolean f, ArrayList<Selectable> list) {
 		isSelected = f;
 
-
 		if (f) {
 			handle.setTransparency(0.8f);
-			//			Informer.playSound("Default.wav");
+			// Informer.playSound("Default.wav");
 			Informer.playSound("Pop.wav");
 		} else {
 			handle.setTransparency(0.0f);
 		}
-		if (f && list != null && !list.contains(this)) list.add(this);
-		if (!f && list != null && list.contains(this)) list.remove(this);
-		if (f) selectedType = this; else {
+		if (f && list != null && !list.contains(this))
+			list.add(this);
+		if (!f && list != null && list.contains(this))
+			list.remove(this);
+		if (f)
+			selectedType = this;
+		else {
 			if (selectedType == this) {
 				selectedType = null;
 			}
@@ -153,10 +173,12 @@ public class ClassStamp extends PPath implements Layoutable, Selectable, Move {
 	}
 
 	public void removeLabel(Hashtable<PNode, PNode> trash) {
-		if (trash != null) trash.put(this, getParent());
+		if (trash != null)
+			trash.put(this, getParent());
 		removeFromParent();
 	}
-	public PNode getToolTipNode(){
+
+	public PNode getToolTipNode() {
 		if (cv_class_for_tooltip == null) {
 			cv_class_for_tooltip = cv_type.createToolTip();
 			cv_class_for_tooltip.setScale(0.5f);
@@ -166,12 +188,14 @@ public class ClassStamp extends PPath implements Layoutable, Selectable, Move {
 
 	public PNode getToolTipNode_forVariable() {
 		if (tooltip_classname == null) {
-			tooltip_classname = new PText("Click to add variable\nof '"+cv_type.getClsName()+"'");
+			tooltip_classname = new PText("Click to add variable\nof '"
+					+ cv_type.getClsName() + "'");
 			tooltip_classname.setScale(1.5f);
 		}
 		return tooltip_classname;
 	}
-	public void move(PDimension d){
-		translate(d.getWidth(), d.getHeight()); //履歴に関係ない動作
+
+	public void move(PDimension d) {
+		translate(d.getWidth(), d.getHeight()); // 履歴に関係ない動作
 	}
 }

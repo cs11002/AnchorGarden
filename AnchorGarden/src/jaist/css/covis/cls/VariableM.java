@@ -16,34 +16,45 @@ import edu.umd.cs.piccolo.util.PDimension;
 
 public class VariableM extends Variable{
 	private static final long serialVersionUID = 1922932400458120787L;
-	
-	
 
+
+	/* coはアンカー自体の型
+	 * objはアンカーを持つクラスの型
+	 */
 	public VariableM(Covis_Type co, JFrame frame, CoVisBuffer buf, String _varname, Covis_Type obj){
 		super(co,frame,buf,true);
-		setPaint(obj.getClassColor());
-		setPathToRectangle(0,0,20,20);
+/*		if(obj instanceof Covis_Array) {
+			setPaint(co.getClassColor());
+		}else{
+			setPaint(obj.getClassColor());
+		}
+		setPathToRectangle(0,0,20,20);*/
+		setPathToRectangle(0,0,0,0);
+		if(co instanceof Covis_Sub) {
+			removeChild(sup);
+			removeChild(sub);
+		}
 		removeChild(handle);
 		handle = null;
-		
+
 		isEnabled = false;
 		object = obj;
-		
+
 		setVarName_Base(_varname);
-//		setPaint(cv_class.getClassColor());
+		//		setPaint(cv_class.getClassColor());
 		setStrokePaint(null);
-//		setStroke(new BasicStroke(1));
+		//		setStroke(new BasicStroke(1));
 
-//		co.setScale(0.3f);
-//		addChild(cv_class);
-//		layout(0);
+		//		co.setScale(0.3f);
+		//		addChild(cv_class);
+		//		layout(0);
 
-//		addAttribute("info", "ClassStamp "+this.toString());
-//		addAttribute("selectable", this);
-//		addAttribute("moveTargetY", this);
-//		addAttribute("dragLayout", this);
+		//		addAttribute("info", "ClassStamp "+this.toString());
+		//		addAttribute("selectable", this);
+		//		addAttribute("moveTargetY", this);
+		//		addAttribute("dragLayout", this);
 
-		
+
 		addAttribute("info", null);
 		addAttribute("moveTargetY", null);
 		addAttribute("dragLayout", null);
@@ -52,37 +63,37 @@ public class VariableM extends Variable{
 		addAttribute("tooltip", co);
 
 		if (cv_class instanceof Covis_Object || isArray){
-//			removeChild(anchor);
-//			anchor = new Anchor(type, this);
-//			anchor.setVarName(varname);
-//			addChild(anchor);
+			//			removeChild(anchor);
+			//			anchor = new Anchor(type, this);
+			//			anchor.setVarName(varname);
+			//			addChild(anchor);
 			anchor.setOffset(20,20);
 			anchor.setAnchorEnabled(false); //まだ触れない．変数からリンクされたら，触れるようにする．
 			anchor.anchortab.addAttribute("moveTarget", co);
 			anchor.anchortab.addAttribute("tooltip", co);
 		} else {
-//			// プリミティブなので，１つだけ追加
-//			Covis_primitive prim = (Covis_primitive) cv_class;
-//			addChild(prim);
-//			prim.setPathToRectangle(0,0,30,(float)getHeight());
-//			prim.setStroke(new BasicStroke(2));
-//			prim.justify();
-//			prim.setOffset(getWidth()-prim.getWidth(), (getHeight()-prim.getHeight())/2);
-//			prim.addAttribute("moveTargetY", this);
-//			prim.addAttribute("dragLayout", this);
-//			prim.valueText.addAttribute("moveTargetY", this);
-//			prim.valueText.addAttribute("dragLayout", this);
-//			prim.valueText.addAttribute("popupMenu", new VariableMenu(this));
+			//			// プリミティブなので，１つだけ追加
+			//			Covis_primitive prim = (Covis_primitive) cv_class;
+			//			addChild(prim);
+			//			prim.setPathToRectangle(0,0,30,(float)getHeight());
+			//			prim.setStroke(new BasicStroke(2));
+			//			prim.justify();
+			//			prim.setOffset(getWidth()-prim.getWidth(), (getHeight()-prim.getHeight())/2);
+			//			prim.addAttribute("moveTargetY", this);
+			//			prim.addAttribute("dragLayout", this);
+			//			prim.valueText.addAttribute("moveTargetY", this);
+			//			prim.valueText.addAttribute("dragLayout", this);
+			//			prim.valueText.addAttribute("popupMenu", new VariableMenu(this));
 		}
 
-//		addAttribute("popupMenu", new VariableMenu(this));
-//		handle.addAttribute("popupMenu", new VariableMenu(this));
-//		caption.addAttribute("popupMenu", new VariableMenu(this));
-//		stamps.add(this);
+		//		addAttribute("popupMenu", new VariableMenu(this));
+		//		handle.addAttribute("popupMenu", new VariableMenu(this));
+		//		caption.addAttribute("popupMenu", new VariableMenu(this));
+		//		stamps.add(this);
 	}
 	public String getTypeName(){
 		if (!isArray){
-//			if (type.isAssignableFrom(Covis_Object.class)){
+			//			if (type.isAssignableFrom(Covis_Object.class)){
 			return cv_class.getClsName();
 		} else {
 			return cv_class.getClsName()+"[]";
@@ -104,7 +115,7 @@ public class VariableM extends Variable{
 		double endy = 10;
 		double maxx = 0, maxy = 0; 
 		for(PNode p : map.values()){
-//			p.setOffset(offsetx, offsety);
+			//			p.setOffset(offsetx, offsety);
 			double px = p.getFullBounds().width;
 			double py = p.getFullBounds().height;
 			if (maxx < offsetx + endx + px) maxx = offsetx + endx + px;
@@ -120,11 +131,11 @@ public class VariableM extends Variable{
 		return null;
 	}
 
-//	public String getBaseVarName() {
-//		return varname_base;
-//	}
+	//	public String getBaseVarName() {
+	//		return varname_base;
+	//	}
 
-//	この変数を削除する
+	//	この変数を削除する
 	public void dispose() {
 		if (anchor != null && anchor.destObject != null){
 			anchor.destObject.detach(anchor);
@@ -134,7 +145,7 @@ public class VariableM extends Variable{
 		layout.layout(200);
 	}
 
-//	変数名変更
+	//	変数名変更
 	public String rename(JFrame f) {
 		String input;
 		while (true){
@@ -178,7 +189,7 @@ public class VariableM extends Variable{
 		toFront_ts = ts;
 		PNode parent = getParent();
 		if (parent != null){
-//			removeFromParent();
+			//			removeFromParent();
 			parent.addChild(this);
 			if (parent instanceof ToFront) ((ToFront)parent).toFront(ts);
 		}

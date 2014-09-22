@@ -158,9 +158,8 @@ public class Covis_Array extends Covis_Object {
 				aryAnchors.add(a);
 				a.setOffset(i*25+25-2,47);
 				addChild(a);*/
-			} else {
-
 			}
+
 			// インデックス値を右肩にはりつける
 			PText ptidx = new PText("["+String.valueOf(i)+"]");
 			ptidx.setScale(0.6);
@@ -303,7 +302,7 @@ public class Covis_Array extends Covis_Object {
 			a.anchortab.tooltip = null;
 		}
 		if (temp.size()==0){
-//			tc.tick_transparency[0] = -0.05f; //一旦離したら早く消える
+			//			tc.tick_transparency[0] = -0.05f; //一旦離したら早く消える
 			tc.transparencyThread_Start(0, this, 50);
 			addAttribute("moveLink", null);
 		}
@@ -373,7 +372,7 @@ public class Covis_Array extends Covis_Object {
 	public String getEditValueInfo(Covis_primitive v) {
 		//参照名の１つ+[x] = val
 		return referenceVarNames().split("\n")[0]+
-		"["+(String)v.getAttribute("index")+"] = "+v.getValue()+";";
+				"["+(String)v.getAttribute("index")+"] = "+v.getValue()+";";
 	}
 	public Covis_Object newInstance(boolean isAuto){
 		Constructor<?> constructor;
@@ -438,5 +437,5 @@ public class Covis_Array extends Covis_Object {
 		}
 		return sb.toString().substring(0, sb.toString().length()-1)+"}";
 	}
-	
+
 }

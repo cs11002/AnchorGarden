@@ -106,7 +106,8 @@ public class VariableMenu extends JPopupMenu implements FramePopup {
 				methodMenu = new JMenu("Method");
 				add(methodMenu);
 				//Method[] methods = v.anchor.destObject.getClass().getDeclaredMethods();
-				Method[] methods = v.anchor.destObject.getClass().getMethods();
+				//Method[] methods = v.anchor.destObject.getClass().getMethods();ƒIƒŠƒWƒiƒ‹
+				Method[] methods = v.cv_class.getClass().getMethods();
 				for(Method m: methods){
 					if (m.getName().startsWith("covis_")){
 						String mname = m.toString().replaceAll("java\\.lang\\.", "");

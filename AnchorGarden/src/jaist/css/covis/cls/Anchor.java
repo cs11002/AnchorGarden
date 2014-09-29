@@ -5,6 +5,8 @@ import jaist.css.covis.ToolTipProvider;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import edu.umd.cs.piccolo.PNode;
 import edu.umd.cs.piccolo.event.PInputEvent;
@@ -219,6 +221,7 @@ public class Anchor extends PPath implements Runnable, DragNotice {
 				lastDetach = false;
 			}
 		}
+
 	}
 	public void setVarName(String s){
 		varName = getVarName();

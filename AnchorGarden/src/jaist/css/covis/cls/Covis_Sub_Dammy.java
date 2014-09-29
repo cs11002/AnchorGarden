@@ -43,13 +43,11 @@ public class Covis_Sub_Dammy extends Covis_Object {
 		sup = new PPath();
 		sup.setPathToRectangle(0, 0, 100, 25);
 		sup.setPaint(Covis_Super.defaultColor);
-		sup.setStroke(basicStroke);
 		addChild(sup);
 		
 		sub = new PPath();
 		sub.setPathToRectangle(0,25,100,25);
 		sub.setPaint(defaultColor);
-		sub.setStroke(basicStroke);
 		addChild(sub);
 	}
 

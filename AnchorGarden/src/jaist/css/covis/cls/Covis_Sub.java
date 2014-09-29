@@ -33,7 +33,6 @@ public class Covis_Sub extends Covis_Super {
 		super(buf, isAuto);
 		color = defaultColor;
 		setPaint(color);
-		setStroke(basicStroke);
 	}
 
 	public Covis_Sub(Color c, CoVisBuffer buf, boolean isAuto) {
@@ -63,7 +62,6 @@ public class Covis_Sub extends Covis_Super {
 		// 大きさ・形指定
 		sub.setPathToRectangle(0, 100, 100, 100);
 		sub.setPaint(color);
-		sub.setStroke(basicStroke);
 
 		// char型追加
 		c = new Covis_char(buffer, isAuto);
@@ -109,7 +107,7 @@ public class Covis_Sub extends Covis_Super {
 		d.setOffset(70, 165);
 		sub.addChild(d);
 		buffer.putHistoryVar("var", d, false);
-		
+
 		// Labelの表示
 		cLabel = new PText(c.getClsName());
 		dLabel = new PText(d_type.getClsName());
@@ -119,9 +117,9 @@ public class Covis_Sub extends Covis_Super {
 		dLabel.offset(10, 158);
 		sub.addChild(cLabel);
 		sub.addChild(dLabel);
-		
+
 		addChild(sub);
-		
+
 		if (!isAuto) {
 			SubConstructorDialog dialog = SubConstructorDialog.showDialog(
 					buffer.getWindow().frame, this, "Constructor of Sub",
@@ -131,7 +129,7 @@ public class Covis_Sub extends Covis_Super {
 				return;
 			}
 		}
-		
+
 	}
 
 	public Covis_Object Covis_clone(boolean isAuto) {
@@ -140,6 +138,27 @@ public class Covis_Sub extends Covis_Super {
 
 	public Color getClassColor() {
 		return defaultColor;
+	}
+
+	public void attach(Anchor anchor) {
+		super.attach(anchor);
+		checkAnchor();
+	}
+
+	public void detach(Anchor anchor) {
+		super.detach(anchor);
+		checkAnchor();
+	}
+
+	public void checkAnchor() {
+		for(Anchor a: anchors_incoming){
+			//if(a.type.isAssignableFrom(Covis_Sub.class)) {
+			if(a.srcVariable.cv_class instanceof Covis_Sub) {
+				sub.setPaint(color);
+				return;
+			}
+		}
+		sub.setPaint(Color.black);
 	}
 
 	public static int objCount = 0;
@@ -170,7 +189,7 @@ public class Covis_Sub extends Covis_Super {
 	public String getConstructorArgs() {
 		return " ";
 	}
-	
+
 	// メソッド作成
 	public void covis_setC(String fc) {
 		c.setValue(fc.trim().substring(0, 1));
@@ -213,7 +232,7 @@ class SubConstructorDialog extends JDialog implements KeyListener {
 		jtfa.setFont(SrcWindow.sans30);
 		jtfa.setBackground(Covis_int.defaultColor);
 		jtfa.addKeyListener(this);
-		
+
 		jtfc = new JTextField(sub.c.getValue());
 		jtfc.setFont(SrcWindow.sans30);
 		jtfc.setBackground(Covis_int.defaultColor);

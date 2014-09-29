@@ -121,8 +121,23 @@ public class Covis_Array extends Covis_Object {
 	// もともとのinitは，早く呼ばれすぎてサイズを反映できない.　なので，何もしない
 	public void init(boolean isAuto){
 	}
+	
+	PPath sub;
+	PPath sup;
+	
 	public void init_length(int size, boolean isAuto){
 		setPathToRectangle(0, 0, size*25, 50);
+		if(elementObj instanceof Covis_Sub) {
+			sup = new PPath();
+			sub = new PPath();
+			
+			sup.setPathToRectangle(0, 0, size*25, 25);
+			sup.setPaint(Covis_Super.defaultColor);
+			sub.setPathToRectangle(0, 25, size*25, 25);
+			sub.setPaint(Covis_Sub.defaultColor);
+			addChild(sup);
+			addChild(sub);
+		}
 		int idx = 0;
 
 		for(int i=0;i<size;i++){

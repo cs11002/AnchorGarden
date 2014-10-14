@@ -122,7 +122,7 @@ public class VariableMenu extends JPopupMenu implements FramePopup {
 						int lastdotPos = mname3.lastIndexOf(".");
 						String mname4 = mname3.substring(0,lastspcPos)+" "+mname3.substring(lastdotPos+1);
 						//System.out.println("mname4 "+mname4);
-						JMenuItem mi = new JMenuItem(new WrapMethod(m, v.anchor.destObject, mname4, v));
+						JMenuItem mi = new JMenuItem(new WrapMethod(m, v.anchor.destObject, mname4, v, v.buffer));
 						methodMenu.add(mi);
 					}
 				}

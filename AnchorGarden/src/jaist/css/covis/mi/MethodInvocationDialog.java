@@ -24,7 +24,8 @@ import edu.umd.cs.piccolo.activities.PActivity;
 
 public class MethodInvocationDialog extends JDialog implements KeyListener {
 	private static final long serialVersionUID = 1852035735398130391L;
-
+	static Object returnobj;
+	
 	JFrame parent;
 	JTextField jtfa, jtfb;
 	JButton ok;
@@ -55,12 +56,12 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 		getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(new JLabelW(mes1), BorderLayout.NORTH);
 		JPanel inner = new JPanel();
-//		inner.setLayout(new GridLayout(2,wm.paramClses.length*2+1));
-//		inner.add(new JLabel());
-//		for(int i=0;i<wm.paramClses.length;i++){
-//			inner.add(new JLabelW(wm.paramClses[i].toString().replaceAll("jaist\\.css\\.covis\\.cls\\.Covis\\_", "").replaceAll("class", "")));
-//			inner.add(new JLabel());
-//		}
+		//		inner.setLayout(new GridLayout(2,wm.paramClses.length*2+1));
+		//		inner.add(new JLabel());
+		//		for(int i=0;i<wm.paramClses.length;i++){
+		//			inner.add(new JLabelW(wm.paramClses[i].toString().replaceAll("jaist\\.css\\.covis\\.cls\\.Covis\\_", "").replaceAll("class", "")));
+		//			inner.add(new JLabel());
+		//		}
 		inner.add(new JLabelW(Variable.getShortestName(var.getVarNamesAry())+"."+wm.method.getName().replace("covis_", "")+"("));
 		for(int i=0;i<wm.paramClses.length;i++){
 			inner.add((Component) jcb[i]);
@@ -86,7 +87,7 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 					sb.append(jcb[i].getSelectedItemString()+",");
 				}
 
-				invokeMethod(args, sb.toString().substring(0, sb.length()-1)+");");
+				returnobj = invokeMethod(args, sb.toString().substring(0, sb.length()-1)+");");
 
 				setVisible(false);
 			}
@@ -101,7 +102,7 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 		//			}
 		//		});
 	}
-	public void invokeMethod(Object[] args, String methodcall) {
+	public Object invokeMethod(Object[] args, String methodcall) {
 		Object retValObject = null;
 		try {
 			retValObject = wm.method.invoke(wm.variable.anchor.destObject, args);
@@ -142,6 +143,8 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 					wm.obj.buffer.putHistoryMethod("method", retValObject, methodcall+"//> null", true);
 			}
 		}
+
+		return retValObject;
 	}
 
 	private void highlightReturnObject(Covis_Object coob) {
@@ -177,14 +180,11 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent arg0) {	}
 
-	public static void showDialog(JFrame parent, String title, WrapMethod _wm, String mes1, Variable v) {
+	public static Object showDialog(JFrame parent, String title, WrapMethod _wm, String mes1, Variable v) {
 		MethodInvocationDialog d = new MethodInvocationDialog(parent,
 				title, _wm, mes1, v);
 		d.setVisible(true);
-		if (d.jtfa != null && d.jtfb != null){
-			//			frac.a.setValue(d.jtfa.getText());
-			//			frac.b.setValue(d.jtfb.getText());
-		} else
-			return;
+
+		return returnobj;
 	}
 }

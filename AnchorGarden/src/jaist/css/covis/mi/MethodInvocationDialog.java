@@ -24,8 +24,8 @@ import edu.umd.cs.piccolo.activities.PActivity;
 
 public class MethodInvocationDialog extends JDialog implements KeyListener {
 	private static final long serialVersionUID = 1852035735398130391L;
-	static Object returnobj;
-	
+	static Object[] args;
+
 	JFrame parent;
 	JTextField jtfa, jtfb;
 	JButton ok;
@@ -76,19 +76,18 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 
 		ok.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Object[] args = new Object[wm.paramClses.length];
+				args = new Object[wm.paramClses.length];
 				for(int i=0;i<wm.paramClses.length;i++){
 					args[i] = jcb[i].getSelectedItemObject();
 				}
 				//メソッドコールを文字列に
-				StringBuffer sb = new StringBuffer();
+				/*StringBuffer sb = new StringBuffer();
 				sb.append(Variable.getShortestName(var.getVarNamesAry())+"."+wm.method.getName().replace("covis_", "")+"(");
 				for(int i=0;i<wm.paramClses.length;i++){
 					sb.append(jcb[i].getSelectedItemString()+",");
-				}
-
-				returnobj = invokeMethod(args, sb.toString().substring(0, sb.length()-1)+");");
-
+				}*/
+				
+				//invokeMethod(args, sb.toString().substring(0, sb.length()-1)+");");
 				setVisible(false);
 			}
 
@@ -103,6 +102,7 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 		//		});
 	}
 	public Object invokeMethod(Object[] args, String methodcall) {
+
 		Object retValObject = null;
 		try {
 			retValObject = wm.method.invoke(wm.variable.anchor.destObject, args);
@@ -148,7 +148,7 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 	}
 
 	private void highlightReturnObject(Covis_Object coob) {
-		//		PActivity z1 = coob.animateToZoom(2.0f,300);
+		//PActivity z1 = coob.animateToZoom(2.0f,300);
 		coob.setScale(2.0f);
 		PActivity z2 = coob.animateToZoom(1.0f,300);
 		PActivity p1 = coob.animateToTransparency(0f, 300);
@@ -180,11 +180,10 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 	@Override
 	public void keyTyped(KeyEvent arg0) {	}
 
-	public static Object showDialog(JFrame parent, String title, WrapMethod _wm, String mes1, Variable v) {
-		MethodInvocationDialog d = new MethodInvocationDialog(parent,
-				title, _wm, mes1, v);
+	public static Object[] showDialog(JFrame parent, String title, WrapMethod _wm, String mes1, Variable v) {
+		MethodInvocationDialog d = new MethodInvocationDialog(parent, title, _wm, mes1, v);
 		d.setVisible(true);
 
-		return returnobj;
+		return args;
 	}
 }

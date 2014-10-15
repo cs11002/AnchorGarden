@@ -24,7 +24,7 @@ public class WrapMethod extends AbstractAction {
 	CoVisBuffer buffer;
 	String methodname;
 	Object retobj;
-	
+
 	public WrapMethod(Method m, Covis_Object o, String mname, Variable var, CoVisBuffer buf){
 		super(mname);
 		obj = o;
@@ -38,22 +38,24 @@ public class WrapMethod extends AbstractAction {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//System.out.println(method.toString());
-		WrapMethod wm = this;//スレッドで使うために変数に保存
+		WrapMethod wm = this;
 		//アニメーション用スレッド生成
 		Thread thread = new Thread() {
 			@Override
 			public void run() {
-				MessageManager.sendMessage(buffer,methodname,variable,obj,false);
-
+				Object[] args = null;
 				paramClses = method.getParameterTypes();
 				//引数なければ，そのまま実行
 				if (paramClses.length==0){
-					Object[] arg = null;
 					MethodInvocationDialog mid = new MethodInvocationDialog(obj.buffer.getWindow().frame, "invoke method", wm, "select arguments", variable);
 					//メソッドコールを文字列に
 					StringBuffer sb = new StringBuffer();
 					sb.append(Variable.getShortestName(variable.getVarNamesAry())+"."+method.getName().replace("covis_", "")+"();");
-					retobj = mid.invokeMethod(arg, sb.toString());
+					//アニメーション再生
+					MessageManager.sendMessage(buffer,methodname,variable,obj,false);
+					//メソッド実行
+					retobj = mid.invokeMethod(args, sb.toString());
+
 					//返り値があるなら帰りのアニメーションを再生
 					if(!method.getReturnType().getName().equals("void")) {
 						//返り値を文字列に
@@ -64,17 +66,12 @@ public class WrapMethod extends AbstractAction {
 							//プリミティブ型ならその値を
 							methodname = retobj.toString();
 						}
-						//アニメーション用スレッド生成
-						Thread thread = new Thread() {
-							@Override
-							public void run() {
-								MessageManager.sendMessage(buffer,methodname,obj,variable,true);
-							}
-						};
-						thread.start();
+						//アニメーション再生
+						MessageManager.sendMessage(buffer,methodname,obj,variable,true);
 					}
 					return;
 				}
+
 				candidates = new HashMap<Class<?>, HashMap<String,Object>>();
 				for(Class<?> c: paramClses){
 					if (candidates.containsKey(c)) continue;
@@ -101,8 +98,24 @@ public class WrapMethod extends AbstractAction {
 					candidates.put(c,temp);
 				}
 				//オブジェクトの候補（参照のための変数）はあつまった
-				Object retobj = MethodInvocationDialog.showDialog(obj.buffer.getWindow().frame, "invoke method", wm, "select arguments", variable);
 				
+				//ダイアログで引数を取得
+				args = MethodInvocationDialog.showDialog(obj.buffer.getWindow().frame, "invoke method", wm, "select arguments", variable);
+				
+				MethodInvocationDialog mid = new MethodInvocationDialog(obj.buffer.getWindow().frame, "invoke method", wm, "select arguments", variable);
+				//メソッドコールを文字列に
+				StringBuffer sb = new StringBuffer();
+				sb.append(Variable.getShortestName(variable.getVarNamesAry())+"."+wm.method.getName().replace("covis_", "")+"(");
+				for(int i=0;i<wm.paramClses.length;i++){
+					sb.append(args[i].toString()+",");
+				}
+				sb.deleteCharAt(sb.length()-1);
+				sb.append(");");
+				//アニメーション再生
+				MessageManager.sendMessage(buffer,methodname,variable,obj,false);
+				//メソッド実行
+				retobj = mid.invokeMethod(args, sb.toString());
+
 				//返り値があるなら帰りのアニメーションを再生
 				if(!method.getReturnType().getName().equals("void")) {
 					//返り値を文字列に
@@ -113,18 +126,13 @@ public class WrapMethod extends AbstractAction {
 						//プリミティブ型ならその値を
 						methodname = retobj.toString();
 					}
-					//アニメーション用スレッド生成
-					Thread thread = new Thread() {
-						@Override
-						public void run() {
-							MessageManager.sendMessage(buffer,methodname,obj,variable,true);
-						}
-					};
-					thread.start();
+					//アニメーション再生
+					MessageManager.sendMessage(buffer,methodname,obj,variable,true);
 				}
 			}
 		};
 		thread.start();
 	}	
+
 }
 

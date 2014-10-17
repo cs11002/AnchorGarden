@@ -7,7 +7,7 @@ import java.util.HashMap;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
-public class InputField_Reference extends JComboBox implements InputField {
+public class InputField_Reference extends JComboBox<String> implements InputField {
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public class InputField_Reference extends JComboBox implements InputField {
 	public InputField_Reference(HashMap<String, Object> hash){
 		super();
 //		String[] ary = new String[hash.size()];
-		DefaultComboBoxModel dcbm = new DefaultComboBoxModel();
+		DefaultComboBoxModel<String> dcbm = new DefaultComboBoxModel<String>();
 		for(Object o: hash.keySet().toArray()){
 			String s = (String)o;
 			dcbm.addElement(s);
@@ -31,7 +31,8 @@ public class InputField_Reference extends JComboBox implements InputField {
 	String type;
 	@Override
 	public Object getSelectedItemObject() {
-		return hashsrc.get(getSelectedItem());
+		//return hashsrc.get(getSelectedItem());
+		return getSelectedItem();
 	}
 	public String getSelectedItemString() {
 		return getSelectedItem().toString();

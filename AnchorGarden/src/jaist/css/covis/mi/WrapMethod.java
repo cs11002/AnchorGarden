@@ -86,11 +86,11 @@ public class WrapMethod extends AbstractAction {
 							for(Entry<String,Anchor> set: map.entrySet()){
 								String s = set.getKey();
 								Anchor a = set.getValue();
-								System.out.println("a "+a.getVarClass());
-								System.out.println("c "+c.getName());
+								//System.out.println("a "+a.getVarClass());
+								//System.out.println("c "+c.getName());
 								if (c.isAssignableFrom(a.getVarClass())){
 									temp.put(Variable.getShortestName(a.srcVariable.getVarNamesAry()), a.destObject);
-									System.out.println(s);
+									//System.out.println(s);
 								}
 							}
 						}
@@ -98,23 +98,34 @@ public class WrapMethod extends AbstractAction {
 					candidates.put(c,temp);
 				}
 				//オブジェクトの候補（参照のための変数）はあつまった
-				
+
 				//ダイアログで引数を取得
 				args = MethodInvocationDialog.showDialog(obj.buffer.getWindow().frame, "invoke method", wm, "select arguments", variable);
-				
+
 				MethodInvocationDialog mid = new MethodInvocationDialog(obj.buffer.getWindow().frame, "invoke method", wm, "select arguments", variable);
 				//メソッドコールを文字列に
-				StringBuffer sb = new StringBuffer();
-				sb.append(Variable.getShortestName(variable.getVarNamesAry())+"."+wm.method.getName().replace("covis_", "")+"(");
-				for(int i=0;i<wm.paramClses.length;i++){
-					sb.append(args[i].toString()+",");
+				StringBuffer sb = new StringBuffer();//変数名なし用
+				StringBuffer sb2 = new StringBuffer();//変数名あり用
+				sb.append(wm.method.getName().replace("covis_", "")+"(");
+				sb2.append(Variable.getShortestName(variable.getVarNamesAry())+".");
+				//sb.append(Variable.getShortestName(variable.getVarNamesAry())+"."+wm.method.getName().replace("covis_", "")+"(");
+				for(int i=0;i<paramClses.length;i++){
+					if(paramClses[i].getName().equals("java.lang.String")) {
+						sb.append("\"" + args[i].toString()+"\",");
+					}else if(paramClses[i].getName().equals("int")){
+						sb.append(args[i].toString()+",");
+					}else{
+						sb.append(args[i].toString()+",");
+						args[i] = candidates.get(paramClses[i]).get(args[i]);//変数をその中身に変更
+					}
 				}
 				sb.deleteCharAt(sb.length()-1);
 				sb.append(");");
+				sb2.append(sb);
 				//アニメーション再生
-				MessageManager.sendMessage(buffer,methodname,variable,obj,false);
+				MessageManager.sendMessage(buffer,sb.toString(),variable,obj,false);
 				//メソッド実行
-				retobj = mid.invokeMethod(args, sb.toString());
+				retobj = mid.invokeMethod(args, sb2.toString());
 
 				//返り値があるなら帰りのアニメーションを再生
 				if(!method.getReturnType().getName().equals("void")) {

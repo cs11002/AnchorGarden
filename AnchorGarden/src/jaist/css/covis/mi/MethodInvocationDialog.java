@@ -42,7 +42,7 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 		//		final JComboBox[] jcb = new JComboBox[wm.paramClses.length];
 		final InputField[] jcb = new InputField[wm.paramClses.length];
 		for(int i=0;i<wm.paramClses.length;i++){
-			System.out.println(wm.paramClses[i].toString());
+			//System.out.println(wm.paramClses[i].toString());
 			if (wm.paramClses[i].toString().equals("int")){
 				jcb[i] = new InputField_int(i+1);
 			} else if (wm.paramClses[i].toString().equals("class java.lang.String")){
@@ -64,9 +64,18 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 		//		}
 		inner.add(new JLabelW(Variable.getShortestName(var.getVarNamesAry())+"."+wm.method.getName().replace("covis_", "")+"("));
 		for(int i=0;i<wm.paramClses.length;i++){
-			inner.add((Component) jcb[i]);
-			if (i < wm.paramClses.length-1) inner.add(new JLabelW(","));
-			else inner.add(new JLabelWL(")"));
+			if(wm.paramClses[i].toString().equals("class java.lang.String")) {
+				inner.add(new JLabelW("\""));
+				inner.add((Component) jcb[i]);
+				inner.add(new JLabelW("\""));
+			}else{
+				inner.add((Component) jcb[i]);
+			}
+			if (i < wm.paramClses.length-1) {
+				inner.add(new JLabelW(","));
+			}else{
+				inner.add(new JLabelWL(")"));
+			}
 		}
 		getContentPane().add(inner, BorderLayout.CENTER);
 		ok = new JButton("ok");
@@ -86,7 +95,7 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 				for(int i=0;i<wm.paramClses.length;i++){
 					sb.append(jcb[i].getSelectedItemString()+",");
 				}*/
-				
+
 				//invokeMethod(args, sb.toString().substring(0, sb.length()-1)+");");
 				setVisible(false);
 			}

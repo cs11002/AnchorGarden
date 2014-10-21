@@ -60,6 +60,7 @@ public class Covis_Frac extends Covis_Object {
 		a.valueText.addAttribute("moveTarget", this);
 		a.valueText.addAttribute("tooltip", this);
 		a.setValue("2");
+		
 		b = new Covis_int(buffer, isAuto);
 		b.addAttribute("moveTarget", this);
 		b.addAttribute("tooltip", this);

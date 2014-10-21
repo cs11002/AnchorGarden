@@ -54,6 +54,8 @@ public class Covis_Super extends Covis_Object {
 	public void init(boolean isAuto) {
 		// 本体の大きさ指定
 		setPathToRectangle(0, 0, 100, 100);
+		addAttribute("moveTarget", this);
+		addAttribute("tooltip", this);
 
 		// sup作成
 		sup = new PPath();
@@ -61,6 +63,8 @@ public class Covis_Super extends Covis_Object {
 		sup.setPathToRectangle(0, 0, 100, 100);
 		sup.setPaint(new Color(242, 178, 188));
 		sup.setStroke(basicStroke);
+		sup.addAttribute("moveTarget", this);
+		sup.addAttribute("tooltip", this);
 
 		// int型追加
 		a = new Covis_int(buffer, isAuto);
@@ -114,6 +118,10 @@ public class Covis_Super extends Covis_Object {
 		bLabel.scale(1.8f);
 		aLabel.offset(10, 8);
 		bLabel.offset(10, 58);
+		aLabel.addAttribute("moveTarget", this);
+		bLabel.addAttribute("moveTarget", this);
+		aLabel.addAttribute("tooltip", this);
+		bLabel.addAttribute("tooltip", this);
 		sup.addChild(aLabel);
 		sup.addChild(bLabel);
 
@@ -130,17 +138,16 @@ public class Covis_Super extends Covis_Object {
 		}
 
 		// インデックス値を右肩にはりつける 用途不明
-		/*
-		 * PText ptidx = new PText("a"); ptidx.setScale(0.6);
-		 * ptidx.setOffset(18, 5); ptidx.setTextPaint(Color.blue);
-		 * addChild(ptidx); ptidx.addAttribute("moveTarget", this);
-		 * ptidx.addAttribute("tooltip", this);
-		 * 
-		 * PText ptidx2 = new PText("b"); ptidx2.setScale(0.6);
-		 * ptidx2.setOffset(77, 15); ptidx2.setTextPaint(Color.blue);
-		 * addChild(ptidx2); ptidx2.addAttribute("moveTarget", this);
-		 * ptidx2.addAttribute("tooltip", this);
-		 */
+		PText ptidx = new PText("a"); ptidx.setScale(0.6);
+		ptidx.setOffset(18, 5); ptidx.setTextPaint(Color.blue);
+		addChild(ptidx); ptidx.addAttribute("moveTarget", this);
+		ptidx.addAttribute("tooltip", this);
+
+		PText ptidx2 = new PText("b"); ptidx2.setScale(0.6);
+		ptidx2.setOffset(77, 15); ptidx2.setTextPaint(Color.blue);
+		addChild(ptidx2); ptidx2.addAttribute("moveTarget", this);
+		ptidx2.addAttribute("tooltip", this);
+
 	}
 
 	public Covis_Object Covis_clone(boolean isAuto) {

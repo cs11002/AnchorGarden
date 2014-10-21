@@ -21,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import edu.umd.cs.piccolo.PNode;
 import edu.umd.cs.piccolo.nodes.PPath;
 import edu.umd.cs.piccolo.nodes.PText;
 
@@ -56,12 +57,17 @@ public class Covis_Sub extends Covis_Super {
 
 		// 本体の大きさ指定
 		setPathToRectangle(0, 0, 100, 200);
+		addAttribute("moveTarget", this);
+		addAttribute("tooltip", this);
 
 		// sup作成
 		sub = new PPath();
 		// 大きさ・形指定
 		sub.setPathToRectangle(0, 100, 100, 100);
 		sub.setPaint(color);
+		sub.setStroke(basicStroke);
+		sub.addAttribute("moveTarget", this);
+		sub.addAttribute("tooltip", this);
 
 		// char型追加
 		c = new Covis_char(buffer, isAuto);
@@ -115,6 +121,10 @@ public class Covis_Sub extends Covis_Super {
 		dLabel.scale(1.8f);
 		cLabel.offset(10, 108);
 		dLabel.offset(10, 158);
+		cLabel.addAttribute("moveTarget", this);
+		dLabel.addAttribute("moveTarget", this);
+		cLabel.addAttribute("tooltip", this);
+		dLabel.addAttribute("tooltip", this);
 		sub.addChild(cLabel);
 		sub.addChild(dLabel);
 
@@ -155,10 +165,20 @@ public class Covis_Sub extends Covis_Super {
 			//if(a.type.isAssignableFrom(Covis_Sub.class)) {
 			if(a.srcVariable.cv_class instanceof Covis_Sub) {
 				sub.setPaint(color);
+				for(PNode p: sub.getAllNodes()) {
+					if(p instanceof VariableM) {
+						((VariableM)p).setEnabled(true);
+					}
+				}
 				return;
 			}
 		}
 		sub.setPaint(Color.black);
+		for(PNode p: sub.getAllNodes()) {
+			if(p instanceof VariableM) {
+				((VariableM)p).setEnabled(false);
+			}
+		}
 	}
 
 	public static int objCount = 0;

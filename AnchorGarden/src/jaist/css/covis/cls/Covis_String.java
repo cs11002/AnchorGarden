@@ -91,8 +91,8 @@ public class Covis_String extends Covis_Object {
 		return valueText.getText().substring(1,valueText.getText().length()-1);
 	}
 //		return ;
-	public boolean covis_equals(Covis_String arg){		
-		return this.covis_toString().equals(arg.covis_toString());
+	public boolean covis_equals(Covis_String arg){
+		return this.toString().equals(arg.toString());
 	}
 	public boolean covis_eqeq_isSame(Covis_String arg){
 		return (this==arg);

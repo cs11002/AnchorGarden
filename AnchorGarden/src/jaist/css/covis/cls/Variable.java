@@ -31,7 +31,7 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 	public Covis_Type cv_class;
 	public Class<?> type;
 	public Class<?> elementType;
-	boolean isArray = false;
+	public boolean isArray = false;
 	//	public Covis_Object cv_class_for_tooptip;
 	//	public static Variable selected_stamp;
 	//	public static ArrayList<Variable> stamps;

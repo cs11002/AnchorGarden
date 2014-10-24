@@ -52,7 +52,7 @@ public class MessageManager {
 			double dy = (dest.getY() - src.getY()) / frameNumber;
 
 			//吹き出しの初期位置設定
-			board.setOffset(src.getX(), src.getY() - 150);
+			board.setOffset(src.getX(), src.getY()-150);
 			
 			//アニメーション部分
 			for (int i = 0; i < frameNumber; i++) {

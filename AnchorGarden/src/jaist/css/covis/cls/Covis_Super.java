@@ -70,8 +70,10 @@ public class Covis_Super extends Covis_Object {
 		a = new Covis_int(buffer, isAuto);
 		a.addAttribute("moveTarget", this);
 		a.addAttribute("tooltip", this);
+		a.addAttribute("popupMenu", new ClassVarMenu(a));
 		a.valueText.addAttribute("moveTarget", this);
 		a.valueText.addAttribute("tooltip", this);
+		a.valueText.addAttribute("popupMenu", new ClassVarMenu(a));
 		a.setValue("2");
 		// 大きさ位置指定
 		a.setScale(0.8f);
@@ -138,14 +140,20 @@ public class Covis_Super extends Covis_Object {
 		}
 
 		// インデックス値を右肩にはりつける 用途不明
-		PText ptidx = new PText("a"); ptidx.setScale(0.6);
-		ptidx.setOffset(18, 5); ptidx.setTextPaint(Color.blue);
-		addChild(ptidx); ptidx.addAttribute("moveTarget", this);
+		PText ptidx = new PText("a");
+		ptidx.setScale(0.6);
+		ptidx.setOffset(18, 5);
+		ptidx.setTextPaint(Color.blue);
+		addChild(ptidx);
+		ptidx.addAttribute("moveTarget", this);
 		ptidx.addAttribute("tooltip", this);
 
-		PText ptidx2 = new PText("b"); ptidx2.setScale(0.6);
-		ptidx2.setOffset(77, 15); ptidx2.setTextPaint(Color.blue);
-		addChild(ptidx2); ptidx2.addAttribute("moveTarget", this);
+		PText ptidx2 = new PText("b");
+		ptidx2.setScale(0.6);
+		ptidx2.setOffset(77, 15);
+		ptidx2.setTextPaint(Color.blue);
+		addChild(ptidx2);
+		ptidx2.addAttribute("moveTarget", this);
 		ptidx2.addAttribute("tooltip", this);
 
 	}

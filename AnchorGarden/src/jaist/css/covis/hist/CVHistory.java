@@ -54,6 +54,9 @@ public class CVHistory {
 		} else if (classname.endsWith("Method")){
 			operation_type = "Method Call";			
 			bgcolor = CoVisBuffer.methodcolor;
+		} else if (classname.endsWith("For")){
+			operation_type = "For each";			
+			bgcolor = CoVisBuffer.methodcolor;
 		}
 		
 		if (buffer.getWindow()!=null)

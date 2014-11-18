@@ -23,6 +23,7 @@ public class WrapMethod extends AbstractAction {
 	Method method;
 	Covis_Object obj;
 	Variable variable;
+	Variable fix_variable;
 	CoVisBuffer buffer;
 	String methodname;
 	Object retobj;
@@ -33,6 +34,7 @@ public class WrapMethod extends AbstractAction {
 		obj = o;
 		method = m;
 		variable = var;
+		fix_variable = var;
 		buffer = buf;
 		methodname = mname;
 	}
@@ -48,6 +50,9 @@ public class WrapMethod extends AbstractAction {
 			public void run() {
 				if(variable.isArray) {
 					//VariableM varM;
+					
+					//for文出力
+					buffer.putHistoryFor(variable.getBaseVarName(),methodname.substring(methodname.lastIndexOf(" ")));
 					PNode[] objChild = new PNode[0];
 					Collection<PNode> objcol = obj.getAllNodes();
 					objChild = objcol.toArray(objChild);
@@ -76,7 +81,7 @@ public class WrapMethod extends AbstractAction {
 			StringBuffer sb = new StringBuffer();
 			sb.append(Variable.getShortestName(variable.getVarNamesAry())+"."+method.getName().replace("covis_", "")+"();");
 			//アニメーション再生
-			MessageManager.sendMessage(buffer,methodname,variable,obj,false);
+			MessageManager.sendMessage(buffer,methodname,variable.anchor,obj,false);
 			//メソッド実行
 			retobj = mid.invokeMethod(args, sb.toString());
 
@@ -91,7 +96,12 @@ public class WrapMethod extends AbstractAction {
 					methodname = retobj.toString();
 				}
 				//アニメーション再生
-				MessageManager.sendMessage(buffer,methodname,obj,variable,true);
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				MessageManager.sendMessage(buffer,methodname,obj,variable.anchor,true);
 			}
 			return;
 		}
@@ -146,7 +156,7 @@ public class WrapMethod extends AbstractAction {
 		sb.append(");");
 		sb2.append(sb);
 		//アニメーション再生
-		MessageManager.sendMessage(buffer,sb.toString(),variable,obj,false);
+		MessageManager.sendMessage(buffer,sb.toString(),variable.anchor,obj,false);
 		//メソッド実行
 		retobj = mid.invokeMethod(args, sb2.toString());
 
@@ -161,7 +171,12 @@ public class WrapMethod extends AbstractAction {
 				methodname = retobj.toString();
 			}
 			//アニメーション再生
-			MessageManager.sendMessage(buffer,methodname,obj,variable,true);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			MessageManager.sendMessage(buffer,methodname,obj,variable.anchor,true);
 		}
 	}
 

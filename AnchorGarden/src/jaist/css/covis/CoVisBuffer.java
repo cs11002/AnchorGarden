@@ -21,6 +21,7 @@ import jaist.css.covis.cls.ObjectField;
 import jaist.css.covis.cls.StaticField;
 import jaist.css.covis.cls.VarField;
 import jaist.css.covis.cls.Variable;
+import jaist.css.covis.hist.CVHist_For;
 import jaist.css.covis.hist.CVHist_Link;
 import jaist.css.covis.hist.CVHist_Method;
 import jaist.css.covis.hist.CVHist_MethodNew;
@@ -41,6 +42,7 @@ import javax.swing.JCheckBox;
 import javax.swing.Timer;
 
 //import jp.ac.kyutech.mns.ist.exammon.InfoGetter;
+
 
 
 
@@ -81,7 +83,7 @@ public class CoVisBuffer extends RootBuffer {
 
 	ArrayList<ClassStamp>[] advancedClass;
 
-//	InfoGetter ig;
+	//	InfoGetter ig;
 
 	public TreeMap<Long, CVHistory> history;
 
@@ -185,6 +187,15 @@ public class CoVisBuffer extends RootBuffer {
 		updateSourceWindow();
 	}
 
+	//追加分
+	public void putHistoryFor(String array, String method) {
+		System.out.println("putHistoryFor");
+		CVHist_For cvhist = new CVHist_For(this,array,method);
+		if (!cvhist.getCode().startsWith("null"))
+			history.put(System.currentTimeMillis(), cvhist);
+		updateSourceWindow();
+	}
+
 	public void updateSourceWindow(){
 		StringBuffer sb = new StringBuffer();
 		for(CVHistory s: history.values()){
@@ -210,20 +221,20 @@ public class CoVisBuffer extends RootBuffer {
 
 		history = new TreeMap<Long, CVHistory>();
 
-//		if (CoVisWindow.LOGGINGSRC){
-//			ig = new InfoGetter();//TODO:ここでログイン必要かどうか決める
-//		}
+		//		if (CoVisWindow.LOGGINGSRC){
+		//			ig = new InfoGetter();//TODO:ここでログイン必要かどうか決める
+		//		}
 		initialize(); //このinitialize は上のstudent stock initialize, StudentPanel stock initialize の後で行う必要がある
-//		if (CoVisWindow.LOGGINGSRC){
-//			ig.addLog(1, "started");
-//		}
+		//		if (CoVisWindow.LOGGINGSRC){
+		//			ig.addLog(1, "started");
+		//		}
 
 	}
 	public void addLog(int i, String src) {
-//		if (ig != null) ig.addLog(i, src);
+		//		if (ig != null) ig.addLog(i, src);
 	}
 	public void addLogNow(int i, String src) {
-//		if (ig != null) ig.addLogNow(i, src);
+		//		if (ig != null) ig.addLogNow(i, src);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -232,11 +243,11 @@ public class CoVisBuffer extends RootBuffer {
 
 		int width = 1400;
 		int height = 1400;
-		
-/*		
+
+		/*		
   		int width = 1100;
 		int height = 900;
-*/
+		 */
 		PNode bg = new PNode();
 		for(int i=0;i<=width;i+=100){
 			PPath line = PPath.createLine(i, 0, i, height);
@@ -304,7 +315,7 @@ public class CoVisBuffer extends RootBuffer {
 		newP = new ClassStamp(new Covis_Array(this,true,"char") ,this);
 		advancedClass[0].add(newP);
 		clsField.addChild(newP);
-				
+
 		//中級クラス
 		//Frac追加（配列も）
 		newP = new ClassStamp(new Covis_Frac(this,true) ,this);
@@ -328,7 +339,7 @@ public class CoVisBuffer extends RootBuffer {
 		newP = new ClassStamp(new Covis_Array(this,true,"Random"), this);
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
-		*/
+		 */
 		//Super追加（配列も）
 		newP = new ClassStamp(new Covis_Super(this,true), this);
 		advancedClass[1].add(newP);
@@ -366,7 +377,7 @@ public class CoVisBuffer extends RootBuffer {
 		newP = new ClassStamp(new Covis_Array(this,true,"Rect") ,this);
 		advancedClass[2].add(newP);
 		//clsField.addChild(newP);
-		
+
 		// 存在しない
 		//　newP = new ClassStamp(new CopyOfCovis_Array(this,true));
 		//　advancedClass.add(newP);
@@ -377,7 +388,7 @@ public class CoVisBuffer extends RootBuffer {
 		clsField.addAttribute("popupMenu", new ClassFieldMenu(clsField,this));
 
 	}
-	
+
 	public void createInitTimer(){
 		if (clsFieldInitTimer == null){
 			clsFieldInitTimer = new Timer(500, new ActionListener(){
@@ -389,11 +400,11 @@ public class CoVisBuffer extends RootBuffer {
 						} catch (InterruptedException e1) {
 							e1.printStackTrace();
 						}
-						getWindow().zoomHomePane(1400);
+					getWindow().zoomHomePane(1400);
 
-						//					System.out.println("clsField init");
-						clsFieldInitTimer.stop();
-						clsFieldInitTimer = null;
+					//					System.out.println("clsField init");
+					clsFieldInitTimer.stop();
+					clsFieldInitTimer = null;
 				}
 			});
 			clsFieldInitTimer.start();

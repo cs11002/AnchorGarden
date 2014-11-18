@@ -27,8 +27,7 @@ public class MessageManager {
 		return null;
 	}
 
-	private static void animation(String message, PNode sender,
-			PNode receiver, boolean isReturn) {
+	private static void animation(String message, PNode sender,	PNode receiver, boolean isReturn) {
 		
 		try {
 			//動かす吹き出しを作成
@@ -48,13 +47,11 @@ public class MessageManager {
 			Point2D dest = receiver.getGlobalBounds().getCenter2D();
 
 			double frameNumber = 20;
-			double dx = (dest.getX() - src.getX()) / frameNumber;
-			double dy = (dest.getY() - src.getY()) / frameNumber;
+			double dx = ((dest.getX()-25) - src.getX()) / frameNumber;
+			double dy = ((dest.getY()-10) - src.getY()) / frameNumber;
 
 			//吹き出しの初期位置設定
-			board.setOffset(src.getX(), src.getY()-50);
-			System.out.println("src  x = " + src.getX() + " y = " + src.getY());
-			System.out.println("dest x = " + dest.getX() + " y = " + dest.getY());
+			board.setOffset(src.getX()-25, src.getY()-160);
 			
 			//アニメーション部分
 			for (int i = 0; i < frameNumber; i++) {
@@ -62,7 +59,7 @@ public class MessageManager {
 				board.repaint();
 				Thread.sleep(100);
 			}
-
+			
 			//追加した吹き出しを削除
 			buffer.layer.removeChild(board);
 		} catch (Exception e) {

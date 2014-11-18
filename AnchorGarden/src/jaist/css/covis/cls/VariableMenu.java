@@ -103,7 +103,11 @@ public class VariableMenu extends JPopupMenu implements FramePopup {
 			if (v.anchor.destObject != null){
 				if (methodMenu != null) remove(methodMenu);
 				//メソッド探索開始
-				methodMenu = new JMenu("Method");
+				if(v.isArray) {
+					methodMenu = new JMenu("for each");
+				}else{
+					methodMenu = new JMenu("Method");	
+				}
 				add(methodMenu);
 				//Method[] methods = v.anchor.destObject.getClass().getDeclaredMethods();
 				//Method[] methods = v.anchor.destObject.getClass().getMethods();オリジナル

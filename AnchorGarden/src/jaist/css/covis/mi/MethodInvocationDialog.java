@@ -111,7 +111,7 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 		//		});
 	}
 	public Object invokeMethod(Object[] args, String methodcall) {
-
+		
 		Object retValObject = null;
 		try {
 			retValObject = wm.method.invoke(wm.variable.anchor.destObject, args);
@@ -123,15 +123,22 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 			e1.printStackTrace();
 		}
 
+		if(wm.fix_variable.isArray) {
+			StringBuffer s = new StringBuffer();
+			s.append("//>");
+			s.append(methodcall);
+			methodcall = s.toString();
+		}
+		
 		if (retValObject instanceof Covis_Object){
 			Covis_Object coob = (Covis_Object)retValObject;
 			if (coob.anchors_incoming.size()<1){
-				wm.obj.buffer.objField.addObject(coob);
+				wm.buffer.objField.addObject(coob);
 			}
 			if (coob instanceof Covis_String){
-				wm.obj.buffer.putHistoryMethodNew("new", coob, methodcall+"//> "+coob.toString());
+				wm.buffer.putHistoryMethodNew("new", coob, methodcall+"//> "+coob.toString());
 			} else {
-				wm.obj.buffer.putHistoryMethodNew("new", coob, methodcall);
+				wm.buffer.putHistoryMethodNew("new", coob, methodcall);
 			}/*
 			} else {
 				if (coob instanceof Covis_BTree){
@@ -143,13 +150,13 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 			highlightReturnObject(coob);
 		} else {
 			if (retValObject != null){
-				wm.obj.buffer.putHistoryMethod("method", retValObject, methodcall+"//> "+retValObject.toString(), true);
+				wm.buffer.putHistoryMethod("method", retValObject, methodcall+"//> "+retValObject.toString(), true);
 			} else {
 				//				System.out.println(wm.method.getReturnType().toString());
 				if (wm.method.getReturnType().toString().equals("void"))//Œ³Xvoid‚¾‚©‚çŠú‘Ò‚µ‚Ä‚È‚¢
-					wm.obj.buffer.putHistoryMethod("method", retValObject, methodcall, true);
+					wm.buffer.putHistoryMethod("method", retValObject, methodcall, true);
 				else
-					wm.obj.buffer.putHistoryMethod("method", retValObject, methodcall+"//> null", true);
+					wm.buffer.putHistoryMethod("method", retValObject, methodcall+"//> null", true);
 			}
 		}
 
@@ -170,12 +177,13 @@ public class MethodInvocationDialog extends JDialog implements KeyListener {
 		PActivity p32 = coob.animateToTransparency(1f, 300);
 		p1.setStartTime(System.currentTimeMillis());
 		p2.startAfter(p1);
+		/*
 		p11.startAfter(p2);
 		p12.startAfter(p11);
 		p21.startAfter(p12);
 		p22.startAfter(p21);
 		p31.startAfter(p22);
-		p32.startAfter(p31);
+		p32.startAfter(p31);*/
 		z2.startAfter(p32);
 	}
 	@Override

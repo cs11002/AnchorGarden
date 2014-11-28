@@ -53,6 +53,18 @@ public class ClassStamp extends PPath implements Layoutable, Selectable, Move {
 		} else if (cv_type instanceof Covis_Super) {
 			cv_type_dammy = new Covis_Super_Dammy(buffer, true);
 			addChild(cv_type_dammy);
+		}else if (cv_type instanceof Covis_Truck) {
+			cv_type_dammy = new Covis_Truck_Dammy(buffer, true);
+			addChild(cv_type_dammy);
+		}else if (cv_type instanceof Covis_Bus) {
+			cv_type_dammy = new Covis_Bus_Dammy(buffer, true);
+			addChild(cv_type_dammy);
+		}else if (cv_type instanceof Covis_Car) {
+			cv_type_dammy = new Covis_Car_Dammy(buffer, true);
+			addChild(cv_type_dammy);
+		}else if (cv_type instanceof Covis_Account1) {
+			cv_type_dammy = new Covis_Account1_Dammy(buffer, true);
+			addChild(cv_type_dammy);
 		}else{
 			addChild(cv_type);
 		}

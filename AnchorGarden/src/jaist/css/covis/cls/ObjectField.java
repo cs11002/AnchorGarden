@@ -121,8 +121,13 @@ public class ObjectField extends PPath implements Layoutable , ToolTipProvider, 
 			o.addAttribute("moveTarget", o);
 			o.addAttribute("selectable", o);
 			o.setOffset(e.getPositionRelativeTo(this));
-			if (o instanceof Covis_Object)
+			//追加分 インスタンスを生成
+			if(o instanceof Covis_Account1) {
+				((Covis_Account1)o).createIns();
+			}
+			if (o instanceof Covis_Object) {
 				((Covis_Object)o).tc.transparencyThread_Start(0, this, 100);
+			}
 			Informer.playSound("Fairydust.wav");
 		}
 	}

@@ -39,7 +39,7 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 	//	stamps = new ArrayList<Variable>();
 	//	}
 	private boolean isSelected;
-	
+
 	public boolean isEnabled = true;
 	public Covis_Type object = null;//Ç±ÇÍÇ™Ç†ÇÈÇ∆Member
 
@@ -58,10 +58,10 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 	public CoVisBuffer buffer;
 
 	public static float top = 0;
-	
+
 	public void setVarName_Base(String s){
 		varname_base = s;
-//		varnames.add(s);
+		//		varnames.add(s);
 	}
 	public boolean isEnabled(){
 		return isEnabled;
@@ -126,13 +126,17 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 			elementType = type;
 		}
 		setPathToRectangle(0,0,250,40);
-		if(cv_class instanceof Covis_Sub) {
+		if(cv_class instanceof Covis_Bus || cv_class instanceof Covis_Truck) {
 			sup = new PPath();
 			sub = new PPath();
 			sup.setPathToRectangle(0,0,250,20);
 			sub.setPathToRectangle(0,20,250,20);
-			sup.setPaint(Covis_Super.defaultColor);
-			sub.setPaint(Covis_Sub.defaultColor);
+			sup.setPaint(Covis_Car.defaultColor);
+			if(cv_class instanceof Covis_Bus) {
+				sub.setPaint(Covis_Bus.defaultColor);
+			}else{
+				sub.setPaint(Covis_Truck.defaultColor);
+			}
 			addChild(sup);
 			addChild(sub);
 		}
@@ -276,7 +280,7 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 		return varname_base;
 	}
 	public void addVarNames(String prefix){
-//		System.out.println("Variable.addVarNames"+prefix);
+		//		System.out.println("Variable.addVarNames"+prefix);
 		varnames.add(prefix);
 	}
 	public String getVarName(){
@@ -292,7 +296,7 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 		if (this instanceof VariableM){
 			String sepdot = ".";
 			if (object instanceof Covis_Array) sepdot = "";
-			
+
 			for(String s: varnames){
 				news.add(s+sepdot+varname_base);
 			}
@@ -380,16 +384,16 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 		else return varname_base+" = "+((Covis_primitive)cv_class).value+";"; //getValue()Ç…Ç∑ÇÈÇ∆ÅC''Ç™Ç∆ÇÍÇƒÇµÇ‹Ç§ÇÃÇ≈
 	}
 	public void appendVarNameRecursive(Hashtable<Integer, Object> checked) {
-//		System.out.println(varname_base);
+		//		System.out.println(varname_base);
 		if (anchor == null) return;
 		if (anchor.destObject != null){
-//			if (checked.containsKey(this.hashCode())) return;
-//			checked.put(this.hashCode(), this);
-//			System.out.println("V append "+getVarName());
+			//			if (checked.containsKey(this.hashCode())) return;
+			//			checked.put(this.hashCode(), this);
+			//			System.out.println("V append "+getVarName());
 			anchor.destObject.appendVarNameRecursive(this, checked);
 		}		
 	}
-	
+
 	public static String getShortestName(ArrayList<String> src){
 		if (src.size()==0) return null;
 		if (src.size()==1) return src.get(0);

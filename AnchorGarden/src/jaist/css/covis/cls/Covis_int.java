@@ -20,6 +20,10 @@ public class Covis_int extends Covis_primitive {
 	public Covis_int(Color c, CoVisBuffer buf, boolean isAuto){
 		super(c, buf, isAuto);
 	}
+	public Covis_int(CoVisBuffer buf, boolean isAuto,int size){
+		this(buf, isAuto);
+		setPathToRectangle(0, 0, size, 50);
+	}
 	public void init(boolean isAuto){
 		setPathToRectangle(0, 0, 40, 50);
 		setValue("0");

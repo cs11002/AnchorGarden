@@ -68,6 +68,38 @@ public class Covis_Array extends Covis_Object {
 		setStroke(basicStroke);
 		init_length(4,isAuto);
 	}
+	
+	public Covis_Array(CoVisBuffer buf, boolean isAuto, int arySize, String presetElementClass){
+		super(buf, isAuto);
+		elementClassStr = presetElementClass;
+		Class<?> c;
+		try {
+			c = Class.forName("jaist.css.covis.cls.Covis_"+elementClassStr);
+			color = (Color) c.getField("defaultColor").get(null);
+			Constructor<?> con = c.getConstructor(CoVisBuffer.class, boolean.class);
+			elementObj = (Covis_Type) con.newInstance(buf, true);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		setPaint(color);
+		setStroke(basicStroke);
+		init_length(arySize,isAuto);
+	}
+	
 	public Covis_Array(Color c, CoVisBuffer buf, boolean isAuto){
 		super(c, buf, isAuto);
 	}

@@ -29,6 +29,8 @@ public class Covis_Super extends Covis_Object {
 
 	private static final long serialVersionUID = 8131819427660903628L;
 	public static Color defaultColor = new Color(242, 178, 188);
+	public static String varname1 = "a";
+	public static String varname2 = "b";
 
 	public Covis_Super(CoVisBuffer buf, boolean isAuto) {
 		super(buf, isAuto);
@@ -71,10 +73,10 @@ public class Covis_Super extends Covis_Object {
 		a = new Covis_int(buffer, isAuto);
 		a.addAttribute("moveTarget", this);
 		a.addAttribute("tooltip", this);
-		a.addAttribute("popupMenu", new ClassVarMenu(a));
+		a.addAttribute("popupMenu", new ClassVarMenu(varname1,a,this));
 		a.valueText.addAttribute("moveTarget", this);
 		a.valueText.addAttribute("tooltip", this);
-		a.valueText.addAttribute("popupMenu", new ClassVarMenu(a));
+		a.valueText.addAttribute("popupMenu", new ClassVarMenu(varname1,a,this));
 		a.setValue("2");
 		// ‘å‚«‚³ˆÊ’uŽw’è
 		a.setScale(0.8f);

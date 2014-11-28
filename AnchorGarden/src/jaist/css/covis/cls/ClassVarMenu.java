@@ -15,10 +15,14 @@ public class ClassVarMenu extends JPopupMenu implements FramePopup {
 
 	private static final long serialVersionUID = 2231783590340700929L;
 	Covis_primitive v;
+	Covis_Object obj;
+	String varname;
 	JFrame f;
 	
-	public ClassVarMenu(Covis_primitive _v){
+	public ClassVarMenu(String _varname, Covis_primitive _v,Covis_Object _obj){
 		this.v = _v;
+		this.obj = _obj;
+		this.varname = _varname;
 		
 		JMenuItem menuItem;
 
@@ -40,7 +44,7 @@ public class ClassVarMenu extends JPopupMenu implements FramePopup {
 					JOptionPane.showMessageDialog(f,"Value is not accepted.","Error",JOptionPane.WARNING_MESSAGE);
 					return;
 				}
-				//v.buffer.putHistoryEditValueArray(v,a); //変更したらソースコードに追加
+				v.buffer.putHistoryEditClassValue(varname,v,obj); //変更したらソースコードに追加
 				Informer.playSound("Pop.wav");
 			}
 		});

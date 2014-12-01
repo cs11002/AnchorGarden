@@ -189,6 +189,7 @@ public class Covis_Account1 extends Covis_Object {
 		if(value % 1000 == 0) {
 			remainderValue += value;
 			remainder.setValue(String.valueOf(remainderValue));
+			covis_addhistory(value,0);
 			return value + "‰~—a‹à‚µ‚Ü‚µ‚½";
 		}else{
 			return "1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢";
@@ -200,6 +201,7 @@ public class Covis_Account1 extends Covis_Object {
 			if(remainderValue >= value) {
 				remainderValue -= value;
 				remainder.setValue(String.valueOf(remainderValue));
+				covis_addhistory(value,1);
 				return value + "‰~ˆø‚«o‚µ‚µ‚Ü‚µ‚½";
 			}else{
 				return "c‚‚ª‘«‚è‚Ü‚¹‚ñ";

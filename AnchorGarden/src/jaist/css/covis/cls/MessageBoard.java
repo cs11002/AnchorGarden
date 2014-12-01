@@ -39,7 +39,6 @@ public class MessageBoard extends PPath {
 		addChild(label);
 		
 		//‚«o‚µ‚ÌlŠp‚¢•”•ªì¬
-		System.out.println(labeltxet2[0].getBytes().length);
 		setOffset(x, y);
 		setPathTo(new RoundRectangle2D.Double(0, 0, 30+labeltxet2[0].getBytes().length*18, 100, 30, 30));
 		setPaint(defaultColor);

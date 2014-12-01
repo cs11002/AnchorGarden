@@ -5,10 +5,13 @@ import jaist.css.covis.cls.ClassField;
 import jaist.css.covis.cls.ClassFieldMenu;
 import jaist.css.covis.cls.ClassStamp;
 import jaist.css.covis.cls.Covis_Account1;
+import jaist.css.covis.cls.Covis_Animal;
 import jaist.css.covis.cls.Covis_Array;
 import jaist.css.covis.cls.Covis_BTree;
 import jaist.css.covis.cls.Covis_Car;
 import jaist.css.covis.cls.Covis_Bus;
+import jaist.css.covis.cls.Covis_Cat;
+import jaist.css.covis.cls.Covis_Dog;
 import jaist.css.covis.cls.Covis_Truck;
 import jaist.css.covis.cls.Covis_Frac;
 import jaist.css.covis.cls.Covis_Object;
@@ -47,6 +50,9 @@ import javax.swing.JCheckBox;
 import javax.swing.Timer;
 
 //import jp.ac.kyutech.mns.ist.exammon.InfoGetter;
+
+
+
 
 
 
@@ -203,14 +209,14 @@ public class CoVisBuffer extends RootBuffer {
 			history.put(System.currentTimeMillis(), cvhist);
 		updateSourceWindow();
 	}
-	
+
 	//追加分
 	public void putHistoryEditClassValue(String varname,Covis_primitive var,Covis_Object obj){
 		CVHist_ClassValue cvhist = new CVHist_ClassValue(varname, var, obj, this);
 		history.put(System.currentTimeMillis(), cvhist);
 		updateSourceWindow();
 	}
-	
+
 	public void updateSourceWindow(){
 		StringBuffer sb = new StringBuffer();
 		for(CVHistory s: history.values()){
@@ -333,6 +339,7 @@ public class CoVisBuffer extends RootBuffer {
 
 		//中級クラス
 		//Frac追加（配列も）
+		/*
 		newP = new ClassStamp(new Covis_Frac(this,true) ,this);
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
@@ -347,7 +354,6 @@ public class CoVisBuffer extends RootBuffer {
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
 		//Random追加(配列も)
-		/*
 		newP = new ClassStamp(new Covis_Random(this,true), this);
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
@@ -355,7 +361,7 @@ public class CoVisBuffer extends RootBuffer {
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
 		 */
-		
+
 		//Super追加（配列も）
 		/*
 		newP = new ClassStamp(new Covis_Super(this,true), this);
@@ -371,30 +377,32 @@ public class CoVisBuffer extends RootBuffer {
 		newP = new ClassStamp(new Covis_Array(this,true,"Sub"), this);
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
-		*/
-		
+		 */
+
 		//上級クラス
 		//Object追加（配列も）
-		newP = new ClassStamp(new Covis_Object(this,true) ,this);
+		/*		
+ 		newP = new ClassStamp(new Covis_Object(this,true) ,this);
 		advancedClass[2].add(newP);
-		//clsField.addChild(newP);
+		clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Object") ,this);
 		advancedClass[2].add(newP);
-		//clsField.addChild(newP);
+		clsField.addChild(newP);
 		//Oval追加（配列も）
 		newP = new ClassStamp(new Covis_Oval(this,true) ,this);
 		advancedClass[2].add(newP);
-		//clsField.addChild(newP);
+		clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Oval") ,this);
 		advancedClass[2].add(newP);
-		//clsField.addChild(newP);
+		clsField.addChild(newP);
 		//Rect追加（配列も）
 		newP = new ClassStamp(new Covis_Rect(this,true) ,this);
 		advancedClass[2].add(newP);
-		//clsField.addChild(newP);
+		clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Rect") ,this);
 		advancedClass[2].add(newP);
-		//clsField.addChild(newP);
+		clsField.addChild(newP);
+		*/
 
 		//具体例クラス
 		newP = new ClassStamp(new Covis_Car(this,true), this);
@@ -407,6 +415,18 @@ public class CoVisBuffer extends RootBuffer {
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Account1(this,true), this);
+		advancedClass[1].add(newP);
+		clsField.addChild(newP);
+		newP = new ClassStamp(new Covis_Animal(this,true), this);
+		advancedClass[1].add(newP);
+		clsField.addChild(newP);
+		newP = new ClassStamp(new Covis_Array(this,true,"Animal"), this);
+		advancedClass[1].add(newP);
+		clsField.addChild(newP);
+		newP = new ClassStamp(new Covis_Dog(this,true), this);
+		advancedClass[1].add(newP);
+		clsField.addChild(newP);
+		newP = new ClassStamp(new Covis_Cat(this,true), this);
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
 		

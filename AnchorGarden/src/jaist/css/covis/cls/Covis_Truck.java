@@ -96,7 +96,7 @@ public class Covis_Truck extends Covis_Car {
 	}
 	
 	public Covis_Object Covis_clone(boolean isAuto) {
-		return new Covis_Bus(buffer, isAuto);
+		return new Covis_Truck(buffer, isAuto);
 	}
 
 	public Color getClassColor() {
@@ -132,6 +132,7 @@ public class Covis_Truck extends Covis_Car {
 		return " carValue,gasoline ";
 	}
 	
+	//ÉÅÉ\ÉbÉhçÏê¨
 	public String covis_load(int num) {
 		loadageValue += num;
 		loadage.setValue(String.valueOf(loadageValue));

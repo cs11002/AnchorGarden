@@ -50,7 +50,7 @@ public class WrapMethod extends AbstractAction {
 			public void run() {
 				if(variable.isArray) {
 					//VariableM varM;
-					
+					String fix_methodname = methodname;
 					//forï∂èoóÕ
 					buffer.putHistoryFor(variable.getBaseVarName(),methodname.substring(methodname.lastIndexOf(" ")));
 					PNode[] objChild = new PNode[0];
@@ -61,6 +61,7 @@ public class WrapMethod extends AbstractAction {
 							variable = (Variable)objChild[i];
 							obj = variable.anchor.destObject;
 							animation();
+							methodname = fix_methodname;
 						}
 					}
 				}else{

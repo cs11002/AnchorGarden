@@ -140,6 +140,20 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 			addChild(sup);
 			addChild(sub);
 		}
+		if(cv_class instanceof Covis_Dog || cv_class instanceof Covis_Cat) {
+			sup = new PPath();
+			sub = new PPath();
+			sup.setPathToRectangle(0,0,250,20);
+			sub.setPathToRectangle(0,20,250,20);
+			sup.setPaint(Covis_Animal.defaultColor);
+			if(cv_class instanceof Covis_Dog) {
+				sub.setPaint(Covis_Dog.defaultColor);
+			}else{
+				sub.setPaint(Covis_Cat.defaultColor);
+			}
+			addChild(sup);
+			addChild(sub);
+		}
 		setPaint(cv_class.getClassColor());
 		setStrokePaint(Color.gray);
 		setStroke(new BasicStroke(1));

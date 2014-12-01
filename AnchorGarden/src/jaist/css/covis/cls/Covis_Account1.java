@@ -24,7 +24,7 @@ import edu.umd.cs.piccolo.nodes.PText;
 public class Covis_Account1 extends Covis_Object {
 
 	private static final long serialVersionUID = -8694257030378483023L;
-	public static Color defaultColor = new Color(242, 178, 188);
+	public static Color defaultColor = new Color(208, 163, 191);
 	public static String varname1 = "remainder";
 	public static String varname2 = "history";
 

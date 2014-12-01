@@ -4,12 +4,13 @@ import jaist.css.covis.CoVisBuffer;
 
 import java.awt.Color;
 
+import edu.umd.cs.piccolo.PNode;
 import edu.umd.cs.piccolo.nodes.PPath;
 
 public class Covis_Dog extends Covis_Animal {
 
 	private static final long serialVersionUID = -4973194832129282937L;
-	public static Color defaultColor = new Color(255, 150, 128);
+	public static Color defaultColor = new Color(73, 212, 157);
 
 	public Covis_Dog(CoVisBuffer buf, boolean isAuto) {
 		super(buf, isAuto);
@@ -67,6 +68,37 @@ public class Covis_Dog extends Covis_Animal {
 		return defaultColor;
 	}
 
+	public void attach(Anchor anchor) {
+		super.attach(anchor);
+		checkAnchor();
+	}
+
+	public void detach(Anchor anchor) {
+		super.detach(anchor);
+		checkAnchor();
+	}
+
+	public void checkAnchor() {
+		for(Anchor a: anchors_incoming){
+			//if(a.type.isAssignableFrom(Covis_Sub.class)) {
+			if(a.srcVariable.cv_class instanceof Covis_Dog) {
+				sub.setPaint(color);
+				for(PNode p: sub.getAllNodes()) {
+					if(p instanceof VariableM) {
+						((VariableM)p).setEnabled(true);
+					}
+				}
+				return;
+			}
+		}
+		sub.setPaint(Color.black);
+		for(PNode p: sub.getAllNodes()) {
+			if(p instanceof VariableM) {
+				((VariableM)p).setEnabled(false);
+			}
+		}
+	}
+	
 	public static int objCount = 0;
 	public static int objAryCount = 0;
 

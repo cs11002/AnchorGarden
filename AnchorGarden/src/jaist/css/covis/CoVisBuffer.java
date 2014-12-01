@@ -330,12 +330,14 @@ public class CoVisBuffer extends RootBuffer {
 		advancedClass[0].add(newP);
 		clsField.addChild(newP);
 		//char追加（配列も）
+		/*
 		newP = new ClassStamp(new Covis_char(this,true) ,this);
 		advancedClass[0].add(newP);
 		clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"char") ,this);
 		advancedClass[0].add(newP);
 		clsField.addChild(newP);
+		*/
 
 		//中級クラス
 		//Frac追加（配列も）

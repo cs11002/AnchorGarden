@@ -25,7 +25,7 @@ import edu.umd.cs.piccolo.nodes.PText;
 public class Covis_Car extends Covis_Object {
 
 	private static final long serialVersionUID = -4624235387919516738L;
-	public static Color defaultColor = new Color(242, 178, 188);
+	public static Color defaultColor = new Color(173, 189, 255);
 	public static String varname1 = "carValue";
 	public static String varname2 = "gasoline";
 
@@ -61,7 +61,7 @@ public class Covis_Car extends Covis_Object {
 		sup = new PPath();
 		// ëÂÇ´Ç≥ÅEå`éwíË
 		sup.setPathToRectangle(0, 0, 180, 120);
-		sup.setPaint(new Color(242, 178, 188));
+		sup.setPaint( new Color(173, 189, 255));
 		sup.setStroke(basicStroke);
 		sup.addAttribute("moveTarget", this);
 		sup.addAttribute("tooltip", this);

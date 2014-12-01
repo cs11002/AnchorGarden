@@ -25,7 +25,7 @@ import edu.umd.cs.piccolo.nodes.PText;
 public class Covis_Animal extends Covis_Object {
 
 	private static final long serialVersionUID = 773271700954233487L;
-	public static Color defaultColor = new Color(242, 178, 188);
+	public static Color defaultColor = new Color(149, 249, 227);
 	public static String varname1 = "age";
 	public static String varname2 = "length";
 
@@ -60,7 +60,7 @@ public class Covis_Animal extends Covis_Object {
 		sup = new PPath();
 		// ëÂÇ´Ç≥ÅEå`éwíË
 		sup.setPathToRectangle(0, 0, 160, 120);
-		sup.setPaint(new Color(242, 178, 188));
+		sup.setPaint(new Color(149, 249, 227));
 		sup.setStroke(basicStroke);
 		sup.addAttribute("moveTarget", this);
 		sup.addAttribute("tooltip", this);

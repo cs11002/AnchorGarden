@@ -4,17 +4,17 @@ import jaist.css.covis.CoVisBuffer;
 
 import java.awt.Color;
 
-public class Covis_Account1_Dammy extends Covis_Object {
+public class Covis_UnCapsuledAccount_Dammy extends Covis_Object {
 
 	private static final long serialVersionUID = -3931864299098001177L;
-	public static Color defaultColor = Covis_Account1.defaultColor;
-	public Covis_Account1_Dammy(CoVisBuffer buf, boolean isAuto){
+	public static Color defaultColor = Covis_UnCapsuledAccount.defaultColor;
+	public Covis_UnCapsuledAccount_Dammy(CoVisBuffer buf, boolean isAuto){
 		super(buf, isAuto);
 		color = defaultColor;
 		setPaint(color);
 		setStroke(basicStroke);
 	}
-	public Covis_Account1_Dammy(Color c, CoVisBuffer buf, boolean isAuto){
+	public Covis_UnCapsuledAccount_Dammy(Color c, CoVisBuffer buf, boolean isAuto){
 		super(c, buf, isAuto);
 	}
 

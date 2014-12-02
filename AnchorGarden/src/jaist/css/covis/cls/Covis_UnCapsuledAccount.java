@@ -21,21 +21,21 @@ import javax.swing.JTextField;
 
 import edu.umd.cs.piccolo.nodes.PText;
 
-public class Covis_Account1 extends Covis_Object {
+public class Covis_UnCapsuledAccount extends Covis_Object {
 
 	private static final long serialVersionUID = -8694257030378483023L;
-	public static Color defaultColor = new Color(208, 163, 191);
+	public static Color defaultColor = new Color(242, 197, 124);
 	public static String varname1 = "remainder";
 	public static String varname2 = "history";
 
-	public Covis_Account1(CoVisBuffer buf, boolean isAuto) {
+	public Covis_UnCapsuledAccount(CoVisBuffer buf, boolean isAuto) {
 		super(buf, isAuto);
 		color = defaultColor;
 		setPaint(color);
 		setStroke(basicStroke);
 	}
 
-	public Covis_Account1(Color c, CoVisBuffer buf, boolean isAuto) {
+	public Covis_UnCapsuledAccount(Color c, CoVisBuffer buf, boolean isAuto) {
 		super(c, buf, isAuto);
 	}
 
@@ -119,9 +119,9 @@ public class Covis_Account1 extends Covis_Object {
 		addChild(historyLabel);
 
 		if (!isAuto) {
-			AccountConstructorDialog dialog = AccountConstructorDialog.showDialog(
-					buffer.getWindow().frame, this, "Constructor of Account",
-					"new Account( remainder );");
+			UnCapsuledAccountConstructorDialog dialog = UnCapsuledAccountConstructorDialog.showDialog(
+					buffer.getWindow().frame, this, "Constructor of UnCapsuledAccount",
+					"new UnCapsuledAccount( remainder );");
 			if (dialog.isCanceled()) {
 				this.setVisible(false);
 				return;
@@ -138,6 +138,10 @@ public class Covis_Account1 extends Covis_Object {
 		ptidx.addAttribute("tooltip", this);
 	}
 
+	public void setValue() {
+		remainderValue = Integer.parseInt(remainder.value);
+	}
+	
 	public void createIns() {
 		// String[]型の作成
 		Covis_Array historyIns = (Covis_Array)history_type;
@@ -145,10 +149,13 @@ public class Covis_Account1 extends Covis_Object {
 		buffer.objField.addObject(historyIns);
 		historyIns.attach(history.anchor);
 		historyIns.setOffsetAlignment(this, 200, 150);
+		for(Anchor a:historyIns.anchors_member) {
+			a.srcVariable.setEnabled(true);
+		}
 	}
 
 	public Covis_Object Covis_clone(boolean isAuto) {
-		return new Covis_Account1(buffer, isAuto);
+		return new Covis_UnCapsuledAccount(buffer, isAuto);
 	}
 
 	public Color getClassColor() {
@@ -246,7 +253,7 @@ public class Covis_Account1 extends Covis_Object {
 
 
 //コンストラクタ用ダイアログのクラス
-class AccountConstructorDialog extends JDialog implements KeyListener {
+class UnCapsuledAccountConstructorDialog extends JDialog implements KeyListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -257,7 +264,7 @@ class AccountConstructorDialog extends JDialog implements KeyListener {
 	JButton ok;
 	boolean canceled = true;
 
-	public AccountConstructorDialog(JFrame p, Covis_Account1 acc, String title,
+	public UnCapsuledAccountConstructorDialog(JFrame p, Covis_UnCapsuledAccount acc, String title,
 			String mes1) {
 		super(p, title, true);
 		parent = p;
@@ -323,9 +330,9 @@ class AccountConstructorDialog extends JDialog implements KeyListener {
 		return canceled;
 	}
 
-	public static AccountConstructorDialog showDialog(JFrame parent,
-			Covis_Account1 acc, String title, String mes1) {
-		AccountConstructorDialog d = new AccountConstructorDialog(parent, acc,
+	public static UnCapsuledAccountConstructorDialog showDialog(JFrame parent,
+			Covis_UnCapsuledAccount acc, String title, String mes1) {
+		UnCapsuledAccountConstructorDialog d = new UnCapsuledAccountConstructorDialog(parent, acc,
 				title, mes1);
 		d.setVisible(true);
 		if (d.jtfremainder != null){

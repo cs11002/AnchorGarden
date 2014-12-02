@@ -120,14 +120,18 @@ public class VariableMenu extends JPopupMenu implements FramePopup {
 						//System.out.println("mname2 " +mname2);
 						String mname3 = mname2.replaceAll("covis\\_", "");
 						//System.out.println("mname3 "+mname3);
-
+						
 						//２つめのスペースから，.までを削除
 						int lastspcPos = mname3.lastIndexOf(" ");
 						int lastdotPos = mname3.lastIndexOf(".");
 						String mname4 = mname3.substring(0,lastspcPos)+" "+mname3.substring(lastdotPos+1);
 						//System.out.println("mname4 "+mname4);
-						JMenuItem mi = new JMenuItem(new WrapMethod(m, v.anchor.destObject, mname4, v, v.buffer));
-						methodMenu.add(mi);
+						String mname5 = mname3.substring(0,mname3.indexOf(" "));
+						//System.out.println("mname5 "+mname5);
+						if(!mname5.equals("private")) {
+							JMenuItem mi = new JMenuItem(new WrapMethod(m, v.anchor.destObject, mname4, v, v.buffer));
+							methodMenu.add(mi);
+						}
 					}
 				}
 

@@ -122,8 +122,11 @@ public class ObjectField extends PPath implements Layoutable , ToolTipProvider, 
 			o.addAttribute("selectable", o);
 			o.setOffset(e.getPositionRelativeTo(this));
 			//追加分 インスタンスを生成
-			if(o instanceof Covis_Account1) {
-				((Covis_Account1)o).createIns();
+			if(o instanceof Covis_UnCapsuledAccount) {
+				((Covis_UnCapsuledAccount)o).createIns();
+			}
+			if(o instanceof Covis_CapsuledAccount) {
+				((Covis_CapsuledAccount)o).createIns();
 			}
 			if (o instanceof Covis_Object) {
 				((Covis_Object)o).tc.transparencyThread_Start(0, this, 100);

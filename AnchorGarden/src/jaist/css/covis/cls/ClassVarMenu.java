@@ -45,6 +45,9 @@ public class ClassVarMenu extends JPopupMenu implements FramePopup {
 					return;
 				}
 				v.buffer.putHistoryEditClassValue(varname,v,obj); //変更したらソースコードに追加
+				if(obj instanceof Covis_UnCapsuledAccount) {
+					((Covis_UnCapsuledAccount)obj).setValue();
+				}
 				Informer.playSound("Pop.wav");
 			}
 		});

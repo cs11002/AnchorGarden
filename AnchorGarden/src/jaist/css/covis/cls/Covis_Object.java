@@ -141,7 +141,7 @@ public class Covis_Object extends Covis_Type implements ToolTipProvider, ToFront
 	}
 	public void attach(Anchor anchor){
 		if (getTransparency()<0.1f) return; //あまり薄かったらアタッチさせません
-		//		System.out.println("at "+toString());
+		//System.out.println("at "+toString());
 		Informer.playSound("Laser2.wav");
 		if (anchor.link.dest != null && anchor.link.dest != this) return; //anchor.link.dest.detach(anchor);
 		anchors_incoming.add(anchor);

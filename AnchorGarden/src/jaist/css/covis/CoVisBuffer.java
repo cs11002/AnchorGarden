@@ -4,7 +4,8 @@ import jaist.css.covis.cls.Anchor;
 import jaist.css.covis.cls.ClassField;
 import jaist.css.covis.cls.ClassFieldMenu;
 import jaist.css.covis.cls.ClassStamp;
-import jaist.css.covis.cls.Covis_Account1;
+import jaist.css.covis.cls.Covis_CapsuledAccount;
+import jaist.css.covis.cls.Covis_UnCapsuledAccount;
 import jaist.css.covis.cls.Covis_Animal;
 import jaist.css.covis.cls.Covis_Array;
 import jaist.css.covis.cls.Covis_BTree;
@@ -50,6 +51,7 @@ import javax.swing.JCheckBox;
 import javax.swing.Timer;
 
 //import jp.ac.kyutech.mns.ist.exammon.InfoGetter;
+
 
 
 
@@ -416,7 +418,10 @@ public class CoVisBuffer extends RootBuffer {
 		newP = new ClassStamp(new Covis_Truck(this,true), this);
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
-		newP = new ClassStamp(new Covis_Account1(this,true), this);
+		newP = new ClassStamp(new Covis_UnCapsuledAccount(this,true), this);
+		advancedClass[1].add(newP);
+		clsField.addChild(newP);
+		newP = new ClassStamp(new Covis_CapsuledAccount(this,true), this);
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Animal(this,true), this);

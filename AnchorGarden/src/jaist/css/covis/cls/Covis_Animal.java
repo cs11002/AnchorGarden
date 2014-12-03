@@ -187,6 +187,8 @@ public class Covis_Animal extends Covis_Object {
 		 */
 		return "not implemented ";
 	}
+	
+	public static String classdef = "";
 }
 
 //コンストラクタ用ダイアログのクラス

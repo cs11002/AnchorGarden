@@ -201,6 +201,8 @@ public class Covis_Car extends Covis_Object {
 		 */
 		return "not implemented ";
 	}
+	
+	public static String classdef = "";
 }
 
 

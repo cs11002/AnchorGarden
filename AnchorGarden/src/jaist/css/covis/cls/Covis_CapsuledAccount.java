@@ -249,6 +249,8 @@ public class Covis_CapsuledAccount extends Covis_Object {
 		 */
 		return "not implemented ";
 	}
+	
+	public static String classdef = "";
 }
 
 

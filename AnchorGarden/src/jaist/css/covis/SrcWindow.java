@@ -1,12 +1,21 @@
 package jaist.css.covis;
 
+import jaist.css.covis.cls.Covis_Animal;
 import jaist.css.covis.cls.Covis_BTree;
+import jaist.css.covis.cls.Covis_Bus;
+import jaist.css.covis.cls.Covis_CapsuledAccount;
+import jaist.css.covis.cls.Covis_Car;
+import jaist.css.covis.cls.Covis_Cat;
+import jaist.css.covis.cls.Covis_Dog;
 import jaist.css.covis.cls.Covis_Frac;
+import jaist.css.covis.cls.Covis_Truck;
+import jaist.css.covis.cls.Covis_UnCapsuledAccount;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
@@ -33,6 +42,7 @@ public class SrcWindow extends JFrame implements ActionListener {
 	public JCheckBoxMenuItem doFollowSrcWinLeft;//ソースコードウィンドウを追従させる？
 
 	JTabbedPane tab;
+	List<JTextAreaToggleAntiAlias> tabValue;
 	public static Font sans14 = new Font("sansserif", Font.BOLD, 14);
 	public static Font sans18 = new Font("sansserif", Font.BOLD, 18);
 	public static Font sans22 = new Font("sansserif", Font.BOLD, 22);
@@ -54,7 +64,7 @@ public class SrcWindow extends JFrame implements ActionListener {
 
 		setLayout(new BorderLayout());
 		jta = new JTextAreaToggleAntiAlias("");
-//		jta.setLineWrap(true);
+		//		jta.setLineWrap(true);
 		scroll = new JScrollPane(jta);
 
 		jta.setFont(sans22);
@@ -108,7 +118,75 @@ public class SrcWindow extends JFrame implements ActionListener {
 
 
 		setJMenuBar(menuBar);
+		//tabの生成
+		tabValue = new ArrayList<JTextAreaToggleAntiAlias>();
+		JTextAreaToggleAntiAlias t;
 
+		tab = new JTabbedPane();
+		tab.addTab("(operation code)", scroll);
+		//クラスソースコード用タブ
+
+		t = new JTextAreaToggleAntiAlias(Covis_Frac.classdef);
+		t.setEditable(false);
+		t.setFont(code14);
+		tabValue.add(t);
+		//tab.addTab("class Frac", new JScrollPane(t));
+
+		t = new JTextAreaToggleAntiAlias(Covis_BTree.classdef);
+		t.setEditable(false);
+		t.setFont(code14);
+		tabValue.add(t);
+		//tab.addTab("class BTree", new JScrollPane(t));
+
+		t = new JTextAreaToggleAntiAlias(Covis_Car.classdef);
+		t.setEditable(false);
+		t.setFont(code14);
+		tabValue.add(t);
+		//tab.addTab("class Car", new JScrollPane(t));
+
+		t = new JTextAreaToggleAntiAlias(Covis_Bus.classdef);
+		t.setEditable(false);
+		t.setFont(code14);
+		tabValue.add(t);
+		//tab.addTab("class Bus", new JScrollPane(t));
+
+		t = new JTextAreaToggleAntiAlias(Covis_Truck.classdef);
+		t.setEditable(false);
+		t.setFont(code14);
+		tabValue.add(t);
+		//tab.addTab("class Truck", new JScrollPane(t));
+
+		t = new JTextAreaToggleAntiAlias(Covis_CapsuledAccount.classdef);
+		t.setEditable(false);
+		t.setFont(code14);
+		tabValue.add(t);
+		//tab.addTab("class CapsuledAccount", new JScrollPane(t));
+
+		t = new JTextAreaToggleAntiAlias(Covis_UnCapsuledAccount.classdef);
+		t.setEditable(false);
+		t.setFont(code14);
+		tabValue.add(t);
+		//tab.addTab("class UnCapsuledAccount", new JScrollPane(t));
+
+		t = new JTextAreaToggleAntiAlias(Covis_Animal.classdef);
+		t.setEditable(false);
+		t.setFont(code14);
+		tabValue.add(t);
+		//tab.addTab("class Animal", new JScrollPane(t));
+
+		t = new JTextAreaToggleAntiAlias(Covis_Cat.classdef);
+		t.setEditable(false);
+		t.setFont(code14);
+		tabValue.add(t);
+		//tab.addTab("class Cat", new JScrollPane(t));
+
+		t = new JTextAreaToggleAntiAlias(Covis_Dog.classdef);
+		t.setEditable(false);
+		t.setFont(code14);
+		tabValue.add(t);
+		//tab.addTab("class Dog", new JScrollPane(t));
+
+		/*
 		tab = new JTabbedPane();
 		tab.addTab("(operation code)", scroll);
 		JTextAreaToggleAntiAlias fracclass = new JTextAreaToggleAntiAlias(Covis_Frac.classdef);
@@ -119,7 +197,8 @@ public class SrcWindow extends JFrame implements ActionListener {
 		btreeclass.setEditable(false);
 		btreeclass.setFont(code14);
 		tab.addTab("class BTree", new JScrollPane(btreeclass));
-		//		tab.addTab("String", new JTextArea());
+		 */
+		//tab.addTab("String", new JTextArea());
 
 		getContentPane().add(tab, BorderLayout.CENTER);
 		//		pack();
@@ -151,6 +230,29 @@ public class SrcWindow extends JFrame implements ActionListener {
 				setLocation((int)(window.frame.getLocation().getX()+window.frame.getWidth()),(int)(window.frame.getLocation().getY()));
 				setSize((int)(this.getWidth()),(int)(window.frame.getHeight()));
 			}
+		}
+	}
+
+	public void changeTab(int type) {
+		tab.removeAll();
+		tab.addTab("(operation code)", scroll);
+		switch (type) {
+		case 1:
+			tab.addTab("class Frac", new JScrollPane(tabValue.get(0)));
+			tab.addTab("class BTree", new JScrollPane(tabValue.get(1)));
+			break;
+		case 3:
+			tab.addTab("class Car", new JScrollPane(tabValue.get(2)));
+			tab.addTab("class Bus", new JScrollPane(tabValue.get(3)));
+			tab.addTab("class Truck", new JScrollPane(tabValue.get(4)));
+			tab.addTab("class CapsuledAccount", new JScrollPane(tabValue.get(5)));
+			tab.addTab("class UnCapsuledAccount", new JScrollPane(tabValue.get(6)));
+			tab.addTab("class Animal", new JScrollPane(tabValue.get(7)));
+			tab.addTab("class Dog", new JScrollPane(tabValue.get(8)));
+			tab.addTab("class Cat", new JScrollPane(tabValue.get(9)));
+			break;
+		default:
+			break;
 		}
 	}
 }

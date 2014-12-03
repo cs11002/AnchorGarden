@@ -141,4 +141,6 @@ public class Covis_Cat extends Covis_Animal {
 		 */
 		return "not implemented ";
 	}
+	
+	public static String classdef = "";
 }

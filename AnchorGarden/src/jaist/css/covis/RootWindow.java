@@ -325,6 +325,7 @@ public class RootWindow implements ActionListener, WindowStateListener {
 					for(int i=0;i<ClassFieldMenu.modes.length;i++){
 						if (act.equals(ClassFieldMenu.modes[i])){
 							buffer.showAdvancedClasses(i);
+							srcWindow.changeTab(i);
 						}
 					}
 				}

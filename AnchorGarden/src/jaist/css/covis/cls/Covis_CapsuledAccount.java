@@ -250,7 +250,63 @@ public class Covis_CapsuledAccount extends Covis_Object {
 		return "not implemented ";
 	}
 	
-	public static String classdef = "";
+	public static String classdef = "" +
+"public class CapsuledAccount {\n"+
+"   private int remainder;      //c‚\n"+
+"   private String[] history;   //—š—ğ\n"+
+"   \n"+
+"   public CapsuledAccount() {\n"+
+"      remainder = 0;\n"+
+"      history = new String[10];\n"+
+"   }\n"+
+"   \n"+
+"   public CapsuledAccount(int _remainder) {\n"+
+"      remainder = _remainder;\n"+
+"      history = new String[10];\n"+
+"   }\n"+
+"   \n"+
+"   public String save(int value){\n"+
+"      if(value % 1000 == 0) {\n"+
+"         remainder += value;\n"+
+"         addhistory(value,0);\n"+
+"         return value + \"‰~—a‹à‚µ‚Ü‚µ‚½\";\n"+
+"      }else{\n"+
+"         return \"1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\";\n"+
+"      }\n"+
+"   }\n"+
+"   \n"+
+"   public String withdrawal(int value){\n"+
+"      if(value % 1000 == 0) {\n"+
+"         if(remainder >= value){\n"+
+"            remainder -= value;\n"+
+"            addhistory(value,1);\n"+
+"            return value + \"‰~ˆø‚«o‚µ‚µ‚Ü‚µ‚½\";\n"+
+"         }else{\n"+
+"            return \"c‚‚ª‘«‚è‚Ü‚¹‚ñ\";\n"+
+"         }\n"+
+"      }else{\n"+
+"         return \"1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\";\n"+
+"      }\n"+
+"   }\n"+
+"   \n"+
+"   public String reference(){\n"+
+"      return \"c‚‚Í\"@+ value + \"‰~‚Å‚·\" ;\n"+
+"   }\n"+
+"   \n"+
+"   private void addhistory(int value,int type) {\n"+
+"      int i;\n"+
+"      for(i=0,i<history.length;i++){\n"+
+"         if(history[i] == null){\n"+
+"            if(type == 0){\n"+
+"               history[i] = \"—a‹à\" + value;\n"+
+"            }else{\n"+
+"               history[i] = \"ˆøo\" + value;\n"+
+"            }\n"+
+"            break;\n"+
+"         }\n"+
+"      }\n"+
+"   }\n"+
+"}"; 
 }
 
 

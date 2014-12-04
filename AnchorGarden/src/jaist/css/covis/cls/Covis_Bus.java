@@ -185,5 +185,26 @@ public class Covis_Bus extends Covis_Car {
 		return "not implemented ";
 	}
 	
-	public static String classdef = "";
+	public static String classdef = "" +
+"public class Bus extends Car {\n"+
+"   int passNum;   //æÔl”\n"+
+"   \n"+
+"   public Bus() {\n"+
+"      super();\n"+
+"   }\n"+
+"   \n"+
+"   public Bus(int _carValue,int _gasoline) {\n"+
+"      super(_carValue,_gasoline);\n"+
+"   }\n"+
+"   \n"+
+"   public String get_on(int num){\n"+
+"         passNum += num;\n"+
+"         return num + \"læÔ‚µ‚Ü‚µ‚½\";\n"+
+"   }\n"+
+"   \n"+
+"   public String get_off(int num){\n"+
+"      passNum -= num;\n"+
+"      return num + \"l~Ô‚µ‚Ü‚µ‚½\";\n"+
+"   }\n"+
+"}"; 
 }

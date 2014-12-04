@@ -245,8 +245,12 @@ public class SrcWindow extends JFrame implements ActionListener {
 			tab.addTab("class Car", new JScrollPane(tabValue.get(2)));
 			tab.addTab("class Bus", new JScrollPane(tabValue.get(3)));
 			tab.addTab("class Truck", new JScrollPane(tabValue.get(4)));
+			break;
+		case 4:
 			tab.addTab("class CapsuledAccount", new JScrollPane(tabValue.get(5)));
 			tab.addTab("class UnCapsuledAccount", new JScrollPane(tabValue.get(6)));
+			break;
+		case 5:
 			tab.addTab("class Animal", new JScrollPane(tabValue.get(7)));
 			tab.addTab("class Dog", new JScrollPane(tabValue.get(8)));
 			tab.addTab("class Cat", new JScrollPane(tabValue.get(9)));

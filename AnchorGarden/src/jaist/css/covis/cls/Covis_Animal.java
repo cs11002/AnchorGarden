@@ -188,7 +188,23 @@ public class Covis_Animal extends Covis_Object {
 		return "not implemented ";
 	}
 	
-	public static String classdef = "";
+	public static String classdef = "" +
+"public abstract class Animal {\n"+
+"   int age;   //年齢\n"+
+"   int len;   //体長\n"+
+"   \n"+
+"   public Animal() {\n"+
+"      age = 40;\n"+
+"      len = 30;\n"+
+"   }\n"+
+"   \n"+
+"   public Animal(int _age,int _len) {\n"+
+"      age = _age;\n"+
+"      len = _len;\n"+
+"   }\n"+
+"   \n"+
+"   public abstract String voice();\n"+
+"}"; 
 }
 
 //コンストラクタ用ダイアログのクラス

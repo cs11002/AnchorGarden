@@ -165,16 +165,16 @@ public class Covis_Truck extends Covis_Car {
 	}
 	
 	//ƒƒ\ƒbƒhì¬
-	public String covis_load(int num) {
-		loadageValue += num;
+	public String covis_load(int value) {
+		loadageValue += value;
 		loadage.setValue(String.valueOf(loadageValue));
-		return num + "kgÏ‚İ‚Ü‚µ‚½";
+		return value + "kgÏ‚İ‚Ü‚µ‚½";
 	}
 	
-	public String covis_unload(int num) {
-		loadageValue -= num;
+	public String covis_unload(int value) {
+		loadageValue -= value;
 		loadage.setValue(String.valueOf(loadageValue));
-		return num + "kg~‚ë‚µ‚Ü‚µ‚½";
+		return value + "kg~‚ë‚µ‚Ü‚µ‚½";
 	}
 	
 	public String toString() {
@@ -186,5 +186,26 @@ public class Covis_Truck extends Covis_Car {
 		return "not implemented ";
 	}
 	
-	public static String classdef = "";
+	public static String classdef = "" +
+"public class Truck extends Car {\n"+
+"   int loadage;   //ÏÚ—Ê\n"+
+"   \n"+
+"   public Truck() {\n"+
+"      super();\n"+
+"   }\n"+
+"   \n"+
+"   public Truck(int _carValue,int _gasoline) {\n"+
+"      super(_carValue,_gasoline);\n"+
+"   }\n"+
+"   \n"+
+"   public String load(int value){\n"+
+"         loadage += value;\n"+
+"         return value + \"kgÏ‚İ‚Ü‚µ‚½\";\n"+
+"   }\n"+
+"   \n"+
+"   public String unload(int value){\n"+
+"      loadage -= value;\n"+
+"      return value + \"kg~‚ë‚µ‚Ü‚µ‚½\";\n"+
+"   }\n"+
+"}"; 
 }

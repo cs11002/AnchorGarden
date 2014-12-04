@@ -142,5 +142,19 @@ public class Covis_Dog extends Covis_Animal {
 		return "not implemented ";
 	}
 	
-	public static String classdef = "";
+	public static String classdef = "" +
+"public abstract class Dog extends Animal {\n"+
+"   \n"+
+"   public Dog() {\n"+
+"      super();\n"+
+"   }\n"+
+"   \n"+
+"   public Dog(int _age,int _len) {\n"+
+"      super(_age,_len);\n"+
+"   }\n"+
+"   \n"+
+"   public String voice(){\n"+
+"      return \"ƒƒ“Iƒƒ“I\";\n"+
+"   }\n"+ 
+"}"; 
 }

@@ -202,7 +202,35 @@ public class Covis_Car extends Covis_Object {
 		return "not implemented ";
 	}
 	
-	public static String classdef = "";
+	public static String classdef = "" +
+"public class Car {\n"+
+"   int carValue;   //ŽÔ—¼‰¿Ši\n"+
+"   int gasoline;   //ƒKƒ\ƒŠƒ“‚ÌŽc—Ê\n"+
+"   \n"+
+"   public Car() {\n"+
+"      carValue = 40;\n"+
+"      gasoline = 30;\n"+
+"   }\n"+
+"   \n"+
+"   public Car(int _carValue,int _gasoline) {\n"+
+"      carValue = _carValue;\n"+
+"      gasoline = _gasoline;\n"+
+"   }\n"+
+"   \n"+
+"   public String travel(){\n"+
+"      if (gasoline < 5) {\n"+
+"         return \"ƒKƒ\ƒŠƒ“‚ª‘«‚è‚Ü‚¹‚ñ\";\n"+
+"      } else {\n"+
+"         gasoline -= 5;\n"+
+"         return \"ƒKƒ\ƒŠƒ“‚ð5Á”ï\";\n"+
+"      }\n"+
+"   }\n"+
+"   \n"+
+"   public String oiling(int value){\n"+
+"      gasoline += value;\n"+
+"      return \"‹‹–û‚µ‚Ü‚µ‚½\";\n"+
+"   }\n"+
+"}"; 
 }
 
 

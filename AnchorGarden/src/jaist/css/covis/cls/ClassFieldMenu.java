@@ -16,7 +16,7 @@ public class ClassFieldMenu extends JPopupMenu implements FramePopup, ActionList
 	ClassField f;
 	JFrame frame;
 	private static final long serialVersionUID = -3662668322301800275L;
-	public static String[] modes = {"Novice mode", "Class/Instance mode", "Inheritance mode", "OOP mode"};
+	public static String[] modes = {"Novice mode", "Class/Instance mode", "Inheritance mode", "OOP inhe mode", "OOP caps mode", "OOP poly mode"};
 
 	CoVisBuffer buffer;
 	public ClassFieldMenu(ClassField _f, CoVisBuffer buf) {

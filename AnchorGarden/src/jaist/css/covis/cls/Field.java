@@ -2,8 +2,7 @@ package jaist.css.covis.cls;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
 import edu.umd.cs.piccolo.PNode;
 import edu.umd.cs.piccolo.nodes.PPath;
@@ -74,7 +73,8 @@ public class Field extends PPath implements Layoutable , Move{
 	
 	public void layoutByToString(int dur){
 		List<PNode> col = getChildrenReference();
-		TreeMap<String,PNode> map = new TreeMap<String, PNode>();
+		//TreeMap<String,PNode> map = new TreeMap<String, PNode>();
+		LinkedHashMap<String,PNode> map = new LinkedHashMap<String, PNode>();
 		for(PNode p: col) {			
 			if (p != caption) map.put(p.toString(), p);
 		}
@@ -85,7 +85,7 @@ public class Field extends PPath implements Layoutable , Move{
 		double endy = 10;
 		double maxx = 0, maxy = 0; 
 		for(PNode p : map.values()){
-//			System.out.println(p.toString());
+			System.out.println(p.toString());
 			p.setOffset(offsetx, offsety+top);
 			double px = p.getFullBounds().width;
 			double py = p.getFullBounds().height;

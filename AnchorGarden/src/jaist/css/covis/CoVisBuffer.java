@@ -313,7 +313,7 @@ public class CoVisBuffer extends RootBuffer {
 
 
 
-		advancedClass = new ArrayList[4];
+		advancedClass = new ArrayList[6];
 		for(int i=0;i<advancedClass.length; i++){
 			advancedClass[i] = new ArrayList<ClassStamp>();
 		}
@@ -421,22 +421,22 @@ public class CoVisBuffer extends RootBuffer {
 		advancedClass[3].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_UnCapsuledAccount(this,true), this);
-		advancedClass[3].add(newP);
+		advancedClass[4].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_CapsuledAccount(this,true), this);
-		advancedClass[3].add(newP);
+		advancedClass[4].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Animal(this,true), this);
-		advancedClass[3].add(newP);
+		advancedClass[5].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Animal"), this);
-		advancedClass[3].add(newP);
+		advancedClass[5].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Dog(this,true), this);
-		advancedClass[3].add(newP);
+		advancedClass[5].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Cat(this,true), this);
-		advancedClass[3].add(newP);
+		advancedClass[5].add(newP);
 		//clsField.addChild(newP);
 		
 		// ë∂ç›ÇµÇ»Ç¢

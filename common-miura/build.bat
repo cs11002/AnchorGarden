@@ -1,1 +1,0 @@
-"C:\Program Files\Java\jdk1.6.0\bin\javac.exe" -cp piccolo.jar;piccolox.jar;commons-codec-1.3.jar;commons-httpclient-3.0.1.jar;commons-logging-1.1.jar jp/ac/jaist/css/common/data/*.java jp/ac/jaist/css/common/gui/*.java jp/ac/jaist/css/common/gui/menu/*.java jp/ac/jaist/css/common/io/*.java jp/ac/jaist/css/common/piccolo/*.java

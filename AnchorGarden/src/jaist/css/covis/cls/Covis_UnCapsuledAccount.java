@@ -192,23 +192,23 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 	}
 
 	// ƒƒ\ƒbƒhì¬
-	public String covis_save(int value) {
+	public String covis_—a‹à‚·‚é(int value) {
 		if(value % 1000 == 0) {
 			remainderValue += value;
 			remainder.setValue(String.valueOf(remainderValue));
-			covis_addhistory(value,0);
+			covis_—š—ğ“o˜^(value,0);
 			return value + "‰~—a‹à‚µ‚Ü‚µ‚½";
 		}else{
 			return "1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢";
 		}
 	}
 
-	public String covis_withdrawal(int value) {
+	public String covis_ˆøo(int value) {
 		if(value % 1000 == 0) {
 			if(remainderValue >= value) {
 				remainderValue -= value;
 				remainder.setValue(String.valueOf(remainderValue));
-				covis_addhistory(value,1);
+				covis_—š—ğ“o˜^(value,1);
 				return value + "‰~ˆø‚«o‚µ‚µ‚Ü‚µ‚½";
 			}else{
 				return "c‚‚ª‘«‚è‚Ü‚¹‚ñ";
@@ -218,11 +218,11 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 		}
 	}
 	
-	public String covis_reference() {
+	public String covis_c‚Æ‰ï() {
 		return "c‚‚Í" + remainderValue + "‰~‚Å‚·";
 	}
 	
-	public void covis_addhistory(int value,int type) {
+	public void covis_—š—ğ“o˜^(int value,int type) {
 		int i;
 		Covis_String newhis = new Covis_String(buffer, true);
 		if(type == 0) {
@@ -265,21 +265,21 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 "      history = new String[10];\n"+
 "   }\n"+
 "   \n"+
-"   public String save(int value){\n"+
+"   public String —a‹à‚·‚é(int value){\n"+
 "      if(value % 1000 == 0) {\n"+
 "         remainder += value;\n"+
-"         addhistory(value,0);\n"+
+"         —š—ğ“o˜^(value,0);\n"+
 "         return value + \"‰~—a‹à‚µ‚Ü‚µ‚½\";\n"+
 "      }else{\n"+
 "         return \"1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\";\n"+
 "      }\n"+
 "   }\n"+
 "   \n"+
-"   public String withdrawal(int value){\n"+
+"   public String ˆø‚«o‚·(int value){\n"+
 "      if(value % 1000 == 0) {\n"+
 "         if(remainder >= value){\n"+
 "            remainder -= value;\n"+
-"            addhistory(value,1);\n"+
+"            —š—ğ“o˜^(value,1);\n"+
 "            return value + \"‰~ˆø‚«o‚µ‚µ‚Ü‚µ‚½\";\n"+
 "         }else{\n"+
 "            return \"c‚‚ª‘«‚è‚Ü‚¹‚ñ\";\n"+
@@ -289,18 +289,18 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 "      }\n"+
 "   }\n"+
 "   \n"+
-"   public String reference(){\n"+
+"   public String c‚Æ‰ï(){\n"+
 "      return \"c‚‚Í\"@+ value + \"‰~‚Å‚·\" ;\n"+
 "   }\n"+
 "   \n"+
-"   public void addhistory(int value,int type) {\n"+
+"   public void —š—ğ“o˜^(int value,int type) {\n"+
 "      int i;\n"+
 "      for(i=0,i<history.length;i++){\n"+
 "         if(history[i] == null){\n"+
 "            if(type == 0){\n"+
-"               history[i] = \"—a‹à\" + value;\n"+
+"               history[i] = \"—a‹à \" + value;\n"+
 "            }else{\n"+
-"               history[i] = \"ˆøo\" + value;\n"+
+"               history[i] = \"ˆøo \" + value;\n"+
 "            }\n"+
 "            break;\n"+
 "         }\n"+

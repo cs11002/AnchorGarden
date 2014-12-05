@@ -83,24 +83,25 @@ public class ObjectField extends PPath implements Layoutable , ToolTipProvider, 
 		animateToBounds(0, 0, maxx, maxy+top, dur);
 	}
 	public PNode getToolTipNode() {
-		if (ClassStamp.selectedType == null) return nullToolTip;
+		if (ClassStamp.selectedType == null || ClassStamp.selectedType.cv_type.getClass() == (Class<?>)Covis_Animal.class) {
+			return nullToolTip;
+		}
 		PNode p = ClassStamp.selectedType.getToolTipNode();
 		p.setTransparency(0.6f);
 		return p;
 	}
 
 	public void clicked(PInputEvent e, FlowMenu_TMRG fmenu) {
-//		if (e.isShiftDown()){
-//			SrcExecutor s = new SrcExecutor(buffer);
-//			String f = JOptionPane.showInputDialog(null);
-//			s.execute(f);
-//			return;
-//		}
+		//if (e.isShiftDown()){
+		//	SrcExecutor s = new SrcExecutor(buffer);
+		//	String f = JOptionPane.showInputDialog(null);
+		//	s.execute(f);
+		//	return;
+		//}
 		if (ClassStamp.selectedType == null) {
 			Informer.playSound("RecEnd.wav");
 			return;
-		}
-		else {
+		}else if(!(ClassStamp.selectedType.cv_type.getClass() == (Class<?>)Covis_Animal.class)){
 			boolean isAuto = buffer.getWindow().isAutoMode_obj.isSelected();
 			//SHIFT押していたら，マニュアル/オートをトグル
 			if (e.isShiftDown()) isAuto = !isAuto;
@@ -108,7 +109,7 @@ public class ObjectField extends PPath implements Layoutable , ToolTipProvider, 
 			try {
 				o = (Covis_Object) ClassStamp.selectedType.cv_type.createNew(fmenu.window.frame, isAuto);
 			} catch (InvocationTargetException e1) {
-				//				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
 			if (o == null) {
 				Informer.playSound("RecEnd.wav");
@@ -117,7 +118,7 @@ public class ObjectField extends PPath implements Layoutable , ToolTipProvider, 
 			if (o.getVisible()==false) return;//TODO:ここは，コンストラクタダイアログがキャンセルされたときに使う
 			addChild(o);
 			buffer.putHistoryNew("new", o);
-			//			Informer.playSound("hwandsw.wav");
+			//Informer.playSound("hwandsw.wav");
 			o.addAttribute("moveTarget", o);
 			o.addAttribute("selectable", o);
 			o.setOffset(e.getPositionRelativeTo(this));

@@ -164,13 +164,13 @@ public class Covis_Bus extends Covis_Car {
 		return " carValue,gasoline ";
 	}
 	
-	public String covis_get_on(int num) {
+	public String covis_æÔ‚·‚é(int num) {
 		passNumValue += num;
 		passNum.setValue(String.valueOf(passNumValue));
 		return num + "læÔ‚µ‚Ü‚µ‚½";
 	}
 	
-	public String covis_get_off(int num) {
+	public String covis_~Ô‚·‚é(int num) {
 		passNumValue -= num;
 		passNum.setValue(String.valueOf(passNumValue));
 		return num + "l~Ô‚µ‚Ü‚µ‚½";
@@ -197,12 +197,12 @@ public class Covis_Bus extends Covis_Car {
 "      super(_carValue,_gasoline);\n"+
 "   }\n"+
 "   \n"+
-"   public String get_on(int num){\n"+
+"   public String æÔ‚·‚é(int num){\n"+
 "         passNum += num;\n"+
 "         return num + \"læÔ‚µ‚Ü‚µ‚½\";\n"+
 "   }\n"+
 "   \n"+
-"   public String get_off(int num){\n"+
+"   public String ~Ô‚·‚é(int num){\n"+
 "      passNum -= num;\n"+
 "      return num + \"l~Ô‚µ‚Ü‚µ‚½\";\n"+
 "   }\n"+

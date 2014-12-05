@@ -175,7 +175,7 @@ public class Covis_Animal extends Covis_Object {
 	}
 	
 	// ƒƒ\ƒbƒhì¬
-	public String covis_voice() {
+	public String covis_–Â‚­() {
 		return "“®•¨‚ª–Â‚«‚Ü‚µ‚½";
 	}
 	
@@ -203,7 +203,7 @@ public class Covis_Animal extends Covis_Object {
 "      len = _len;\n"+
 "   }\n"+
 "   \n"+
-"   public abstract String voice();\n"+
+"   public abstract String –Â‚­();\n"+
 "}"; 
 }
 

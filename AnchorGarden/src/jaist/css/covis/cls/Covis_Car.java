@@ -177,7 +177,7 @@ public class Covis_Car extends Covis_Object {
 	}
 	
 	// メソッド作成
-	public String covis_travel() {
+	public String covis_走行する() {
 		if(gasolineValue < 5) {
 			return "ガソリンが足りません";
 		}else{
@@ -187,7 +187,7 @@ public class Covis_Car extends Covis_Object {
 		}
 	}
 
-	public String covis_oiling(int value) {
+	public String covis_給油する(int value) {
 		gasolineValue += value;
 		gasoline.setValue(String.valueOf(gasolineValue));
 		return "給油しました";
@@ -217,7 +217,7 @@ public class Covis_Car extends Covis_Object {
 "      gasoline = _gasoline;\n"+
 "   }\n"+
 "   \n"+
-"   public String travel(){\n"+
+"   public String 走行する(){\n"+
 "      if (gasoline < 5) {\n"+
 "         return \"ガソリンが足りません\";\n"+
 "      } else {\n"+
@@ -226,7 +226,7 @@ public class Covis_Car extends Covis_Object {
 "      }\n"+
 "   }\n"+
 "   \n"+
-"   public String oiling(int value){\n"+
+"   public String 給油する(int value){\n"+
 "      gasoline += value;\n"+
 "      return \"給油しました\";\n"+
 "   }\n"+

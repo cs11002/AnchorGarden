@@ -129,7 +129,7 @@ public class Covis_Cat extends Covis_Animal {
 	}
 	
 	// メソッド作成
-	public String covis_voice() {
+	public String covis_鳴く() {
 		return "ミャーミャー";
 	}
 	
@@ -153,7 +153,7 @@ public class Covis_Cat extends Covis_Animal {
 "      super(_age,_len);\n"+
 "   }\n"+
 "   \n"+
-"   public String voice(){\n"+
+"   public String 鳴く(){\n"+
 "      return \"ミャーミャー\";\n"+
 "   }\n"+ 
 "}"; 

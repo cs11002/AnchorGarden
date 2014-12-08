@@ -21,21 +21,21 @@ import javax.swing.JTextField;
 
 import edu.umd.cs.piccolo.nodes.PText;
 
-public class Covis_CapsuledAccount extends Covis_Object {
+public class Covis_CapAccount extends Covis_Object {
 
 	private static final long serialVersionUID = 6631160996844648983L;
 	public static Color defaultColor = new Color(182, 196, 84);
 	public static String varname1 = "écçÇ";
 	public static String varname2 = "óöó";
 	
-	public Covis_CapsuledAccount(CoVisBuffer buf, boolean isAuto) {
+	public Covis_CapAccount(CoVisBuffer buf, boolean isAuto) {
 		super(buf, isAuto);
 		color = defaultColor;
 		setPaint(color);
 		setStroke(basicStroke);
 	}
 
-	public Covis_CapsuledAccount(Color c, CoVisBuffer buf, boolean isAuto) {
+	public Covis_CapAccount(Color c, CoVisBuffer buf, boolean isAuto) {
 		super(c, buf, isAuto);
 	}
 
@@ -155,7 +155,7 @@ public class Covis_CapsuledAccount extends Covis_Object {
 	}
 
 	public Covis_Object Covis_clone(boolean isAuto) {
-		return new Covis_UnCapsuledAccount(buffer, isAuto);
+		return new Covis_UnCapAccount(buffer, isAuto);
 	}
 
 	public Color getClassColor() {
@@ -322,7 +322,7 @@ class CapsuledAccountConstructorDialog extends JDialog implements KeyListener {
 	JButton ok;
 	boolean canceled = true;
 
-	public CapsuledAccountConstructorDialog(JFrame p, Covis_CapsuledAccount acc, String title,
+	public CapsuledAccountConstructorDialog(JFrame p, Covis_CapAccount acc, String title,
 			String mes1) {
 		super(p, title, true);
 		parent = p;
@@ -389,7 +389,7 @@ class CapsuledAccountConstructorDialog extends JDialog implements KeyListener {
 	}
 
 	public static CapsuledAccountConstructorDialog showDialog(JFrame parent,
-			Covis_CapsuledAccount acc, String title, String mes1) {
+			Covis_CapAccount acc, String title, String mes1) {
 		CapsuledAccountConstructorDialog d = new CapsuledAccountConstructorDialog(parent, acc,
 				title, mes1);
 		d.setVisible(true);

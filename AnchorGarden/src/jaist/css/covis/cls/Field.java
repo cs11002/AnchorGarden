@@ -85,7 +85,7 @@ public class Field extends PPath implements Layoutable , Move{
 		double endy = 10;
 		double maxx = 0, maxy = 0; 
 		for(PNode p : map.values()){
-			System.out.println(p.toString());
+			//System.out.println(p.toString());
 			p.setOffset(offsetx, offsety+top);
 			double px = p.getFullBounds().width;
 			double py = p.getFullBounds().height;

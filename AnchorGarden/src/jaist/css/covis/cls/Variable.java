@@ -103,8 +103,8 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 				type = Array.newInstance(c, 4).getClass();
 				elementType = cv_class.getClass();
 
-				System.out.println("array "+type.toString());
-				System.out.println("ele "+elementType.toString());
+				//System.out.println("array "+type.toString());
+				//System.out.println("ele "+elementType.toString());
 				isArray = true;
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
@@ -125,12 +125,12 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 			type = cv_class.getClass();
 			elementType = type;
 		}
-		setPathToRectangle(0,0,250,40);
+		setPathToRectangle(0,0,300,40);
 		if(cv_class instanceof Covis_Bus || cv_class instanceof Covis_Truck) {
 			sup = new PPath();
 			sub = new PPath();
-			sup.setPathToRectangle(0,0,250,20);
-			sub.setPathToRectangle(0,20,250,20);
+			sup.setPathToRectangle(0,0,300,20);
+			sub.setPathToRectangle(0,20,300,20);
 			sup.setPaint(Covis_Car.defaultColor);
 			if(cv_class instanceof Covis_Bus) {
 				sub.setPaint(Covis_Bus.defaultColor);
@@ -143,8 +143,8 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 		if(cv_class instanceof Covis_Dog || cv_class instanceof Covis_Cat) {
 			sup = new PPath();
 			sub = new PPath();
-			sup.setPathToRectangle(0,0,250,20);
-			sub.setPathToRectangle(0,20,250,20);
+			sup.setPathToRectangle(0,0,300,20);
+			sub.setPathToRectangle(0,20,300,20);
 			sup.setPaint(Covis_Animal.defaultColor);
 			if(cv_class instanceof Covis_Dog) {
 				sub.setPaint(Covis_Dog.defaultColor);
@@ -196,7 +196,7 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 			anchor = new Anchor(type, this);
 			anchor.setVarName(varname_base);
 			addChild(anchor);
-			anchor.setOffset(245,30);
+			anchor.setOffset(285,30);
 			if (!isMember){
 				anchor.setAnchorEnabled(true);
 			}
@@ -221,7 +221,7 @@ public class Variable extends PPath implements Layoutable, Selectable, ToFront ,
 	}
 	public String getTypeName(){
 		if (!isArray){
-			//			if (type.isAssignableFrom(Covis_Object.class)){
+			//if (type.isAssignableFrom(Covis_Object.class)){
 			return cv_class.getClsName();
 		} else {
 			return cv_class.getClsName()+"[]";

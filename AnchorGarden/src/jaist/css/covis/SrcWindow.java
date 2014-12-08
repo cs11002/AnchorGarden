@@ -3,13 +3,13 @@ package jaist.css.covis;
 import jaist.css.covis.cls.Covis_Animal;
 import jaist.css.covis.cls.Covis_BTree;
 import jaist.css.covis.cls.Covis_Bus;
-import jaist.css.covis.cls.Covis_CapsuledAccount;
+import jaist.css.covis.cls.Covis_CapAccount;
 import jaist.css.covis.cls.Covis_Car;
 import jaist.css.covis.cls.Covis_Cat;
 import jaist.css.covis.cls.Covis_Dog;
 import jaist.css.covis.cls.Covis_Frac;
 import jaist.css.covis.cls.Covis_Truck;
-import jaist.css.covis.cls.Covis_UnCapsuledAccount;
+import jaist.css.covis.cls.Covis_UnCapAccount;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -64,7 +64,7 @@ public class SrcWindow extends JFrame implements ActionListener {
 
 		setLayout(new BorderLayout());
 		jta = new JTextAreaToggleAntiAlias("");
-		//		jta.setLineWrap(true);
+		//jta.setLineWrap(true);
 		scroll = new JScrollPane(jta);
 
 		jta.setFont(sans22);
@@ -156,13 +156,13 @@ public class SrcWindow extends JFrame implements ActionListener {
 		tabValue.add(t);
 		//tab.addTab("class Truck", new JScrollPane(t));
 
-		t = new JTextAreaToggleAntiAlias(Covis_CapsuledAccount.classdef);
+		t = new JTextAreaToggleAntiAlias(Covis_CapAccount.classdef);
 		t.setEditable(false);
 		t.setFont(code14);
 		tabValue.add(t);
 		//tab.addTab("class CapsuledAccount", new JScrollPane(t));
 
-		t = new JTextAreaToggleAntiAlias(Covis_UnCapsuledAccount.classdef);
+		t = new JTextAreaToggleAntiAlias(Covis_UnCapAccount.classdef);
 		t.setEditable(false);
 		t.setFont(code14);
 		tabValue.add(t);
@@ -209,7 +209,7 @@ public class SrcWindow extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e){
 		int fsize = Integer.parseInt(e.getActionCommand());
 		JScrollPane jsp = (JScrollPane)tab.getComponentAt(tab.getSelectedIndex());
-		System.out.println(jsp.getComponent(0).getClass().toString());
+		//System.out.println(jsp.getComponent(0).getClass().toString());
 		JViewport v = (JViewport) jsp.getViewport();
 		JTextAreaToggleAntiAlias target = (JTextAreaToggleAntiAlias) v.getView();
 		target.setFontSize(fsize);

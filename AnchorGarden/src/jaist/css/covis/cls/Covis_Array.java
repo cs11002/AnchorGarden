@@ -125,8 +125,8 @@ public class Covis_Array extends Covis_Object {
 		primitives = new ArrayList<Covis_primitive>();
 		String[] sary = s.split(",");
 		for(int i=0;i<sary.length;i++){
-			//			String ts = String.valueOf(s.charAt(i));
-			//			System.out.println(ts);
+			//String ts = String.valueOf(s.charAt(i));
+			//System.out.println(ts);
 			if (size <= i) break;
 			Covis_primitive prim = null;
 			try {
@@ -252,7 +252,7 @@ public class Covis_Array extends Covis_Object {
 					ClassStamp.possibilities,
 					lastSelectedClass);
 			if ((s != null) && (s.length() > 0)) {
-				//				System.out.println(s+" Selected.");
+				//System.out.println(s+" Selected.");
 				lastSelectedClass = s;
 				elementClassStr = s;
 			} else {

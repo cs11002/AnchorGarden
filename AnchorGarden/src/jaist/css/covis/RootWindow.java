@@ -119,8 +119,8 @@ public class RootWindow implements ActionListener, WindowStateListener {
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.addWindowListener(new WindowListener(){
 			public void windowOpened(WindowEvent arg0) {
-				//								System.out.println("open");
-				//								RootWindow.this.showSrcWin(true); // TODO:段階がすすんだら，起動時に見せるようにする
+				//System.out.println("open");
+				//RootWindow.this.showSrcWin(true); // TODO:段階がすすんだら，起動時に見せるようにする
 			}
 			public void windowClosing(WindowEvent arg0) {
 				tobeclosed();
@@ -374,7 +374,7 @@ public class RootWindow implements ActionListener, WindowStateListener {
 		JMenuItem about = new JMenuItem("About");
 		about.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				//				JOptionPane.showMessageDialog(frame, CoVisWindow.WINDOWTITLE+" ver 1.80\n\n(c)2008 Motoki Miura\n\nhttp://css.jaist.ac.jp/~miuramo/","About",JOptionPane.INFORMATION_MESSAGE);
+				//JOptionPane.showMessageDialog(frame, CoVisWindow.WINDOWTITLE+" ver 1.80\n\n(c)2008 Motoki Miura\n\nhttp://css.jaist.ac.jp/~miuramo/","About",JOptionPane.INFORMATION_MESSAGE);
 				JOptionPane.showMessageDialog(frame, CoVisWindow.WINDOWTITLE+" ver 1.99\n\n(c)2008-2011 AnchorGarden\n\nhttp://ist.mns.kyutech.ac.jp/miura/anchorgarden/","About",JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
@@ -538,7 +538,7 @@ public class RootWindow implements ActionListener, WindowStateListener {
 		//        displayMessage(msg);
 	}
 	void displayMessage(String msg) {
-		System.out.println(msg);
+		//System.out.println(msg);
 	}
 	String convertStateToString(int state) {
 		if (state == Frame.NORMAL) {
@@ -601,8 +601,8 @@ public class RootWindow implements ActionListener, WindowStateListener {
 		paperSizeHash.put("A4", PageSize.A4);
 
 		Document document = new Document(new Rectangle(0,0,canvas.getWidth(),canvas.getHeight()), 0, 0, 0, 0);
-		System.out.println("f "+frame.getWidth()+" "+frame.getHeight());
-		System.out.println("c "+canvas.getWidth()+" "+canvas.getHeight());
+		//System.out.println("f "+frame.getWidth()+" "+frame.getHeight());
+		//System.out.println("c "+canvas.getWidth()+" "+canvas.getHeight());
 		//		Document document = new Document(new Rectangle(0,0,frame.getWidth()-16,frame.getHeight()-60), 0, 0, 0, 0);
 		//		step 2: creation of the writer
 		PdfWriter writer = null;

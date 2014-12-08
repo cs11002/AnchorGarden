@@ -4,8 +4,8 @@ import jaist.css.covis.cls.Anchor;
 import jaist.css.covis.cls.ClassField;
 import jaist.css.covis.cls.ClassFieldMenu;
 import jaist.css.covis.cls.ClassStamp;
-import jaist.css.covis.cls.Covis_CapsuledAccount;
-import jaist.css.covis.cls.Covis_UnCapsuledAccount;
+import jaist.css.covis.cls.Covis_CapAccount;
+import jaist.css.covis.cls.Covis_UnCapAccount;
 import jaist.css.covis.cls.Covis_Animal;
 import jaist.css.covis.cls.Covis_Array;
 import jaist.css.covis.cls.Covis_BTree;
@@ -17,13 +17,9 @@ import jaist.css.covis.cls.Covis_Truck;
 import jaist.css.covis.cls.Covis_Frac;
 import jaist.css.covis.cls.Covis_Object;
 import jaist.css.covis.cls.Covis_Oval;
-import jaist.css.covis.cls.Covis_Random;
 import jaist.css.covis.cls.Covis_Rect;
 import jaist.css.covis.cls.Covis_String;
-import jaist.css.covis.cls.Covis_Sub;
-import jaist.css.covis.cls.Covis_Super;
 import jaist.css.covis.cls.Covis_int;
-import jaist.css.covis.cls.Covis_char;
 import jaist.css.covis.cls.Covis_primitive;
 import jaist.css.covis.cls.ObjectField;
 import jaist.css.covis.cls.StaticField;
@@ -147,28 +143,40 @@ public class CoVisBuffer extends RootBuffer {
 	}
 
 	public void putHisotryLink(String type, Anchor a, Covis_Object obj){
-		if (obj==null) {System.out.println("obj=null"); return;}
-		if (obj.cvhist==null) {System.out.println("obj.cvhist=null"); return;}
-		if (obj.cvhist.getCode()==null) {System.out.println("obj.cvhist.getCode()=null"); return;}
-		if (a.getSrcVariable()==null) {System.out.println("a.getVarIfAvailable()=null"); return;}
+		if (obj==null) {
+			//System.out.println("obj=null");
+			return;
+		}
+		if (obj.cvhist==null) {
+			//System.out.println("obj.cvhist=null");
+			return;
+		}
+		if (obj.cvhist.getCode()==null) {
+			//System.out.println("obj.cvhist.getCode()=null");
+			return;
+		}
+		if (a.getSrcVariable()==null) {
+			//System.out.println("a.getVarIfAvailable()=null");
+			return;
+		}
 
 		if (obj.cvhist.getCode().startsWith("new ") || (obj.cvhist instanceof CVHist_MethodNew && !obj.cvhist.isConsumed()) ){ //newで始まるばあい
 			// もし，NEWが先なら，変数だけつけると変数定義が後になってしまうため，変数定義もつける
-			//			if (a.getSrcVariable() != null){
+			//if (a.getSrcVariable() != null){
 			// String[] strAry1 = new String[4];
-			//				if (a.getSrcVariable().cvhist==null) {System.out.println("a.getVarIfAvailable().cvhist=null"); return;}
+			//if (a.getSrcVariable().cvhist==null) {System.out.println("a.getVarIfAvailable().cvhist=null"); return;}
 
 			if (obj.cvhist.tstamp < a.getSrcVariable().cvhist.tstamp){ //変数のほうを後に作成したなら
 				String vardefine = a.getSrcVariable().cvhist.getCode();
 				vardefine = vardefine.substring(0, vardefine.length()-1);
-				//					obj.cvhist.setCode(vardefine +" = "+obj.cvhist.getCode());
+				//obj.cvhist.setCode(vardefine +" = "+obj.cvhist.getCode());
 				setHistLinkCode_ConcatinateVarDefAndNew(a, vardefine, obj);
 				a.getSrcVariable().cvhist.setAlive(false);
 			} else {
-				//					obj.cvhist.setCode(a.getVarName()+" = "+obj.cvhist.getCode());
-				//					System.out.println(a.getVarName()+" "+a.varName);
+				//obj.cvhist.setCode(a.getVarName()+" = "+obj.cvhist.getCode());
+				//System.out.println(a.getVarName()+" "+a.varName);
 				setHistLinkCode_ConcatinateVarDefAndNew(a, Variable.getShortestName(a.srcVariable.getVarNamesAry()), obj);//ここここ
-				//					a.getSrcVariable().cvhist.setAlive(false);
+				//a.getSrcVariable().cvhist.setAlive(false);
 			}
 			obj.cvhist.setConsumed(true);
 			//incoming>0 のオブジェクトであれば，全部Consumedにする．過去のnewオブジェクトにリンクできなくなるが．
@@ -189,7 +197,7 @@ public class CoVisBuffer extends RootBuffer {
 		updateSourceWindow();
 	}
 	private void setHistLinkCode_ConcatinateVarDefAndNew(Anchor a, String varDefOrVarName, Covis_Object obj){
-		System.out.println("setHistLinkCode_ConcatinateVarDefAndNew varDefOrVarName "+varDefOrVarName);
+		//System.out.println("setHistLinkCode_ConcatinateVarDefAndNew varDefOrVarName "+varDefOrVarName);
 		obj.cvhist.setCode(varDefOrVarName+
 				" = "+obj.cvhist.getCode(),true);
 
@@ -197,7 +205,7 @@ public class CoVisBuffer extends RootBuffer {
 	}
 
 	public void putHistoryUnLink(String type, Anchor anchor) {
-		System.out.println("putHistoryUnlink");
+		//System.out.println("putHistoryUnlink");
 		CVHist_Unlink cvhist = new CVHist_Unlink(anchor, this);
 		if (!cvhist.getCode().startsWith("null"))
 			history.put(System.currentTimeMillis(), cvhist);
@@ -206,7 +214,7 @@ public class CoVisBuffer extends RootBuffer {
 
 	//追加分
 	public void putHistoryFor(String array, String method) {
-		System.out.println("putHistoryFor");
+		//System.out.println("putHistoryFor");
 		CVHist_For cvhist = new CVHist_For(this,array,method);
 		if (!cvhist.getCode().startsWith("null"))
 			history.put(System.currentTimeMillis(), cvhist);
@@ -342,7 +350,7 @@ public class CoVisBuffer extends RootBuffer {
 		newP = new ClassStamp(new Covis_Array(this,true,"char") ,this);
 		advancedClass[0].add(newP);
 		clsField.addChild(newP);
-		*/
+		 */
 
 		//中級クラス
 		//Frac追加（配列も）
@@ -367,7 +375,7 @@ public class CoVisBuffer extends RootBuffer {
 		newP = new ClassStamp(new Covis_Array(this,true,"Random"), this);
 		advancedClass[1].add(newP);
 		clsField.addChild(newP);
-		*/
+		 */
 
 		//Super追加（配列も）
 		/*
@@ -388,7 +396,7 @@ public class CoVisBuffer extends RootBuffer {
 
 		//上級クラス
 		//Object追加（配列も）
- 		newP = new ClassStamp(new Covis_Object(this,true) ,this);
+		newP = new ClassStamp(new Covis_Object(this,true) ,this);
 		advancedClass[2].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Object") ,this);
@@ -408,7 +416,7 @@ public class CoVisBuffer extends RootBuffer {
 		newP = new ClassStamp(new Covis_Array(this,true,"Rect") ,this);
 		advancedClass[2].add(newP);
 		//clsField.addChild(newP);
-		
+
 
 		//具体例クラス
 		newP = new ClassStamp(new Covis_Car(this,true), this);
@@ -420,10 +428,10 @@ public class CoVisBuffer extends RootBuffer {
 		newP = new ClassStamp(new Covis_Truck(this,true), this);
 		advancedClass[3].add(newP);
 		//clsField.addChild(newP);
-		newP = new ClassStamp(new Covis_UnCapsuledAccount(this,true), this);
+		newP = new ClassStamp(new Covis_UnCapAccount(this,true), this);
 		advancedClass[4].add(newP);
 		//clsField.addChild(newP);
-		newP = new ClassStamp(new Covis_CapsuledAccount(this,true), this);
+		newP = new ClassStamp(new Covis_CapAccount(this,true), this);
 		advancedClass[4].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Animal(this,true), this);
@@ -438,7 +446,7 @@ public class CoVisBuffer extends RootBuffer {
 		newP = new ClassStamp(new Covis_Cat(this,true), this);
 		advancedClass[5].add(newP);
 		//clsField.addChild(newP);
-		
+
 		// 存在しない
 		//　newP = new ClassStamp(new CopyOfCovis_Array(this,true));
 		//　advancedClass.add(newP);
@@ -454,7 +462,7 @@ public class CoVisBuffer extends RootBuffer {
 		if (clsFieldInitTimer == null){
 			clsFieldInitTimer = new Timer(500, new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					//					clsField.layout(200);
+					//clsField.layout(200);
 					while(getWindow()==null)
 						try {
 							Thread.sleep(1000);
@@ -463,7 +471,7 @@ public class CoVisBuffer extends RootBuffer {
 						}
 					getWindow().zoomHomePane(1400);
 
-					//					System.out.println("clsField init");
+					//System.out.println("clsField init");
 					clsFieldInitTimer.stop();
 					clsFieldInitTimer = null;
 				}
@@ -502,7 +510,7 @@ public class CoVisBuffer extends RootBuffer {
 				clsField.addChild(cp);
 			}
 		}
-		*/
+		 */
 		for(ClassStamp cp: advancedClass[0]){
 			clsField.addChild(cp);
 		}

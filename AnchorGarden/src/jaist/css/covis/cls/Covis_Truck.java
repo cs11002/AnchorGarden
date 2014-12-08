@@ -12,7 +12,7 @@ public class Covis_Truck extends Covis_Car {
 
 	private static final long serialVersionUID = 2606894600998374563L;
 	public static Color defaultColor = new Color(52, 229, 255);
-	public static String varname3 = "loadage";
+	public static String varname3 = "ÏÚ—Ê";
 
 	public Covis_Truck(CoVisBuffer buf, boolean isAuto) {
 		super(buf, isAuto);
@@ -25,11 +25,11 @@ public class Covis_Truck extends Covis_Car {
 	}
 
 	public String getConstructorInfo() {
-		return "new " + getClsName() + "(" + carValue.value + "," + gasoline.value + ");";
+		return "new " + getClsName() + "(" + Ô—¼‰¿Ši.value + "," + ƒKƒ\ƒŠƒ“.value + ");";
 	}
 
 	PPath sub;
-	Covis_int loadage;
+	Covis_int ÏÚ—Ê;
 	PText loadageLabel;
 	int loadageValue;
 
@@ -52,22 +52,22 @@ public class Covis_Truck extends Covis_Car {
 		sub.addAttribute("tooltip", this);
 
 		// loadage‚Ì’Ç‰Á
-		loadage = new Covis_int(buffer, isAuto);
-		loadage.addAttribute("moveTarget", this);
-		loadage.addAttribute("tooltip", this);
-		loadage.addAttribute("popupMenu", new ClassVarMenu(varname3,loadage,this));
-		loadage.valueText.addAttribute("moveTarget", this);
-		loadage.valueText.addAttribute("tooltip", this);
-		loadage.valueText.addAttribute("popupMenu", new ClassVarMenu(varname3,loadage,this));
+		ÏÚ—Ê = new Covis_int(buffer, isAuto);
+		ÏÚ—Ê.addAttribute("moveTarget", this);
+		ÏÚ—Ê.addAttribute("tooltip", this);
+		ÏÚ—Ê.addAttribute("popupMenu", new ClassVarMenu(varname3,ÏÚ—Ê,this));
+		ÏÚ—Ê.valueText.addAttribute("moveTarget", this);
+		ÏÚ—Ê.valueText.addAttribute("tooltip", this);
+		ÏÚ—Ê.valueText.addAttribute("popupMenu", new ClassVarMenu(varname3,ÏÚ—Ê,this));
 		loadageValue = 0;
-		loadage.setValue(String.valueOf(loadageValue));
+		ÏÚ—Ê.setValue(String.valueOf(loadageValue));
 		// ‘å‚«‚³ˆÊ’uw’è
-		loadage.setScale(0.8f);
-		loadage.offset(140, 130);
-		sub.addChild(loadage);
+		ÏÚ—Ê.setScale(0.8f);
+		ÏÚ—Ê.offset(140, 130);
+		sub.addChild(ÏÚ—Ê);
 		
 		// Label‚Ì•\¦
-		loadageLabel = new PText(loadage.getClsName() + " " + varname3);
+		loadageLabel = new PText(ÏÚ—Ê.getClsName() + " " + varname3);
 		loadageLabel.scale(1.9f);
 		loadageLabel.offset(10, 135);
 		loadageLabel.addAttribute("moveTarget", this);
@@ -79,7 +79,7 @@ public class Covis_Truck extends Covis_Car {
 		if (!isAuto) {
 			CarConstructorDialog dialog = CarConstructorDialog.showDialog(
 					buffer.getWindow().frame, this, "Constructor of Bus",
-					"new Truck(carValue,gasoline);");
+					"new Truck(Ô—¼‰¿Ši,ƒKƒ\ƒŠƒ“);");
 			if (dialog.isCanceled()) {
 				this.setVisible(false);
 				return;
@@ -161,19 +161,19 @@ public class Covis_Truck extends Covis_Car {
 
 	@Override
 	public String getConstructorArgs() {
-		return " carValue,gasoline ";
+		return " Ô—¼‰¿Ši,ƒKƒ\ƒŠƒ“ ";
 	}
 	
 	//ƒƒ\ƒbƒhì¬
 	public String covis_‰×•¨‚ğÏ‚Ş(int value) {
 		loadageValue += value;
-		loadage.setValue(String.valueOf(loadageValue));
+		ÏÚ—Ê.setValue(String.valueOf(loadageValue));
 		return value + "kgÏ‚İ‚Ü‚µ‚½";
 	}
 	
 	public String covis_‰×•¨‚ğ~‚ë‚·(int value) {
 		loadageValue -= value;
-		loadage.setValue(String.valueOf(loadageValue));
+		ÏÚ—Ê.setValue(String.valueOf(loadageValue));
 		return value + "kg~‚ë‚µ‚Ü‚µ‚½";
 	}
 	
@@ -188,24 +188,24 @@ public class Covis_Truck extends Covis_Car {
 	
 	public static String classdef = "" +
 "public class Truck extends Car {\n"+
-"   int loadage;   //ÏÚ—Ê\n"+
+"   int ÏÚ—Ê;  \n"+
 "   \n"+
 "   public Truck() {\n"+
 "      super();\n"+
 "   }\n"+
 "   \n"+
-"   public Truck(int _carValue,int _gasoline) {\n"+
-"      super(_carValue,_gasoline);\n"+
+"   public Truck(int _Ô—¼‰¿Ši,int _ƒKƒ\ƒŠƒ“) {\n"+
+"      super(_Ô—¼‰¿Ši,_ƒKƒ\ƒŠƒ“);\n"+
 "   }\n"+
 "   \n"+
-"   public String ‰×•¨‚ğÏ‚Ş(int value){\n"+
-"         loadage += value;\n"+
-"         return value + \"kgÏ‚İ‚Ü‚µ‚½\";\n"+
+"   public String ‰×•¨‚ğÏ‚Ş(int —Ê){\n"+
+"         ÏÚ—Ê += —Ê;\n"+
+"         return —Ê + \"kgÏ‚İ‚Ü‚µ‚½\";\n"+
 "   }\n"+
 "   \n"+
-"   public String ‰×•¨‚ğ~‚ë‚·(int value){\n"+
-"      loadage -= value;\n"+
-"      return value + \"kg~‚ë‚µ‚Ü‚µ‚½\";\n"+
+"   public String ‰×•¨‚ğ~‚ë‚·(int —Ê){\n"+
+"      ÏÚ—Ê -= —Ê;\n"+
+"      return —Ê + \"kg~‚ë‚µ‚Ü‚µ‚½\";\n"+
 "   }\n"+
 "}"; 
 }

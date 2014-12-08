@@ -24,7 +24,7 @@ public class Covis_Cat extends Covis_Animal {
 	}
 	
 	public String getConstructorInfo() {
-		return "new " + getClsName() + "(" + age.value + "," + len.value + ");";
+		return "new " + getClsName() + "(" + 年齢.value + "," + 体長.value + ");";
 	}
 	
 	PPath sub;
@@ -52,7 +52,7 @@ public class Covis_Cat extends Covis_Animal {
 		if (!isAuto) {
 			AnimalConstructorDialog dialog = AnimalConstructorDialog.showDialog(
 					buffer.getWindow().frame, this, "Constructor of Cat",
-					"new Cat(age,length);");
+					"new Cat(年齢,体長);");
 			if (dialog.isCanceled()) {
 				this.setVisible(false);
 				return;
@@ -125,7 +125,7 @@ public class Covis_Cat extends Covis_Animal {
 
 	@Override
 	public String getConstructorArgs() {
-		return " age,lenght ";
+		return " 年齢,体長 ";
 	}
 	
 	// メソッド作成
@@ -149,8 +149,8 @@ public class Covis_Cat extends Covis_Animal {
 "      super();\n"+
 "   }\n"+
 "   \n"+
-"   public Cat(int _age,int _len) {\n"+
-"      super(_age,_len);\n"+
+"   public Cat(int _年齢,int _体長) {\n"+
+"      super(_年齢,_体長);\n"+
 "   }\n"+
 "   \n"+
 "   public String 鳴く(){\n"+

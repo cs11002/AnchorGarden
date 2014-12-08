@@ -26,8 +26,8 @@ public class Covis_Animal extends Covis_Object {
 
 	private static final long serialVersionUID = 773271700954233487L;
 	public static Color defaultColor = new Color(149, 249, 227);
-	public static String varname1 = "age";
-	public static String varname2 = "length";
+	public static String varname1 = "年齢";
+	public static String varname2 = "体長";
 
 	public Covis_Animal(CoVisBuffer buf, boolean isAuto) {
 		super(buf, isAuto);
@@ -40,14 +40,14 @@ public class Covis_Animal extends Covis_Object {
 		super(c, buf, isAuto);
 	}
 	
-	Covis_int age;
-	Covis_int len;
+	Covis_int 年齢;
+	Covis_int 体長;
 	PText ageLabel;
 	PText lenLabel;
 	PPath sup;
 	
 	public String getConstructorInfo() {
-		return "new " + getClsName() + "(" + age.value + "," + len.value + ");";
+		return "new " + getClsName() + "(" + 年齢.value + "," + 体長.value + ");";
 	}
 	
 	public void init(boolean isAuto) {
@@ -66,36 +66,36 @@ public class Covis_Animal extends Covis_Object {
 		sup.addAttribute("tooltip", this);
 
 		// ageの追加
-		age = new Covis_int(buffer, isAuto);
-		age.addAttribute("moveTarget", this);
-		age.addAttribute("tooltip", this);
-		age.addAttribute("popupMenu", new ClassVarMenu(varname1,age,this));
-		age.valueText.addAttribute("moveTarget", this);
-		age.valueText.addAttribute("tooltip", this);
-		age.valueText.addAttribute("popupMenu", new ClassVarMenu(varname1,age,this));
-		age.setValue("40");
+		年齢 = new Covis_int(buffer, isAuto);
+		年齢.addAttribute("moveTarget", this);
+		年齢.addAttribute("tooltip", this);
+		年齢.addAttribute("popupMenu", new ClassVarMenu(varname1,年齢,this));
+		年齢.valueText.addAttribute("moveTarget", this);
+		年齢.valueText.addAttribute("tooltip", this);
+		年齢.valueText.addAttribute("popupMenu", new ClassVarMenu(varname1,年齢,this));
+		年齢.setValue("40");
 		// 大きさ位置指定
-		age.setScale(0.8f);
-		age.offset(120, 10);
-		sup.addChild(age);
+		年齢.setScale(0.8f);
+		年齢.offset(120, 10);
+		sup.addChild(年齢);
 
 		// bodyLengthの追加
-		len = new Covis_int(buffer, isAuto);
-		len.addAttribute("moveTarget", this);
-		len.addAttribute("tooltip", this);
-		len.addAttribute("popupMenu", new ClassVarMenu(varname2,len,this));
-		len.valueText.addAttribute("moveTarget", this);
-		len.valueText.addAttribute("tooltip", this);
-		len.valueText.addAttribute("popupMenu", new ClassVarMenu(varname2,len,this));
-		len.setValue("30");
+		体長 = new Covis_int(buffer, isAuto);
+		体長.addAttribute("moveTarget", this);
+		体長.addAttribute("tooltip", this);
+		体長.addAttribute("popupMenu", new ClassVarMenu(varname2,体長,this));
+		体長.valueText.addAttribute("moveTarget", this);
+		体長.valueText.addAttribute("tooltip", this);
+		体長.valueText.addAttribute("popupMenu", new ClassVarMenu(varname2,体長,this));
+		体長.setValue("30");
 		// 大きさ位置指定
-		len.setScale(0.8f);
-		len.offset(120, 70);
-		sup.addChild(len);
+		体長.setScale(0.8f);
+		体長.offset(120, 70);
+		sup.addChild(体長);
 
 		// Labelの表示
-		ageLabel = new PText(age.getClsName() + " " + varname1);
-		lenLabel = new PText(len.getClsName() + " " + varname2);
+		ageLabel = new PText(年齢.getClsName() + " " + varname1);
+		lenLabel = new PText(体長.getClsName() + " " + varname2);
 		ageLabel.scale(1.9f);
 		lenLabel.scale(1.9f);
 		ageLabel.offset(10, 15);
@@ -112,7 +112,7 @@ public class Covis_Animal extends Covis_Object {
 		if (!isAuto) {
 			AnimalConstructorDialog dialog = AnimalConstructorDialog.showDialog(
 					buffer.getWindow().frame, this, "Constructor of Animal",
-					"new Animal(age,length);");
+					"new Animal(年齢,体長);");
 			if (dialog.isCanceled()) {
 				this.setVisible(false);
 				return;
@@ -171,7 +171,7 @@ public class Covis_Animal extends Covis_Object {
 
 	@Override
 	public String getConstructorArgs() {
-		return " age,length ";
+		return " 年齢,体長 ";
 	}
 	
 	// メソッド作成
@@ -190,17 +190,17 @@ public class Covis_Animal extends Covis_Object {
 	
 	public static String classdef = "" +
 "public abstract class Animal {\n"+
-"   int age;   //年齢\n"+
-"   int len;   //体長\n"+
+"   int 年齢;  \n"+
+"   int 体長;  \n"+
 "   \n"+
 "   public Animal() {\n"+
-"      age = 40;\n"+
-"      len = 30;\n"+
+"      年齢 = 40;\n"+
+"      体長 = 30;\n"+
 "   }\n"+
 "   \n"+
-"   public Animal(int _age,int _len) {\n"+
-"      age = _age;\n"+
-"      len = _len;\n"+
+"   public Animal(int _年齢,int _体長) {\n"+
+"      年齢 = _年齢;\n"+
+"      体長 = _体長;\n"+
 "   }\n"+
 "   \n"+
 "   public abstract String 鳴く();\n"+
@@ -223,12 +223,12 @@ class AnimalConstructorDialog extends JDialog implements KeyListener {
 			String mes1) {
 		super(p, title, true);
 		parent = p;
-		jtfage = new JTextField(ani.age.getValue());
+		jtfage = new JTextField(ani.年齢.getValue());
 		jtfage.setFont(SrcWindow.sans30);
 		jtfage.setBackground(Covis_int.defaultColor);
 		jtfage.addKeyListener(this);
 
-		jtfbodyLength = new JTextField(ani.len.getValue());
+		jtfbodyLength = new JTextField(ani.体長.getValue());
 		jtfbodyLength.setFont(SrcWindow.sans30);
 		jtfbodyLength.setBackground(Covis_int.defaultColor);
 		jtfbodyLength.addKeyListener(this);
@@ -238,10 +238,10 @@ class AnimalConstructorDialog extends JDialog implements KeyListener {
 
 		JPanel inner = new JPanel();
 		inner.setLayout(new GridLayout(2, 3));
-		inner.add(new JLabelW(ani.age.getClsName()));
+		inner.add(new JLabelW(ani.年齢.getClsName()));
 		inner.add(new JLabelW(ani.varname1));
 		inner.add(jtfage);
-		inner.add(new JLabelW(ani.len.getClsName()));
+		inner.add(new JLabelW(ani.体長.getClsName()));
 		inner.add(new JLabelW(ani.varname2));
 		inner.add(jtfbodyLength);
 
@@ -310,8 +310,8 @@ class AnimalConstructorDialog extends JDialog implements KeyListener {
 				title, mes1);
 		d.setVisible(true);
 		if (d.jtfage != null && d.jtfbodyLength != null){
-			ani.age.setValue(String.valueOf(Integer.parseInt(d.jtfage.getText())));
-			ani.len.setValue(String.valueOf(Integer.parseInt(d.jtfbodyLength.getText())));
+			ani.年齢.setValue(String.valueOf(Integer.parseInt(d.jtfage.getText())));
+			ani.体長.setValue(String.valueOf(Integer.parseInt(d.jtfbodyLength.getText())));
 		}
 		return d;
 	}

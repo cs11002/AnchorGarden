@@ -12,7 +12,7 @@ public class Covis_Bus extends Covis_Car {
 
 	private static final long serialVersionUID = -5292402038866971611L;
 	public static Color defaultColor = new Color(49, 133, 252);
-	public static String varname3 = "passNum";
+	public static String varname3 = "乗車人数";
 
 	public Covis_Bus(CoVisBuffer buf, boolean isAuto) {
 		super(buf, isAuto);
@@ -25,11 +25,11 @@ public class Covis_Bus extends Covis_Car {
 	}
 
 	public String getConstructorInfo() {
-		return "new " + getClsName() + "(" + carValue.value + "," + gasoline.value + ");";
+		return "new " + getClsName() + "(" + 車両価格.value + "," + ガソリン.value + ");";
 	}
 
 	PPath sub;
-	Covis_int passNum;
+	Covis_int 乗車人数;
 	PText passNumLabel;
 	int passNumValue;
 
@@ -52,22 +52,22 @@ public class Covis_Bus extends Covis_Car {
 		sub.addAttribute("tooltip", this);
 
 		// passengerNumの追加
-		passNum = new Covis_int(buffer, isAuto);
-		passNum.addAttribute("moveTarget", this);
-		passNum.addAttribute("tooltip", this);
-		passNum.addAttribute("popupMenu", new ClassVarMenu(varname3,passNum,this));
-		passNum.valueText.addAttribute("moveTarget", this);
-		passNum.valueText.addAttribute("tooltip", this);
-		passNum.valueText.addAttribute("popupMenu", new ClassVarMenu(varname3,passNum,this));
+		乗車人数 = new Covis_int(buffer, isAuto);
+		乗車人数.addAttribute("moveTarget", this);
+		乗車人数.addAttribute("tooltip", this);
+		乗車人数.addAttribute("popupMenu", new ClassVarMenu(varname3,乗車人数,this));
+		乗車人数.valueText.addAttribute("moveTarget", this);
+		乗車人数.valueText.addAttribute("tooltip", this);
+		乗車人数.valueText.addAttribute("popupMenu", new ClassVarMenu(varname3,乗車人数,this));
 		passNumValue = 0;
-		passNum.setValue(String.valueOf(passNumValue));
+		乗車人数.setValue(String.valueOf(passNumValue));
 		// 大きさ位置指定
-		passNum.setScale(0.8f);
-		passNum.offset(140, 130);
-		sub.addChild(passNum);
+		乗車人数.setScale(0.8f);
+		乗車人数.offset(140, 130);
+		sub.addChild(乗車人数);
 		
 		// Labelの表示
-		passNumLabel = new PText(passNum.getClsName() + " " + varname3);
+		passNumLabel = new PText(乗車人数.getClsName() + " " + varname3);
 		passNumLabel.scale(1.9f);
 		passNumLabel.offset(10, 135);
 		passNumLabel.addAttribute("moveTarget", this);
@@ -79,7 +79,7 @@ public class Covis_Bus extends Covis_Car {
 		if (!isAuto) {
 			CarConstructorDialog dialog = CarConstructorDialog.showDialog(
 					buffer.getWindow().frame, this, "Constructor of Bus",
-					"new Bus(carValue,gasoline);");
+					"new Bus(車両価格,ガソリン);");
 			if (dialog.isCanceled()) {
 				this.setVisible(false);
 				return;
@@ -161,18 +161,18 @@ public class Covis_Bus extends Covis_Car {
 
 	@Override
 	public String getConstructorArgs() {
-		return " carValue,gasoline ";
+		return " 車両価格,ガソリン ";
 	}
 	
 	public String covis_乗車する(int num) {
 		passNumValue += num;
-		passNum.setValue(String.valueOf(passNumValue));
+		乗車人数.setValue(String.valueOf(passNumValue));
 		return num + "人乗車しました";
 	}
 	
 	public String covis_降車する(int num) {
 		passNumValue -= num;
-		passNum.setValue(String.valueOf(passNumValue));
+		乗車人数.setValue(String.valueOf(passNumValue));
 		return num + "人降車しました";
 	}
 	
@@ -187,24 +187,24 @@ public class Covis_Bus extends Covis_Car {
 	
 	public static String classdef = "" +
 "public class Bus extends Car {\n"+
-"   int passNum;   //乗車人数\n"+
+"   int 乗車人数;　\n"+
 "   \n"+
 "   public Bus() {\n"+
 "      super();\n"+
 "   }\n"+
 "   \n"+
-"   public Bus(int _carValue,int _gasoline) {\n"+
-"      super(_carValue,_gasoline);\n"+
+"   public Bus(int _車両価格,int _ガソリン) {\n"+
+"      super(_車両価格,_ガソリン);\n"+
 "   }\n"+
 "   \n"+
-"   public String 乗車する(int num){\n"+
-"         passNum += num;\n"+
-"         return num + \"人乗車しました\";\n"+
+"   public String 乗車する(int 人数){\n"+
+"         乗車人数 += 人数;\n"+
+"         return 人数 + \"人乗車しました\";\n"+
 "   }\n"+
 "   \n"+
-"   public String 降車する(int num){\n"+
-"      passNum -= num;\n"+
-"      return num + \"人降車しました\";\n"+
+"   public String 降車する(int 人数){\n"+
+"      乗車人数 -= 人数;\n"+
+"      return 人数 + \"人降車しました\";\n"+
 "   }\n"+
 "}"; 
 }

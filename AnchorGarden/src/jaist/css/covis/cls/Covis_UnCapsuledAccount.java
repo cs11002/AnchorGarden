@@ -25,8 +25,8 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 
 	private static final long serialVersionUID = -8694257030378483023L;
 	public static Color defaultColor = new Color(242, 197, 124);
-	public static String varname1 = "remainder";
-	public static String varname2 = "history";
+	public static String varname1 = "c‚";
+	public static String varname2 = "—š—ğ";
 
 	public Covis_UnCapsuledAccount(CoVisBuffer buf, boolean isAuto) {
 		super(buf, isAuto);
@@ -39,37 +39,37 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 		super(c, buf, isAuto);
 	}
 
-	Covis_int remainder;
+	Covis_int c‚;
 	int remainderValue;
-	VariableM history;
+	VariableM —š—ğ;
 	Covis_Type history_type;
 	PText remainderLabel;
 	PText historyLabel;
 
 	public String getConstructorInfo() {
-		return "new " + getClsName() + "(" + remainder.value + ");";
+		return "new " + getClsName() + "(" + c‚.value + ");";
 	}
 
 	public void init(boolean isAuto) {
 		// –{‘Ì‚Ì‘å‚«‚³w’è
-		setPathToRectangle(0, 0, 220, 120);
+		setPathToRectangle(0, 0, 200, 120);
 		addAttribute("moveTarget", this);
 		addAttribute("tooltip", this);
 
 		// remainder‚Ì’Ç‰Á
-		remainder = new Covis_int(buffer, isAuto,80);
-		remainder.addAttribute("moveTarget", this);
-		remainder.addAttribute("tooltip", this);
-		remainder.addAttribute("popupMenu", new ClassVarMenu(varname1,remainder,this));
-		remainder.valueText.addAttribute("moveTarget", this);
-		remainder.valueText.addAttribute("tooltip", this);
-		remainder.valueText.addAttribute("popupMenu", new ClassVarMenu(varname1,remainder,this));
+		c‚ = new Covis_int(buffer, isAuto,80);
+		c‚.addAttribute("moveTarget", this);
+		c‚.addAttribute("tooltip", this);
+		c‚.addAttribute("popupMenu", new ClassVarMenu(varname1,c‚,this));
+		c‚.valueText.addAttribute("moveTarget", this);
+		c‚.valueText.addAttribute("tooltip", this);
+		c‚.valueText.addAttribute("popupMenu", new ClassVarMenu(varname1,c‚,this));
 		remainderValue = 0;
-		remainder.setValue(String.valueOf(remainderValue));
+		c‚.setValue(String.valueOf(remainderValue));
 		// ‘å‚«‚³ˆÊ’uw’è
-		remainder.setScale(0.8f);
-		remainder.offset(145, 5);
-		addChild(remainder);
+		c‚.setScale(0.8f);
+		c‚.offset(125, 5);
+		addChild(c‚);
 
 		// StringŒ^’Ç‰Á
 		// StringŒ^‚ÌƒNƒ‰ƒXî•ñ‚ğK“¾
@@ -94,18 +94,18 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 			e.printStackTrace();
 		}*/
 		history_type = new Covis_Array(buffer,true,10,"String");
-		history = new VariableM(history_type, null, buffer, "history", this);
+		—š—ğ = new VariableM(history_type, null, buffer, "history", this);
 		// ƒAƒ“ƒJ[“o˜^
-		anchors_member.add(history.anchor);
-		history.addAttribute("moveTarget", this);
-		history.addAttribute("tooltip", this);
+		anchors_member.add(—š—ğ.anchor);
+		—š—ğ.addAttribute("moveTarget", this);
+		—š—ğ.addAttribute("tooltip", this);
 		// ˆÊ’uw’è
-		history.setOffset(155, 75);
-		addChild(history);
-		buffer.putHistoryVar("var", history, false);
+		—š—ğ.setOffset(135, 75);
+		addChild(—š—ğ);
+		buffer.putHistoryVar("var", —š—ğ, false);
 
 		// Label‚Ì•\¦
-		remainderLabel = new PText(remainder.getClsName() + " " + varname1);
+		remainderLabel = new PText(c‚.getClsName() + " " + varname1);
 		historyLabel = new PText(history_type.getClsName() + " " + varname2);
 		remainderLabel.scale(1.8f);
 		historyLabel.scale(1.8f);
@@ -121,7 +121,7 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 		if (!isAuto) {
 			UnCapsuledAccountConstructorDialog dialog = UnCapsuledAccountConstructorDialog.showDialog(
 					buffer.getWindow().frame, this, "Constructor of UnCapsuledAccount",
-					"new UnCapsuledAccount( remainder );");
+					"new UnCapsuledAccount( c‚ );");
 			if (dialog.isCanceled()) {
 				this.setVisible(false);
 				return;
@@ -139,7 +139,7 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 	}
 
 	public void setValue() {
-		remainderValue = Integer.parseInt(remainder.value);
+		remainderValue = Integer.parseInt(c‚.value);
 	}
 	
 	public void createIns() {
@@ -147,7 +147,7 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 		Covis_Array historyIns = (Covis_Array)history_type;
 		// ì¬‚µ‚½String[]Œ^‚ÉƒAƒ“ƒJ[‚ğ‚Â‚¯‚é
 		buffer.objField.addObject(historyIns);
-		historyIns.attach(history.anchor);
+		historyIns.attach(—š—ğ.anchor);
 		historyIns.setOffsetAlignment(this, 200, 150);
 		for(Anchor a:historyIns.anchors_member) {
 			a.srcVariable.setEnabled(true);
@@ -188,14 +188,14 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 
 	@Override
 	public String getConstructorArgs() {
-		return " remainder ";
+		return " c‚ ";
 	}
 
 	// ƒƒ\ƒbƒhì¬
 	public String covis_—a‹à‚·‚é(int value) {
 		if(value % 1000 == 0) {
 			remainderValue += value;
-			remainder.setValue(String.valueOf(remainderValue));
+			c‚.setValue(String.valueOf(remainderValue));
 			covis_—š—ğ“o˜^(value,0);
 			return value + "‰~—a‹à‚µ‚Ü‚µ‚½";
 		}else{
@@ -207,7 +207,7 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 		if(value % 1000 == 0) {
 			if(remainderValue >= value) {
 				remainderValue -= value;
-				remainder.setValue(String.valueOf(remainderValue));
+				c‚.setValue(String.valueOf(remainderValue));
 				covis_—š—ğ“o˜^(value,1);
 				return value + "‰~ˆø‚«o‚µ‚µ‚Ü‚µ‚½";
 			}else{
@@ -231,14 +231,14 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 			newhis.setValues("ˆøo " + value);
 		}
 		buffer.objField.addObject(newhis);
-		Covis_Array a = (Covis_Array)history.anchor.destObject;
+		Covis_Array a = (Covis_Array)—š—ğ.anchor.destObject;
 		for(i=0;i<a.anchors_member.size();i++) {
 			if(a.anchors_member.get(i).destObject == null) {
 				newhis.attach(a.anchors_member.get(i));
 				break;
 			}
 		}
-		newhis.setOffsetAlignment(history.anchor.destObject, 20*i, 60+60*i);
+		newhis.setOffsetAlignment(—š—ğ.anchor.destObject, 20*i, 60+60*i);
 	}
 
 	public String toString() {
@@ -252,35 +252,35 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 	
 	public static String classdef = "" +
 "public class UnCapsuledAccount {\n"+
-"   public int remainder;      //c‚\n"+
-"   public String[] history;   //—š—ğ\n"+
+"   public int c‚;     \n"+
+"   public String[] —š—ğ;\n"+
 "   \n"+
 "   public UnCapsuledAccount() {\n"+
-"      remainder = 0;\n"+
-"      history = new String[10];\n"+
+"      c‚ = 0;\n"+
+"      —š—ğ = new String[10];\n"+
 "   }\n"+
 "   \n"+
-"   public UnCapsuledAccount(int _remainder) {\n"+
-"      remainder = _remainder;\n"+
-"      history = new String[10];\n"+
+"   public UnCapsuledAccount(int _c‚) {\n"+
+"      c‚ = _c‚;\n"+
+"      —š—ğ = new String[10];\n"+
 "   }\n"+
 "   \n"+
-"   public String —a‹à‚·‚é(int value){\n"+
-"      if(value % 1000 == 0) {\n"+
-"         remainder += value;\n"+
-"         —š—ğ“o˜^(value,0);\n"+
-"         return value + \"‰~—a‹à‚µ‚Ü‚µ‚½\";\n"+
+"   public String —a‹à‚·‚é(int ‹àŠz){\n"+
+"      if(‹àŠz % 1000 == 0) {\n"+
+"         c‚ += ‹àŠz;\n"+
+"         —š—ğ“o˜^(‹àŠz,0);\n"+
+"         return ‹àŠz + \"‰~—a‹à‚µ‚Ü‚µ‚½\";\n"+
 "      }else{\n"+
 "         return \"1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\";\n"+
 "      }\n"+
 "   }\n"+
 "   \n"+
-"   public String ˆø‚«o‚·(int value){\n"+
-"      if(value % 1000 == 0) {\n"+
-"         if(remainder >= value){\n"+
-"            remainder -= value;\n"+
-"            —š—ğ“o˜^(value,1);\n"+
-"            return value + \"‰~ˆø‚«o‚µ‚µ‚Ü‚µ‚½\";\n"+
+"   public String ˆø‚«o‚·(int ‹àŠz){\n"+
+"      if(‹àŠz % 1000 == 0) {\n"+
+"         if(c‚ >= ‹àŠz){\n"+
+"            c‚ -= ‹àŠz;\n"+
+"            —š—ğ“o˜^(‹àŠz,1);\n"+
+"            return ‹àŠz + \"‰~ˆø‚«o‚µ‚µ‚Ü‚µ‚½\";\n"+
 "         }else{\n"+
 "            return \"c‚‚ª‘«‚è‚Ü‚¹‚ñ\";\n"+
 "         }\n"+
@@ -290,17 +290,17 @@ public class Covis_UnCapsuledAccount extends Covis_Object {
 "   }\n"+
 "   \n"+
 "   public String c‚Æ‰ï(){\n"+
-"      return \"c‚‚Í\"@+ value + \"‰~‚Å‚·\" ;\n"+
+"      return \"c‚‚Í\"@+ c‚ + \"‰~‚Å‚·\" ;\n"+
 "   }\n"+
 "   \n"+
-"   public void —š—ğ“o˜^(int value,int type) {\n"+
+"   public void —š—ğ“o˜^(int ‹àŠz,int í—Ş) {\n"+
 "      int i;\n"+
-"      for(i=0,i<history.length;i++){\n"+
-"         if(history[i] == null){\n"+
-"            if(type == 0){\n"+
-"               history[i] = \"—a‹à \" + value;\n"+
+"      for(i=0,i<—š—ğ.length;i++){\n"+
+"         if(—š—ğ[i] == null){\n"+
+"            if(í—Ş == 0){\n"+
+"               —š—ğ[i] = \"—a‹à \" + ‹àŠz;\n"+
 "            }else{\n"+
-"               history[i] = \"ˆøo \" + value;\n"+
+"               —š—ğ[i] = \"ˆøo \" + ‹àŠz;\n"+
 "            }\n"+
 "            break;\n"+
 "         }\n"+
@@ -326,7 +326,7 @@ class UnCapsuledAccountConstructorDialog extends JDialog implements KeyListener 
 			String mes1) {
 		super(p, title, true);
 		parent = p;
-		jtfremainder = new JTextField(acc.remainder.getValue());
+		jtfremainder = new JTextField(acc.c‚.getValue());
 		jtfremainder.setFont(SrcWindow.sans30);
 		jtfremainder.setBackground(Covis_int.defaultColor);
 		jtfremainder.addKeyListener(this);
@@ -336,7 +336,7 @@ class UnCapsuledAccountConstructorDialog extends JDialog implements KeyListener 
 
 		JPanel inner = new JPanel();
 		inner.setLayout(new GridLayout(1, 3));
-		inner.add(new JLabelW(acc.remainder.getClsName()));
+		inner.add(new JLabelW(acc.c‚.getClsName()));
 		inner.add(new JLabelW(acc.varname1));
 		inner.add(jtfremainder);
 
@@ -345,7 +345,7 @@ class UnCapsuledAccountConstructorDialog extends JDialog implements KeyListener 
 		ok = new JButton("ok");
 		getContentPane().add(ok, BorderLayout.SOUTH);
 		// pack();
-		setSize(350, 120);
+		setSize(380, 120);
 		setLocation(p.getLocation().x + (p.getWidth() - this.getWidth()) / 2,
 				p.getLocation().y + (p.getHeight() - this.getHeight()) / 2);
 
@@ -394,7 +394,7 @@ class UnCapsuledAccountConstructorDialog extends JDialog implements KeyListener 
 				title, mes1);
 		d.setVisible(true);
 		if (d.jtfremainder != null){
-			acc.remainder.setValue(String.valueOf(Integer.parseInt(d.jtfremainder.getText())));
+			acc.c‚.setValue(String.valueOf(Integer.parseInt(d.jtfremainder.getText())));
 			acc.remainderValue = Integer.parseInt(d.jtfremainder.getText());
 		}
 		return d;

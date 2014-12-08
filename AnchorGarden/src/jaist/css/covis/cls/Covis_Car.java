@@ -26,8 +26,8 @@ public class Covis_Car extends Covis_Object {
 
 	private static final long serialVersionUID = -4624235387919516738L;
 	public static Color defaultColor = new Color(173, 189, 255);
-	public static String varname1 = "carValue";
-	public static String varname2 = "gasoline";
+	public static String varname1 = "Ô—¼‰¿Ši";
+	public static String varname2 = "ƒKƒ\ƒŠƒ“";
 
 	public Covis_Car(CoVisBuffer buf, boolean isAuto) {
 		super(buf, isAuto);
@@ -40,15 +40,15 @@ public class Covis_Car extends Covis_Object {
 		super(c, buf, isAuto);
 	}
 
-	Covis_int carValue;
-	Covis_int gasoline;
+	Covis_int Ô—¼‰¿Ši;
+	Covis_int ƒKƒ\ƒŠƒ“;
 	int gasolineValue;
 	PText carValueLabel;
 	PText gasolineLabel;
 	PPath sup;
 
 	public String getConstructorInfo() {
-		return "new " + getClsName() + "(" + carValue.value + "," + gasoline.value + ");";
+		return "new " + getClsName() + "(" + Ô—¼‰¿Ši.value + "," + ƒKƒ\ƒŠƒ“.value + ");";
 	}
 
 	public void init(boolean isAuto) {
@@ -67,37 +67,37 @@ public class Covis_Car extends Covis_Object {
 		sup.addAttribute("tooltip", this);
 
 		// carValue‚Ì’Ç‰Á
-		carValue = new Covis_int(buffer, isAuto);
-		carValue.addAttribute("moveTarget", this);
-		carValue.addAttribute("tooltip", this);
-		carValue.addAttribute("popupMenu", new ClassVarMenu(varname1,carValue,this));
-		carValue.valueText.addAttribute("moveTarget", this);
-		carValue.valueText.addAttribute("tooltip", this);
-		carValue.valueText.addAttribute("popupMenu", new ClassVarMenu(varname1,carValue,this));
-		carValue.setValue("40");
+		Ô—¼‰¿Ši = new Covis_int(buffer, isAuto);
+		Ô—¼‰¿Ši.addAttribute("moveTarget", this);
+		Ô—¼‰¿Ši.addAttribute("tooltip", this);
+		Ô—¼‰¿Ši.addAttribute("popupMenu", new ClassVarMenu(varname1,Ô—¼‰¿Ši,this));
+		Ô—¼‰¿Ši.valueText.addAttribute("moveTarget", this);
+		Ô—¼‰¿Ši.valueText.addAttribute("tooltip", this);
+		Ô—¼‰¿Ši.valueText.addAttribute("popupMenu", new ClassVarMenu(varname1,Ô—¼‰¿Ši,this));
+		Ô—¼‰¿Ši.setValue("40");
 		// ‘å‚«‚³ˆÊ’uw’è
-		carValue.setScale(0.8f);
-		carValue.offset(140, 10);
-		sup.addChild(carValue);
+		Ô—¼‰¿Ši.setScale(0.8f);
+		Ô—¼‰¿Ši.offset(140, 10);
+		sup.addChild(Ô—¼‰¿Ši);
 
 		// gasoline‚Ì’Ç‰Á
-		gasoline = new Covis_int(buffer, isAuto);
-		gasoline.addAttribute("moveTarget", this);
-		gasoline.addAttribute("tooltip", this);
-		gasoline.addAttribute("popupMenu", new ClassVarMenu(varname2,gasoline,this));
-		gasoline.valueText.addAttribute("moveTarget", this);
-		gasoline.valueText.addAttribute("tooltip", this);
-		gasoline.valueText.addAttribute("popupMenu", new ClassVarMenu(varname2,gasoline,this));
+		ƒKƒ\ƒŠƒ“ = new Covis_int(buffer, isAuto);
+		ƒKƒ\ƒŠƒ“.addAttribute("moveTarget", this);
+		ƒKƒ\ƒŠƒ“.addAttribute("tooltip", this);
+		ƒKƒ\ƒŠƒ“.addAttribute("popupMenu", new ClassVarMenu(varname2,ƒKƒ\ƒŠƒ“,this));
+		ƒKƒ\ƒŠƒ“.valueText.addAttribute("moveTarget", this);
+		ƒKƒ\ƒŠƒ“.valueText.addAttribute("tooltip", this);
+		ƒKƒ\ƒŠƒ“.valueText.addAttribute("popupMenu", new ClassVarMenu(varname2,ƒKƒ\ƒŠƒ“,this));
 		gasolineValue = 30;
-		gasoline.setValue(String.valueOf(gasolineValue));
+		ƒKƒ\ƒŠƒ“.setValue(String.valueOf(gasolineValue));
 		// ‘å‚«‚³ˆÊ’uw’è
-		gasoline.setScale(0.8f);
-		gasoline.offset(140, 70);
-		sup.addChild(gasoline);
+		ƒKƒ\ƒŠƒ“.setScale(0.8f);
+		ƒKƒ\ƒŠƒ“.offset(140, 70);
+		sup.addChild(ƒKƒ\ƒŠƒ“);
 
 		// Label‚Ì•\¦
-		carValueLabel = new PText(carValue.getClsName() + " " + varname1);
-		gasolineLabel = new PText(gasoline.getClsName() + " " + varname2);
+		carValueLabel = new PText(Ô—¼‰¿Ši.getClsName() + " " + varname1);
+		gasolineLabel = new PText(ƒKƒ\ƒŠƒ“.getClsName() + " " + varname2);
 		carValueLabel.scale(1.9f);
 		gasolineLabel.scale(1.9f);
 		carValueLabel.offset(10, 15);
@@ -114,7 +114,7 @@ public class Covis_Car extends Covis_Object {
 		if (!isAuto) {
 			CarConstructorDialog dialog = CarConstructorDialog.showDialog(
 					buffer.getWindow().frame, this, "Constructor of Car",
-					"new Car(carValue,gasoline);");
+					"new Car(Ô—¼‰¿Ši,ƒKƒ\ƒŠƒ“);");
 			if (dialog.isCanceled()) {
 				this.setVisible(false);
 				return;
@@ -173,7 +173,7 @@ public class Covis_Car extends Covis_Object {
 
 	@Override
 	public String getConstructorArgs() {
-		return " carValue,gasoline ";
+		return " Ô—¼‰¿Ši,ƒKƒ\ƒŠƒ“ ";
 	}
 	
 	// ƒƒ\ƒbƒhì¬
@@ -182,14 +182,14 @@ public class Covis_Car extends Covis_Object {
 			return "ƒKƒ\ƒŠƒ“‚ª‘«‚è‚Ü‚¹‚ñ";
 		}else{
 			gasolineValue -= 5;
-			gasoline.setValue(String.valueOf(gasolineValue));
+			ƒKƒ\ƒŠƒ“.setValue(String.valueOf(gasolineValue));
 			return "ƒKƒ\ƒŠƒ“‚ğ5Á”ï";
 		}
 	}
 
 	public String covis_‹‹–û‚·‚é(int value) {
 		gasolineValue += value;
-		gasoline.setValue(String.valueOf(gasolineValue));
+		ƒKƒ\ƒŠƒ“.setValue(String.valueOf(gasolineValue));
 		return "‹‹–û‚µ‚Ü‚µ‚½";
 	}
 
@@ -204,30 +204,30 @@ public class Covis_Car extends Covis_Object {
 	
 	public static String classdef = "" +
 "public class Car {\n"+
-"   int carValue;   //Ô—¼‰¿Ši\n"+
-"   int gasoline;   //ƒKƒ\ƒŠƒ“‚Ìc—Ê\n"+
+"   int Ô—¼‰¿Ši; \n"+
+"   int ƒKƒ\ƒŠƒ“;   \n"+
 "   \n"+
 "   public Car() {\n"+
-"      carValue = 40;\n"+
-"      gasoline = 30;\n"+
+"      Ô—¼‰¿Ši = 40;\n"+
+"      ƒKƒ\ƒŠƒ“ = 30;\n"+
 "   }\n"+
 "   \n"+
-"   public Car(int _carValue,int _gasoline) {\n"+
-"      carValue = _carValue;\n"+
-"      gasoline = _gasoline;\n"+
+"   public Car(int _Ô—¼‰¿Ši,int _ƒKƒ\ƒŠƒ“) {\n"+
+"      Ô—¼‰¿Ši = _Ô—¼‰¿Ši;\n"+
+"      ƒKƒ\ƒŠƒ“ = _ƒKƒ\ƒŠƒ“;\n"+
 "   }\n"+
 "   \n"+
 "   public String ‘–s‚·‚é(){\n"+
-"      if (gasoline < 5) {\n"+
+"      if (ƒKƒ\ƒŠƒ“ < 5) {\n"+
 "         return \"ƒKƒ\ƒŠƒ“‚ª‘«‚è‚Ü‚¹‚ñ\";\n"+
 "      } else {\n"+
-"         gasoline -= 5;\n"+
+"         ƒKƒ\ƒŠƒ“ -= 5;\n"+
 "         return \"ƒKƒ\ƒŠƒ“‚ğ5Á”ï\";\n"+
 "      }\n"+
 "   }\n"+
 "   \n"+
-"   public String ‹‹–û‚·‚é(int value){\n"+
-"      gasoline += value;\n"+
+"   public String ‹‹–û‚·‚é(int ‹‹–û—Ê){\n"+
+"      ƒKƒ\ƒŠƒ“ += ‹‹–û—Ê;\n"+
 "      return \"‹‹–û‚µ‚Ü‚µ‚½\";\n"+
 "   }\n"+
 "}"; 
@@ -250,12 +250,12 @@ class CarConstructorDialog extends JDialog implements KeyListener {
 			String mes1) {
 		super(p, title, true);
 		parent = p;
-		jtfcarValue = new JTextField(car.carValue.getValue());
+		jtfcarValue = new JTextField(car.Ô—¼‰¿Ši.getValue());
 		jtfcarValue.setFont(SrcWindow.sans30);
 		jtfcarValue.setBackground(Covis_int.defaultColor);
 		jtfcarValue.addKeyListener(this);
 
-		jtfgasoline = new JTextField(car.gasoline.getValue());
+		jtfgasoline = new JTextField(car.ƒKƒ\ƒŠƒ“.getValue());
 		jtfgasoline.setFont(SrcWindow.sans30);
 		jtfgasoline.setBackground(Covis_int.defaultColor);
 		jtfgasoline.addKeyListener(this);
@@ -265,10 +265,10 @@ class CarConstructorDialog extends JDialog implements KeyListener {
 
 		JPanel inner = new JPanel();
 		inner.setLayout(new GridLayout(2, 3));
-		inner.add(new JLabelW(car.carValue.getClsName()));
+		inner.add(new JLabelW(car.Ô—¼‰¿Ši.getClsName()));
 		inner.add(new JLabelW(car.varname1));
 		inner.add(jtfcarValue);
-		inner.add(new JLabelW(car.gasoline.getClsName()));
+		inner.add(new JLabelW(car.ƒKƒ\ƒŠƒ“.getClsName()));
 		inner.add(new JLabelW(car.varname2));
 		inner.add(jtfgasoline);
 
@@ -337,8 +337,8 @@ class CarConstructorDialog extends JDialog implements KeyListener {
 				title, mes1);
 		d.setVisible(true);
 		if (d.jtfcarValue != null && d.jtfgasoline != null){
-			car.carValue.setValue(String.valueOf(Integer.parseInt(d.jtfcarValue.getText())));
-			car.gasoline.setValue(String.valueOf(Integer.parseInt(d.jtfgasoline.getText())));
+			car.Ô—¼‰¿Ši.setValue(String.valueOf(Integer.parseInt(d.jtfcarValue.getText())));
+			car.ƒKƒ\ƒŠƒ“.setValue(String.valueOf(Integer.parseInt(d.jtfgasoline.getText())));
 			car.gasolineValue = Integer.parseInt(d.jtfgasoline.getText());
 		}
 		return d;

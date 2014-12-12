@@ -120,7 +120,7 @@ public class VariableMenu extends JPopupMenu implements FramePopup {
 						//System.out.println("mname2 " +mname2);
 						String mname3 = mname2.replaceAll("covis\\_", "");
 						//System.out.println("mname3 "+mname3);
-						
+
 						//２つめのスペースから，.までを削除
 						int lastspcPos = mname3.lastIndexOf(" ");
 						int lastdotPos = mname3.lastIndexOf(".");

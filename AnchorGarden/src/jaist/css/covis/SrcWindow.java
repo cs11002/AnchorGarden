@@ -237,20 +237,23 @@ public class SrcWindow extends JFrame implements ActionListener {
 		tab.removeAll();
 		tab.addTab("(operation code)", scroll);
 		switch (type) {
-		case 1:
+		case CoVisBuffer.ADVANCEMODE:
 			tab.addTab("class Frac", new JScrollPane(tabValue.get(0)));
 			tab.addTab("class BTree", new JScrollPane(tabValue.get(1)));
 			break;
-		case 3:
+		case CoVisBuffer.NOMALMODE:
+			tab.addTab("class Car", new JScrollPane(tabValue.get(2)));
+			break;
+		case CoVisBuffer.OOP_INHERMODE:
 			tab.addTab("class Car", new JScrollPane(tabValue.get(2)));
 			tab.addTab("class Bus", new JScrollPane(tabValue.get(3)));
 			tab.addTab("class Truck", new JScrollPane(tabValue.get(4)));
 			break;
-		case 4:
+		case CoVisBuffer.OOP_CAPSMODE:
 			tab.addTab("class CapsuledAccount", new JScrollPane(tabValue.get(5)));
 			tab.addTab("class UnCapsuledAccount", new JScrollPane(tabValue.get(6)));
 			break;
-		case 5:
+		case CoVisBuffer.OOP_POLYMODE:
 			tab.addTab("class Animal", new JScrollPane(tabValue.get(7)));
 			tab.addTab("class Dog", new JScrollPane(tabValue.get(8)));
 			tab.addTab("class Cat", new JScrollPane(tabValue.get(9)));

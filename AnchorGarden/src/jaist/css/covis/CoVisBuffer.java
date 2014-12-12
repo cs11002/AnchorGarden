@@ -80,6 +80,14 @@ public class CoVisBuffer extends RootBuffer {
 	public static final Color ulinkcolor = new Color(255,200,200);
 	public static final Color varcolor = new Color(140,200,255);
 	public static final Color methodcolor = new Color(255,250,255);
+	
+	public static final int NOVICEMODE = 0;
+	public static final int NOMALMODE = 1;
+	public static final int OOP_INHERMODE = 2;
+	public static final int OOP_CAPSMODE = 3;
+	public static final int OOP_POLYMODE = 4;
+	public static final int ADVANCEMODE = 5;
+	public static final int CLASSMODE = 6;
 
 	/**
 	 * Log4J
@@ -321,7 +329,7 @@ public class CoVisBuffer extends RootBuffer {
 
 
 
-		advancedClass = new ArrayList[6];
+		advancedClass = new ArrayList[7];
 		for(int i=0;i<advancedClass.length; i++){
 			advancedClass[i] = new ArrayList<ClassStamp>();
 		}
@@ -330,17 +338,17 @@ public class CoVisBuffer extends RootBuffer {
 		//初級クラス
 		//int追加（配列も）
 		newP = new ClassStamp(new Covis_int(this,true) ,this);
-		advancedClass[0].add(newP);
+		advancedClass[NOVICEMODE].add(newP);
 		clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"int") ,this);
-		advancedClass[0].add(newP);
+		advancedClass[NOVICEMODE].add(newP);
 		clsField.addChild(newP);
 		//String追加（配列も）
 		newP = new ClassStamp(new Covis_String(this,true) ,this);
-		advancedClass[0].add(newP);
+		advancedClass[NOVICEMODE].add(newP);
 		clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"String") ,this);
-		advancedClass[0].add(newP);
+		advancedClass[NOVICEMODE].add(newP);
 		clsField.addChild(newP);
 		//char追加（配列も）
 		/*
@@ -355,17 +363,17 @@ public class CoVisBuffer extends RootBuffer {
 		//中級クラス
 		//Frac追加（配列も）
 		newP = new ClassStamp(new Covis_Frac(this,true) ,this);
-		advancedClass[1].add(newP);
+		advancedClass[ADVANCEMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Frac"), this);
-		advancedClass[1].add(newP);
+		advancedClass[ADVANCEMODE].add(newP);
 		//clsField.addChild(newP);
 		//BTree追加（配列も）
 		newP = new ClassStamp(new Covis_BTree(this,true) ,this);
-		advancedClass[1].add(newP);
+		advancedClass[ADVANCEMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"BTree"), this);
-		advancedClass[1].add(newP);
+		advancedClass[ADVANCEMODE].add(newP);
 		//clsField.addChild(newP);
 		//Random追加(配列も)
 		/*
@@ -397,54 +405,55 @@ public class CoVisBuffer extends RootBuffer {
 		//上級クラス
 		//Object追加（配列も）
 		newP = new ClassStamp(new Covis_Object(this,true) ,this);
-		advancedClass[2].add(newP);
+		advancedClass[CLASSMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Object") ,this);
-		advancedClass[2].add(newP);
+		advancedClass[CLASSMODE].add(newP);
 		//clsField.addChild(newP);
 		//Oval追加（配列も）
 		newP = new ClassStamp(new Covis_Oval(this,true) ,this);
-		advancedClass[2].add(newP);
+		advancedClass[CLASSMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Oval") ,this);
-		advancedClass[2].add(newP);
+		advancedClass[CLASSMODE].add(newP);
 		//clsField.addChild(newP);
 		//Rect追加（配列も）
 		newP = new ClassStamp(new Covis_Rect(this,true) ,this);
-		advancedClass[2].add(newP);
+		advancedClass[CLASSMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Rect") ,this);
-		advancedClass[2].add(newP);
+		advancedClass[CLASSMODE].add(newP);
 		//clsField.addChild(newP);
 
 
 		//具体例クラス
 		newP = new ClassStamp(new Covis_Car(this,true), this);
-		advancedClass[3].add(newP);
+		advancedClass[OOP_INHERMODE].add(newP);
+		advancedClass[NOMALMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Bus(this,true), this);
-		advancedClass[3].add(newP);
+		advancedClass[OOP_INHERMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Truck(this,true), this);
-		advancedClass[3].add(newP);
+		advancedClass[OOP_INHERMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_UnCapAccount(this,true), this);
-		advancedClass[4].add(newP);
+		advancedClass[OOP_CAPSMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_CapAccount(this,true), this);
-		advancedClass[4].add(newP);
+		advancedClass[OOP_CAPSMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Animal(this,true), this);
-		advancedClass[5].add(newP);
+		advancedClass[OOP_POLYMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Array(this,true,"Animal"), this);
-		advancedClass[5].add(newP);
+		advancedClass[OOP_POLYMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Dog(this,true), this);
-		advancedClass[5].add(newP);
+		advancedClass[OOP_POLYMODE].add(newP);
 		//clsField.addChild(newP);
 		newP = new ClassStamp(new Covis_Cat(this,true), this);
-		advancedClass[5].add(newP);
+		advancedClass[OOP_POLYMODE].add(newP);
 		//clsField.addChild(newP);
 
 		// 存在しない

@@ -18,12 +18,12 @@ public class ClassVarMenu extends JPopupMenu implements FramePopup {
 	Covis_Object obj;
 	String varname;
 	JFrame f;
-	
+
 	public ClassVarMenu(String _varname, Covis_primitive _v,Covis_Object _obj){
 		this.v = _v;
 		this.obj = _obj;
 		this.varname = _varname;
-		
+
 		JMenuItem menuItem;
 
 		setLightWeightPopupEnabled(false);
@@ -32,29 +32,33 @@ public class ClassVarMenu extends JPopupMenu implements FramePopup {
 		add(menuItem);
 
 		addSeparator();
-		menuItem = new JMenuItem("edit value");
-		add(menuItem);
-		
-		menuItem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String input;
-				input = JOptionPane.showInputDialog(f, "Input Value", v.getValue());
-				if (input == null) return;
-				if (!v.setValue(input)){
-					JOptionPane.showMessageDialog(f,"Value is not accepted.","Error",JOptionPane.WARNING_MESSAGE);
-					return;
-				}
-				v.buffer.putHistoryEditClassValue(varname,v,obj); //変更したらソースコードに追加
-				if(obj instanceof Covis_UnCapAccount) {
-					((Covis_UnCapAccount)obj).setValue();
-				}
-				Informer.playSound("Pop.wav");
-			}
-		});
+
 	}
-	
+
 	public void showWithFrame(Component c, int x, int y, JFrame _f) {
 		f = _f;
+
+		if(obj.anchors_incoming.size()>0 ) {
+			JMenuItem menuItem = new JMenuItem("edit value");
+			add(menuItem);
+
+			menuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String input;
+					input = JOptionPane.showInputDialog(f, "Input Value", v.getValue());
+					if (input == null) return;
+					if (!v.setValue(input)){
+						JOptionPane.showMessageDialog(f,"Value is not accepted.","Error",JOptionPane.WARNING_MESSAGE);
+						return;
+					}
+					v.buffer.putHistoryEditClassValue(varname,v,obj); //変更したらソースコードに追加
+					if(obj instanceof Covis_UnCapAccount) {
+						((Covis_UnCapAccount)obj).setValue();
+					}
+					Informer.playSound("Pop.wav");
+				}
+			});
+		}
 		show(c, x, y);
 	}
 }

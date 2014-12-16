@@ -68,7 +68,8 @@ public class Covis_primitive extends Covis_Type implements ToolTipProvider, ToFr
 		vh = valueText.getHeight();
 		double x = (getWidth()-vw)/2;
 		double y = (getHeight()-vh)/2;
-		valueText.setOffset(x+valueTextOffset,y);
+		//valueText.setOffset(x+valueTextOffset,y);
+		valueText.setOffset(5,y);
 	}
 	public String value;
 	public boolean setValue(String s){

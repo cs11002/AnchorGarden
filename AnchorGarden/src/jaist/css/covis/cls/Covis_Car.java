@@ -53,42 +53,42 @@ public class Covis_Car extends Covis_Object {
 
 	public void init(boolean isAuto) {
 		// –{‘Ì‚Ì‘å‚«‚³w’è
-		setPathToRectangle(0, 0, 180, 120);
+		setPathToRectangle(0, 0, 190, 120);
 		addAttribute("moveTarget", this);
 		addAttribute("tooltip", this);
 
 		// supì¬
 		sup = new PPath();
 		// ‘å‚«‚³EŒ`w’è
-		sup.setPathToRectangle(0, 0, 180, 120);
+		sup.setPathToRectangle(0, 0, 190, 120);
 		sup.setPaint( new Color(173, 189, 255));
 		sup.setStroke(basicStroke);
 		sup.addAttribute("moveTarget", this);
 		sup.addAttribute("tooltip", this);
 
 		// carValue‚Ì’Ç‰Á
-		Ô—¼‰¿Ši = new Covis_int(buffer, isAuto);
+		Ô—¼‰¿Ši = new Covis_int(buffer, isAuto,50);
 		Ô—¼‰¿Ši.addAttribute("moveTarget", this);
 		Ô—¼‰¿Ši.addAttribute("tooltip", this);
 		Ô—¼‰¿Ši.addAttribute("popupMenu", new ClassVarMenu(varname1,Ô—¼‰¿Ši,this));
 		Ô—¼‰¿Ši.valueText.addAttribute("moveTarget", this);
 		Ô—¼‰¿Ši.valueText.addAttribute("tooltip", this);
 		Ô—¼‰¿Ši.valueText.addAttribute("popupMenu", new ClassVarMenu(varname1,Ô—¼‰¿Ši,this));
-		Ô—¼‰¿Ši.setValue("40");
+		Ô—¼‰¿Ši.setValue("90");
 		// ‘å‚«‚³ˆÊ’uw’è
 		Ô—¼‰¿Ši.setScale(0.8f);
 		Ô—¼‰¿Ši.offset(140, 10);
 		sup.addChild(Ô—¼‰¿Ši);
 
 		// gasoline‚Ì’Ç‰Á
-		ƒKƒ\ƒŠƒ“ = new Covis_int(buffer, isAuto);
+		ƒKƒ\ƒŠƒ“ = new Covis_int(buffer, isAuto,50);
 		ƒKƒ\ƒŠƒ“.addAttribute("moveTarget", this);
 		ƒKƒ\ƒŠƒ“.addAttribute("tooltip", this);
 		ƒKƒ\ƒŠƒ“.addAttribute("popupMenu", new ClassVarMenu(varname2,ƒKƒ\ƒŠƒ“,this));
 		ƒKƒ\ƒŠƒ“.valueText.addAttribute("moveTarget", this);
 		ƒKƒ\ƒŠƒ“.valueText.addAttribute("tooltip", this);
 		ƒKƒ\ƒŠƒ“.valueText.addAttribute("popupMenu", new ClassVarMenu(varname2,ƒKƒ\ƒŠƒ“,this));
-		gasolineValue = 30;
+		gasolineValue = 40;
 		ƒKƒ\ƒŠƒ“.setValue(String.valueOf(gasolineValue));
 		// ‘å‚«‚³ˆÊ’uw’è
 		ƒKƒ\ƒŠƒ“.setScale(0.8f);
@@ -208,8 +208,8 @@ public class Covis_Car extends Covis_Object {
 "   int ƒKƒ\ƒŠƒ“;   \n"+
 "   \n"+
 "   public Car() {\n"+
-"      Ô—¼‰¿Ši = 40;\n"+
-"      ƒKƒ\ƒŠƒ“ = 30;\n"+
+"      Ô—¼‰¿Ši = 90;\n"+
+"      ƒKƒ\ƒŠƒ“ = 40;\n"+
 "   }\n"+
 "   \n"+
 "   public Car(int _Ô—¼‰¿Ši,int _ƒKƒ\ƒŠƒ“) {\n"+

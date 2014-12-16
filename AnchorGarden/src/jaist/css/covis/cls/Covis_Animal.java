@@ -66,31 +66,31 @@ public class Covis_Animal extends Covis_Object {
 		sup.addAttribute("tooltip", this);
 
 		// ageの追加
-		年齢 = new Covis_int(buffer, isAuto);
+		年齢 = new Covis_int(buffer, isAuto,50);
 		年齢.addAttribute("moveTarget", this);
 		年齢.addAttribute("tooltip", this);
 		年齢.addAttribute("popupMenu", new ClassVarMenu(varname1,年齢,this));
 		年齢.valueText.addAttribute("moveTarget", this);
 		年齢.valueText.addAttribute("tooltip", this);
 		年齢.valueText.addAttribute("popupMenu", new ClassVarMenu(varname1,年齢,this));
-		年齢.setValue("40");
+		年齢.setValue("12");
 		// 大きさ位置指定
 		年齢.setScale(0.8f);
-		年齢.offset(120, 10);
+		年齢.offset(110, 10);
 		sup.addChild(年齢);
 
 		// bodyLengthの追加
-		体長 = new Covis_int(buffer, isAuto);
+		体長 = new Covis_int(buffer, isAuto,50);
 		体長.addAttribute("moveTarget", this);
 		体長.addAttribute("tooltip", this);
 		体長.addAttribute("popupMenu", new ClassVarMenu(varname2,体長,this));
 		体長.valueText.addAttribute("moveTarget", this);
 		体長.valueText.addAttribute("tooltip", this);
 		体長.valueText.addAttribute("popupMenu", new ClassVarMenu(varname2,体長,this));
-		体長.setValue("30");
+		体長.setValue("25");
 		// 大きさ位置指定
 		体長.setScale(0.8f);
-		体長.offset(120, 70);
+		体長.offset(110, 70);
 		sup.addChild(体長);
 
 		// Labelの表示
@@ -194,8 +194,8 @@ public class Covis_Animal extends Covis_Object {
 "   int 体長;  \n"+
 "   \n"+
 "   public Animal() {\n"+
-"      年齢 = 40;\n"+
-"      体長 = 30;\n"+
+"      年齢 = 12;\n"+
+"      体長 = 25;\n"+
 "   }\n"+
 "   \n"+
 "   public Animal(int _年齢,int _体長) {\n"+

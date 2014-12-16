@@ -38,21 +38,21 @@ public class Covis_Truck extends Covis_Car {
 		super.init(true);
 
 		// –{‘Ì‚Ì‘å‚«‚³w’è
-		setPathToRectangle(0, 0, 180, 180);
+		setPathToRectangle(0, 0, 190, 180);
 		addAttribute("moveTarget", this);
 		addAttribute("tooltip", this);
 
 		// supì¬
 		sub = new PPath();
 		// ‘å‚«‚³EŒ`w’è
-		sub.setPathToRectangle(0, 120, 180, 60);
+		sub.setPathToRectangle(0, 120, 190, 60);
 		sub.setPaint(color);
 		sub.setStroke(basicStroke);
 		sub.addAttribute("moveTarget", this);
 		sub.addAttribute("tooltip", this);
 
 		// loadage‚Ì’Ç‰Á
-		ÏÚ—Ê = new Covis_int(buffer, isAuto);
+		ÏÚ—Ê = new Covis_int(buffer, isAuto,50);
 		ÏÚ—Ê.addAttribute("moveTarget", this);
 		ÏÚ—Ê.addAttribute("tooltip", this);
 		ÏÚ—Ê.addAttribute("popupMenu", new ClassVarMenu(varname3,ÏÚ—Ê,this));
@@ -75,6 +75,10 @@ public class Covis_Truck extends Covis_Car {
 		sub.addChild(loadageLabel);
 		
 		addChild(sub);
+		
+		Ô—¼‰¿Ši.setValue("500");
+		gasolineValue = 300;
+		ƒKƒ\ƒŠƒ“.setValue(String.valueOf(gasolineValue));
 		
 		if (!isAuto) {
 			CarConstructorDialog dialog = CarConstructorDialog.showDialog(
@@ -191,7 +195,8 @@ public class Covis_Truck extends Covis_Car {
 "   int ÏÚ—Ê;  \n"+
 "   \n"+
 "   public Truck() {\n"+
-"      super();\n"+
+"      Ô—¼‰¿Ši = 500;\n"+
+"      ƒKƒ\ƒŠƒ“ = 300;\n"+
 "   }\n"+
 "   \n"+
 "   public Truck(int _Ô—¼‰¿Ši,int _ƒKƒ\ƒŠƒ“) {\n"+

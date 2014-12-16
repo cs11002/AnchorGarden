@@ -52,23 +52,23 @@ public class Covis_UnCapAccount extends Covis_Object {
 
 	public void init(boolean isAuto) {
 		// 本体の大きさ指定
-		setPathToRectangle(0, 0, 200, 120);
+		setPathToRectangle(0, 0, 190, 120);
 		addAttribute("moveTarget", this);
 		addAttribute("tooltip", this);
 
 		// remainderの追加
-		残高 = new Covis_int(buffer, isAuto,80);
+		残高 = new Covis_int(buffer, isAuto,90);
 		残高.addAttribute("moveTarget", this);
 		残高.addAttribute("tooltip", this);
 		残高.addAttribute("popupMenu", new ClassVarMenu(varname1,残高,this));
 		残高.valueText.addAttribute("moveTarget", this);
 		残高.valueText.addAttribute("tooltip", this);
 		残高.valueText.addAttribute("popupMenu", new ClassVarMenu(varname1,残高,this));
-		remainderValue = 0;
+		remainderValue = 10000;
 		残高.setValue(String.valueOf(remainderValue));
 		// 大きさ位置指定
 		残高.setScale(0.8f);
-		残高.offset(125, 5);
+		残高.offset(105, 10);
 		addChild(残高);
 
 		// String型追加
@@ -192,6 +192,7 @@ public class Covis_UnCapAccount extends Covis_Object {
 	}
 
 	// メソッド作成
+	/*
 	public String covis_預金する(int value) {
 		if(value % 1000 == 0) {
 			remainderValue += value;
@@ -217,7 +218,7 @@ public class Covis_UnCapAccount extends Covis_Object {
 			return "1000円単位で入力してください";
 		}
 	}
-	
+	*/
 	public String covis_残高照会() {
 		return "残高は" + remainderValue + "円です";
 	}
@@ -250,6 +251,40 @@ public class Covis_UnCapAccount extends Covis_Object {
 		return "not implemented ";
 	}
 	
+	public static String classdef = "" +
+"public class UnCapsuledAccount {\n"+
+"   public int 残高;     \n"+
+"   public String[] 履歴;\n"+
+"   \n"+
+"   public UnCapsuledAccount() {\n"+
+"      残高 = 10000;\n"+
+"      履歴 = new String[10];\n"+
+"   }\n"+
+"   \n"+
+"   public UnCapsuledAccount(int _残高) {\n"+
+"      残高 = _残高;\n"+
+"      履歴 = new String[10];\n"+
+"   }\n"+
+"   \n"+
+"   public String 残高照会(){\n"+
+"      return \"残高は\"　+ 残高 + \"円です\" ;\n"+
+"   }\n"+
+"   \n"+
+"   public void 履歴登録(int 金額,int 種類) {\n"+
+"      int i;\n"+
+"      for(i=0,i<履歴.length;i++){\n"+
+"         if(履歴[i] == null){\n"+
+"            if(種類 == 0){\n"+
+"               履歴[i] = \"預金 \" + 金額;\n"+
+"            }else{\n"+
+"               履歴[i] = \"引出 \" + 金額;\n"+
+"            }\n"+
+"            break;\n"+
+"         }\n"+
+"      }\n"+
+"   }\n"+
+"}"; 
+	/*
 	public static String classdef = "" +
 "public class UnCapsuledAccount {\n"+
 "   public int 残高;     \n"+
@@ -307,6 +342,7 @@ public class Covis_UnCapAccount extends Covis_Object {
 "      }\n"+
 "   }\n"+
 "}"; 
+*/
 }
 
 

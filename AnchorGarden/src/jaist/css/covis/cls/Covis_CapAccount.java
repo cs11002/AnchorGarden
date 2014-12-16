@@ -27,7 +27,7 @@ public class Covis_CapAccount extends Covis_Object {
 	public static Color defaultColor = new Color(182, 196, 84);
 	public static String varname1 = "c‚";
 	public static String varname2 = "—š—ğ";
-	
+
 	public Covis_CapAccount(CoVisBuffer buf, boolean isAuto) {
 		super(buf, isAuto);
 		color = defaultColor;
@@ -53,21 +53,21 @@ public class Covis_CapAccount extends Covis_Object {
 	//ƒJƒvƒZƒ‹‰»Ï‚İ
 	public void init(boolean isAuto) {
 		// –{‘Ì‚Ì‘å‚«‚³w’è
-		setPathToRectangle(0, 0, 200, 120);
+		setPathToRectangle(0, 0, 190, 120);
 		addAttribute("moveTarget", this);
 		addAttribute("tooltip", this);
 
 		// remainder‚Ì’Ç‰Á
-		c‚ = new Covis_int(buffer, isAuto,80);
+		c‚ = new Covis_int(buffer, isAuto,90);
 		c‚.addAttribute("moveTarget", this);
 		c‚.addAttribute("tooltip", this);
 		c‚.valueText.addAttribute("moveTarget", this);
 		c‚.valueText.addAttribute("tooltip", this);
-		remainderValue = 0;
+		remainderValue = 10000;
 		c‚.setValue(String.valueOf(remainderValue));
 		// ‘å‚«‚³ˆÊ’uw’è
 		c‚.setScale(0.8f);
-		c‚.offset(125, 5);
+		c‚.offset(105, 10);
 		addChild(c‚);
 
 		// StringŒ^’Ç‰Á
@@ -145,7 +145,7 @@ public class Covis_CapAccount extends Covis_Object {
 		historyIns.attach(—š—ğ.anchor);
 		historyIns.setOffsetAlignment(this, 200, 150);
 	}
-	
+
 	public void attach(Anchor anchor){
 		super.attach(anchor);
 		//—š—ğ—pƒAƒ“ƒJ[‚Í•ÏX‚Å‚«‚È‚¢‚æ‚¤‚É‚·‚é
@@ -193,17 +193,22 @@ public class Covis_CapAccount extends Covis_Object {
 
 	// ƒƒ\ƒbƒhì¬
 	public String covis_—a‹à‚·‚é(int value) {
-		if(value % 1000 == 0) {
-			remainderValue += value;
-			c‚.setValue(String.valueOf(remainderValue));
-			covis_—š—ğ“o˜^(value,0);
-			return value + "‰~—a‹à‚µ‚Ü‚µ‚½";
+		if(value >= 0) {
+			if(value % 1000 == 0) {
+				remainderValue += value;
+				c‚.setValue(String.valueOf(remainderValue));
+				covis_—š—ğ“o˜^(value,0);
+				return value + "‰~—a‹à‚µ‚Ü‚µ‚½";
+			}else{
+				return "1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢";
+			}
 		}else{
-			return "1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢";
+			return "³‚Ì”‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢";
 		}
 	}
 
 	public String covis_ˆø‚«o‚·(int value) {
+		if(value >= 0) {
 		if(value % 1000 == 0) {
 			if(remainderValue >= value) {
 				remainderValue -= value;
@@ -216,12 +221,15 @@ public class Covis_CapAccount extends Covis_Object {
 		}else{
 			return "1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢";
 		}
+		}else{
+			return "³‚Ì”‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢";
+		}
 	}
-	
+
 	public String covis_c‚Æ‰ï() {
 		return "c‚‚Í" + remainderValue + "‰~‚Å‚·";
 	}
-	
+
 	private void covis_—š—ğ“o˜^(int value,int type) {
 		int i;
 		Covis_String newhis = new Covis_String(buffer, true);
@@ -249,64 +257,64 @@ public class Covis_CapAccount extends Covis_Object {
 		 */
 		return "not implemented ";
 	}
-	
+
 	public static String classdef = "" +
-"public class CapsuledAccount {\n"+
-"   private int c‚;     \n"+
-"   private String[] —š—ğ;\n"+
-"   \n"+
-"   public CapsuledAccount() {\n"+
-"      c‚ = 0;\n"+
-"      —š—ğ = new String[10];\n"+
-"   }\n"+
-"   \n"+
-"   public CapsuledAccount(int _c‚) {\n"+
-"      c‚ = _c‚;\n"+
-"      —š—ğ = new String[10];\n"+
-"   }\n"+
-"   \n"+
-"   public String —a‹à‚·‚é(int ‹àŠz){\n"+
-"      if(‹àŠz % 1000 == 0) {\n"+
-"         c‚ += ‹àŠz;\n"+
-"         —š—ğ“o˜^(‹àŠz,0);\n"+
-"         return ‹àŠz + \"‰~—a‹à‚µ‚Ü‚µ‚½\";\n"+
-"      }else{\n"+
-"         return \"1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\";\n"+
-"      }\n"+
-"   }\n"+
-"   \n"+
-"   public String ˆø‚«o‚·(int ‹àŠz){\n"+
-"      if(‹àŠz % 1000 == 0) {\n"+
-"         if(c‚ >= ‹àŠz){\n"+
-"            c‚ -= ‹àŠz;\n"+
-"            —š—ğ“o˜^(‹àŠz,1);\n"+
-"            return ‹àŠz + \"‰~ˆø‚«o‚µ‚µ‚Ü‚µ‚½\";\n"+
-"         }else{\n"+
-"            return \"c‚‚ª‘«‚è‚Ü‚¹‚ñ\";\n"+
-"         }\n"+
-"      }else{\n"+
-"         return \"1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\";\n"+
-"      }\n"+
-"   }\n"+
-"   \n"+
-"   public String c‚Æ‰ï(){\n"+
-"      return \"c‚‚Í\"@+ c‚ + \"‰~‚Å‚·\" ;\n"+
-"   }\n"+
-"   \n"+
-"   private void —š—ğ“o˜^(int ‹àŠz,int í—Ş) {\n"+
-"      int i;\n"+
-"      for(i=0,i<—š—ğ.length;i++){\n"+
-"         if(—š—ğ[i] == null){\n"+
-"            if(í—Ş == 0){\n"+
-"               —š—ğ[i] = \"—a‹à \" + ‹àŠz;\n"+
-"            }else{\n"+
-"               —š—ğ[i] = \"ˆøo \" + ‹àŠz;\n"+
-"            }\n"+
-"            break;\n"+
-"         }\n"+
-"      }\n"+
-"   }\n"+
-"}"; 
+			"public class CapsuledAccount {\n"+
+			"   private int c‚;     \n"+
+			"   private String[] —š—ğ;\n"+
+			"   \n"+
+			"   public CapsuledAccount() {\n"+
+			"      c‚ = 10000;\n"+
+			"      —š—ğ = new String[10];\n"+
+			"   }\n"+
+			"   \n"+
+			"   public CapsuledAccount(int _c‚) {\n"+
+			"      c‚ = _c‚;\n"+
+			"      —š—ğ = new String[10];\n"+
+			"   }\n"+
+			"   \n"+
+			"   public String —a‹à‚·‚é(int ‹àŠz){\n"+
+			"      if(‹àŠz % 1000 == 0) {\n"+
+			"         c‚ += ‹àŠz;\n"+
+			"         —š—ğ“o˜^(‹àŠz,0);\n"+
+			"         return ‹àŠz + \"‰~—a‹à‚µ‚Ü‚µ‚½\";\n"+
+			"      }else{\n"+
+			"         return \"1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\";\n"+
+			"      }\n"+
+			"   }\n"+
+			"   \n"+
+			"   public String ˆø‚«o‚·(int ‹àŠz){\n"+
+			"      if(‹àŠz % 1000 == 0) {\n"+
+			"         if(c‚ >= ‹àŠz){\n"+
+			"            c‚ -= ‹àŠz;\n"+
+			"            —š—ğ“o˜^(‹àŠz,1);\n"+
+			"            return ‹àŠz + \"‰~ˆø‚«o‚µ‚µ‚Ü‚µ‚½\";\n"+
+			"         }else{\n"+
+			"            return \"c‚‚ª‘«‚è‚Ü‚¹‚ñ\";\n"+
+			"         }\n"+
+			"      }else{\n"+
+			"         return \"1000‰~’PˆÊ‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\";\n"+
+			"      }\n"+
+			"   }\n"+
+			"   \n"+
+			"   public String c‚Æ‰ï(){\n"+
+			"      return \"c‚‚Í\"@+ c‚ + \"‰~‚Å‚·\" ;\n"+
+			"   }\n"+
+			"   \n"+
+			"   private void —š—ğ“o˜^(int ‹àŠz,int í—Ş) {\n"+
+			"      int i;\n"+
+			"      for(i=0,i<—š—ğ.length;i++){\n"+
+			"         if(—š—ğ[i] == null){\n"+
+			"            if(í—Ş == 0){\n"+
+			"               —š—ğ[i] = \"—a‹à \" + ‹àŠz;\n"+
+			"            }else{\n"+
+			"               —š—ğ[i] = \"ˆøo \" + ‹àŠz;\n"+
+			"            }\n"+
+			"            break;\n"+
+			"         }\n"+
+			"      }\n"+
+			"   }\n"+
+			"}"; 
 }
 
 

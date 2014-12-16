@@ -38,21 +38,21 @@ public class Covis_Bus extends Covis_Car {
 		super.init(true);
 
 		// 本体の大きさ指定
-		setPathToRectangle(0, 0, 180, 180);
+		setPathToRectangle(0, 0, 190, 180);
 		addAttribute("moveTarget", this);
 		addAttribute("tooltip", this);
 
 		// sup作成
 		sub = new PPath();
 		// 大きさ・形指定
-		sub.setPathToRectangle(0, 120, 180, 60);
+		sub.setPathToRectangle(0, 120, 190, 60);
 		sub.setPaint(color);
 		sub.setStroke(basicStroke);
 		sub.addAttribute("moveTarget", this);
 		sub.addAttribute("tooltip", this);
 
 		// passengerNumの追加
-		乗車人数 = new Covis_int(buffer, isAuto);
+		乗車人数 = new Covis_int(buffer, isAuto,50);
 		乗車人数.addAttribute("moveTarget", this);
 		乗車人数.addAttribute("tooltip", this);
 		乗車人数.addAttribute("popupMenu", new ClassVarMenu(varname3,乗車人数,this));
@@ -75,6 +75,10 @@ public class Covis_Bus extends Covis_Car {
 		sub.addChild(passNumLabel);
 		
 		addChild(sub);
+		
+		車両価格.setValue("800");
+		gasolineValue = 200;
+		ガソリン.setValue(String.valueOf(gasolineValue));
 		
 		if (!isAuto) {
 			CarConstructorDialog dialog = CarConstructorDialog.showDialog(
@@ -190,7 +194,8 @@ public class Covis_Bus extends Covis_Car {
 "   int 乗車人数;　\n"+
 "   \n"+
 "   public Bus() {\n"+
-"      super();\n"+
+"      車両価格 = 800;\n"+
+"      ガソリン = 200;\n"+
 "   }\n"+
 "   \n"+
 "   public Bus(int _車両価格,int _ガソリン) {\n"+

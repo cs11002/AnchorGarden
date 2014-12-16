@@ -49,6 +49,9 @@ public class Covis_Cat extends Covis_Animal {
 		
 		addChild(sub);
 		
+		”N—î.setValue("9");
+		‘Ì’·.setValue("15");
+		
 		if (!isAuto) {
 			AnimalConstructorDialog dialog = AnimalConstructorDialog.showDialog(
 					buffer.getWindow().frame, this, "Constructor of Cat",
@@ -146,7 +149,8 @@ public class Covis_Cat extends Covis_Animal {
 "public abstract class Cat extends Animal {\n"+
 "   \n"+
 "   public Cat() {\n"+
-"      super();\n"+
+"      ”N—î = 9;\n"+
+"      ‘Ì’· = 15;\n"+
 "   }\n"+
 "   \n"+
 "   public Cat(int _”N—î,int _‘Ì’·) {\n"+

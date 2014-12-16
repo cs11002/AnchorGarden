@@ -18,19 +18,19 @@ public class ClassVarMenu extends JPopupMenu implements FramePopup {
 	Covis_Object obj;
 	String varname;
 	JFrame f;
+	JMenuItem menuItem;
 
 	public ClassVarMenu(String _varname, Covis_primitive _v,Covis_Object _obj){
 		this.v = _v;
 		this.obj = _obj;
 		this.varname = _varname;
 
-		JMenuItem menuItem;
-
 		setLightWeightPopupEnabled(false);
 
 		menuItem = new JMenuItem("cancel");
 		add(menuItem);
-
+		menuItem = null;
+		
 		addSeparator();
 
 	}
@@ -39,7 +39,9 @@ public class ClassVarMenu extends JPopupMenu implements FramePopup {
 		f = _f;
 
 		if(obj.anchors_incoming.size()>0 ) {
-			JMenuItem menuItem = new JMenuItem("edit value");
+			if (menuItem != null) remove(menuItem);
+			
+			menuItem = new JMenuItem("edit value");
 			add(menuItem);
 
 			menuItem.addActionListener(new ActionListener() {

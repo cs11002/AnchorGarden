@@ -174,13 +174,13 @@ public class SrcWindow extends JFrame implements ActionListener {
 		tabValue.add(t);
 		//tab.addTab("class Animal", new JScrollPane(t));
 
-		t = new JTextAreaToggleAntiAlias(Covis_Cat.classdef);
+		t = new JTextAreaToggleAntiAlias(Covis_Dog.classdef);
 		t.setEditable(false);
 		t.setFont(code14);
 		tabValue.add(t);
 		//tab.addTab("class Cat", new JScrollPane(t));
 
-		t = new JTextAreaToggleAntiAlias(Covis_Dog.classdef);
+		t = new JTextAreaToggleAntiAlias(Covis_Cat.classdef);
 		t.setEditable(false);
 		t.setFont(code14);
 		tabValue.add(t);

@@ -168,13 +168,13 @@ public class Covis_Bus extends Covis_Car {
 		return " 車両価格,ガソリン ";
 	}
 	
-	public String covis_乗車する(int num) {
+	public String covis_乗車(int num) {
 		passNumValue += num;
 		乗車人数.setValue(String.valueOf(passNumValue));
 		return num + "人乗車しました";
 	}
 	
-	public String covis_降車する(int num) {
+	public String covis_降車(int num) {
 		passNumValue -= num;
 		乗車人数.setValue(String.valueOf(passNumValue));
 		return num + "人降車しました";
@@ -202,12 +202,12 @@ public class Covis_Bus extends Covis_Car {
 "      super(_車両価格,_ガソリン);\n"+
 "   }\n"+
 "   \n"+
-"   public String 乗車する(int 人数){\n"+
+"   public String 乗車(int 人数){\n"+
 "         乗車人数 += 人数;\n"+
 "         return 人数 + \"人乗車しました\";\n"+
 "   }\n"+
 "   \n"+
-"   public String 降車する(int 人数){\n"+
+"   public String 降車(int 人数){\n"+
 "      乗車人数 -= 人数;\n"+
 "      return 人数 + \"人降車しました\";\n"+
 "   }\n"+

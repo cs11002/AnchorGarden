@@ -192,7 +192,7 @@ public class Covis_CapAccount extends Covis_Object {
 	}
 
 	// ÉÅÉ\ÉbÉhçÏê¨
-	public String covis_óaã‡Ç∑ÇÈ(int value) {
+	public String covis_óaã‡(int value) {
 		if(value >= 0) {
 			if(value % 1000 == 0) {
 				remainderValue += value;
@@ -207,7 +207,7 @@ public class Covis_CapAccount extends Covis_Object {
 		}
 	}
 
-	public String covis_à¯Ç´èoÇ∑(int value) {
+	public String covis_à¯èo(int value) {
 		if(value >= 0) {
 		if(value % 1000 == 0) {
 			if(remainderValue >= value) {
@@ -273,7 +273,7 @@ public class Covis_CapAccount extends Covis_Object {
 			"      óöó = new String[10];\n"+
 			"   }\n"+
 			"   \n"+
-			"   public String óaã‡Ç∑ÇÈ(int ã‡äz){\n"+
+			"   public String óaã‡(int ã‡äz){\n"+
 			"      if(ã‡äz % 1000 == 0) {\n"+
 			"         écçÇ += ã‡äz;\n"+
 			"         óöóìoò^(ã‡äz,0);\n"+
@@ -283,7 +283,7 @@ public class Covis_CapAccount extends Covis_Object {
 			"      }\n"+
 			"   }\n"+
 			"   \n"+
-			"   public String à¯Ç´èoÇ∑(int ã‡äz){\n"+
+			"   public String à¯èo(int ã‡äz){\n"+
 			"      if(ã‡äz % 1000 == 0) {\n"+
 			"         if(écçÇ >= ã‡äz){\n"+
 			"            écçÇ -= ã‡äz;\n"+
